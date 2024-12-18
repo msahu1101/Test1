@@ -1,0 +1,241 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "account-name": {
+            "type": "string",
+            "metadata": {
+                "description": "Cosmos DB account name"
+            }
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "Location for the Cosmos DB account."
+            }
+        },
+        "primary-region": {
+            "type": "string",
+            "metadata": {
+                "description": "The primary replica region for the Cosmos DB account."
+            }
+        },
+        "secondary-region": {
+            "type": "string",
+            "metadata": {
+                "description": "The secondary replica region for the Cosmos DB account."
+            }
+        },
+        "default-consistency-level": {
+            "type": "string",
+            "defaultValue": "Session",
+            "allowedValues": [
+                "Eventual",
+                "ConsistentPrefix",
+                "Session",
+                "BoundedStaleness",
+                "Strong"
+            ],
+            "metadata": {
+                "description": "The default consistency level of the Cosmos DB account."
+            }
+        },
+        "max-staleness-prefix": {
+            "type": "int",
+            "minValue": 10,
+            "defaultValue": 100000,
+            "maxValue": 2147483647,
+            "metadata": {
+                "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
+            }
+        },
+        "max-interval-in-seconds": {
+            "type": "int",
+            "minValue": 5,
+            "defaultValue": 300,
+            "maxValue": 86400,
+            "metadata": {
+                "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
+            }
+        },
+        "multiple-write-locations": {
+            "type": "bool",
+            "defaultValue": true,
+            "allowedValues": [
+                true,
+                false
+            ],
+            "metadata": {
+                "description": "Enable multi-master to make all regions writable."
+            }
+        },
+        "automatic-failover": {
+            "type": "bool",
+            "defaultValue": true,
+            "allowedValues": [
+                true,
+                false
+            ],
+            "metadata": {
+                "description": "Enable automatic failover for regions. Ignored when Multi-Master is enabled"
+            }
+        },
+        "database-name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the SQL database"
+            }
+        },
+        "database-throughput": {
+            "type": "int",
+            "defaultValue": 400,
+            "minValue": 400,
+            "maxValue": 1000000,
+            "metadata": {
+                "description": "The throughput for the database"
+            }
+        },
+        "container-name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the first SQL container"
+            }
+        },
+        "environment": {
+            "type": "string",
+            "metadata": {
+                "description": "Application Environment"
+            }
+        },
+        "vnet-resource-group-name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the vnet Resource Group Name"
+            }
+        },
+        "vnet-name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the vnet-name"
+            }
+        },
+        "subnet-name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name for the subnet-name"
+            }
+        }
+    },
+    "variables": {
+        "account-name": "[toLower(parameters('account-name'))]",
+        "consistencyPolicy": {
+            "Eventual": {
+                "default-consistency-level": "Eventual"
+            },
+            "ConsistentPrefix": {
+                "default-consistency-level": "ConsistentPrefix"
+            },
+            "Session": {
+                "default-consistency-level": "Session"
+            },
+            "BoundedStaleness": {
+                "default-consistency-level": "BoundedStaleness",
+                "max-staleness-prefix": "[parameters('max-staleness-prefix')]",
+                "max-interval-in-seconds": "[parameters('max-interval-in-seconds')]"
+            },
+            "Strong": {
+                "default-consistency-level": "Strong"
+            }
+        },
+        "resourceId": "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('account-name'))]",
+        "apiVersion": "[providers('Microsoft.DocumentDB', 'databaseAccounts').apiVersions[0]]",
+        "locations": [
+            {
+                "locationName": "[parameters('primary-region')]",
+                "failoverPriority": 0
+            },
+            {
+                "locationName": "[parameters('secondary-region')]",
+                "failoverPriority": 1
+            }
+        ],
+        "virtualNetwork_externalid": "[concat('/subscriptions/', subscription().subscriptionid, '/resourceGroups/', parameters('vnet-resource-group-name'), '/providers/Microsoft.Network/virtualNetworks/', parameters('vnet-name'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "apiVersion": "2019-08-01",
+            "name": "[variables('account-name')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "creator": "Customer Profile Team",
+                "application": "CPS-Core",
+                "businessSponsor": "Kemen Penev",
+                "businessCostCenter": "516-800-80182 Digital Engineering",
+                "environment": "[parameters('environment')]"
+            },
+            "kind": "GlobalDocumentDB",
+            "properties": {
+                "enableautomatic-failover": "[parameters('automatic-failover')]",
+                "enablemultiple-write-locations": "[parameters('multiple-write-locations')]",
+                "databaseAccountOfferType": "Standard",
+                "consistencyPolicy": "[variables('consistencyPolicy')[parameters('default-consistency-level')]]",
+                "locations": "[variables('locations')]",
+                "capabilities": [
+                ],
+                "ipRangeFilter": "69.162.0.0/24,69.162.1.0/24,69.162.2.0/24,69.162.16.0/24,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26,0.0.0.0",
+                "isVirtualNetworkFilterEnabled" : "True",
+                "virtualNetworkRules": [
+                    {
+                        "id": "[concat(variables('virtualNetwork_externalid'), '/subnets/', parameters('subnet-name'))]",
+                        "ignoreMissingVNetServiceEndpoint": false
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "name": "[concat(variables('account-name'), '/', parameters('database-name'))]",
+            "apiVersion": "2019-08-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('account-name'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "[parameters('database-name')]"
+                },
+                "options": {
+                    "throughput": "[parameters('database-throughput')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDb/databaseAccounts/sqlDatabases/containers",
+            "name": "[concat(variables('account-name'), '/', parameters('database-name'), '/', parameters('container-name'))]",
+            "apiVersion": "2019-08-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', variables('account-name'), parameters('database-name'))]",
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', variables('account-name'))]"
+            ],
+            "properties": {
+                "resource": {
+                    "id": "[parameters('container-name')]",
+                    "partitionKey": {
+                        "paths": [
+                            "/id"
+                        ],
+                        "kind": "Hash"
+                    },
+                    "indexingPolicy": {
+                        "indexingMode": "consistent",
+                        "includedPaths": [
+                            {
+                                "path": "/*"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}

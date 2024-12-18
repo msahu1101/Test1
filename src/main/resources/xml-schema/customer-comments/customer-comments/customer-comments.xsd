@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="CRMAcresMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Header">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TimeStamp" type="xs:dateTime" />
+							<xs:element name="Operation">
+								<xs:complexType>
+									<xs:attribute name="Data" type="xs:string" use="required" />
+									<xs:attribute name="Operand" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerID" type="xs:unsignedInt" />
+				<xs:element name="Body">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Comments">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="Comment">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="IsHighPriority" type="xs:boolean" />
+													<xs:element name="Number" type="xs:unsignedByte" />
+													<xs:element name="IsPrivate" type="xs:boolean" />
+													<xs:element name="Text" type="xs:string" />
+													<xs:element name="CreatedDate" type="xs:dateTime" />
+													<xs:element name="ExpirationDate" type="xs:dateTime" />
+													<xs:element name="EnteredBy">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="User">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="UserID" type="xs:unsignedShort" />
+																			<xs:element name="LoginName" type="xs:string" />
+																			<xs:element name="FirstName" type="xs:string" />
+																			<xs:element name="LastName" type="xs:string" />
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Site">
+														<xs:complexType>
+															<xs:sequence minOccurs="0">
+																<xs:element name="SiteID" type="xs:unsignedByte" />
+																<xs:element name="SiteDescription" type="xs:string" />
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Error">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ErrorCode">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="16" />
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ErrorDescription" type="xs:string" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--targetNamespace="com/mgmresorts/customer/dto/customer/taxinfo" xmlns="com/mgmresorts/customer/dto/customer/taxinfo" -->
+	<xs:element name="ResultSet">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Header" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TimeStamp" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Body" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PlayerDetails" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PlayerID" type="xs:string" minOccurs="0" />
+										<xs:element name="Name" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Title" type="xs:string" minOccurs="0" />
+													<xs:element name="FirstName" type="xs:string" minOccurs="0" />
+													<xs:element name="MiddleName" type="xs:string" minOccurs="0" />
+													<xs:element name="LastName" type="xs:string" minOccurs="0" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Address" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="MailingCity" type="xs:string" minOccurs="0" />
+													<xs:element name="MailingState" type="xs:string" minOccurs="0" />
+													<xs:element name="MailingCountry" type="xs:string" minOccurs="0" />
+													<xs:element name="AddressLine1" type="xs:string" minOccurs="0" />
+													<xs:element name="AddressLine2" type="xs:string" minOccurs="0" />
+													<xs:element name="ZipCode" type="xs:string" minOccurs="0" />
+													<xs:element name="ZipPlus" type="xs:string" minOccurs="0" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TotalPlayDetails" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Total_CoinIn" type="xs:decimal" minOccurs="0" />
+													<xs:element name="Total_CoinOut" type="xs:decimal" minOccurs="0" />
+													<xs:element name="Total_JackPot" type="xs:decimal" minOccurs="0" />
+													<xs:element name="Total_SlotWin" type="xs:decimal" minOccurs="0" />
+													<xs:element name="Total_TableWin" type="xs:decimal" minOccurs="0" />
+													<xs:element name="Total_TotalWin" type="xs:decimal" minOccurs="0" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TaxDetailsByMonthAndSite" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="Site" minOccurs="0" maxOccurs="unbounded" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element ref="Site" minOccurs="0" maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element ref="ErrorMessage" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Sites">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Site" minOccurs="0" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Site">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ID" type="xs:string" minOccurs="0" />
+				<xs:element name="Month" type="xs:string" minOccurs="0" />
+				<xs:element name="CoinIn" type="xs:decimal" minOccurs="0" />
+				<xs:element name="CoinOut" type="xs:decimal" minOccurs="0" />
+				<xs:element name="Jackpot" type="xs:decimal" minOccurs="0" />
+				<xs:element name="SlotWin" type="xs:decimal" minOccurs="0" />
+				<xs:element name="TableWin" type="xs:decimal" minOccurs="0" />
+				<xs:element name="TotalWin" type="xs:decimal" minOccurs="0" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ErrorMessage" type="xs:string" />
+</xs:schema>

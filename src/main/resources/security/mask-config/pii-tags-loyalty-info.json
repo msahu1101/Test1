@@ -1,0 +1,18 @@
+{
+    "taxinformation:response": [
+        "resultset.body.playerdetails.playerid",
+        "resultset.body.playerdetails.name.title",
+        "resultset.body.playerdetails.name.firstname",
+        "resultset.body.playerdetails.name.lastname",
+        "resultset.body.playerdetails.address.mailingcity",
+        "resultset.body.playerdetails.address.mailingstate",
+        "resultset.body.playerdetails.address.mailingcountry",
+        "resultset.body.playerdetails.address.addressline1",
+        "resultset.body.playerdetails.address.zipcode"
+    ],
+    "loyalty:rcx": [
+        "no.mask"
+    ]
+}
+
+

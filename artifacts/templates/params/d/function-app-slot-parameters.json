@@ -1,0 +1,79 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "environment": {
+      "type": "string",
+      "value": "$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+    "storage_account_name": {
+      "type": "string",
+      "value": "cigli$(TARGET_APP_SERVICE_VERSION)$(TARGET_APP_SERVICE_LOCATION)$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+    "vnet_resource_group_name": {
+      "type": "string",
+      "value": "cigloyaltyvnet-$(TARGET_APP_SERVICE_LOCATION)-rg-$(TARGET_NETWORK_ENVIRONMENT)"
+    },
+    "vnet_name": {
+      "type": "string",
+      "value": "cigloyalty-$(TARGET_APP_SERVICE_LOCATION)-vnet-$(TARGET_NETWORK_ENVIRONMENT)"
+    },
+    "subnet_name": {
+      "type": "string",
+      "value": "cigloyaccts-uw-sn-$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+    "redis_cache_name": {
+      "value": "cigloyaccts-$(TARGET_APP_SERVICE_LOCATION)-rc-$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+    "function_app_name": {
+      "type": "string",
+      "value": "$(TARGET_APP_SERVICE_NAME)"
+    },
+    "app_insights_name": {
+      "type": "string",
+      "value": "cigli-$(TARGET_APP_SERVICE_LOCATION)-ai-$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+    "app_service_plan_name": {
+      "type": "string",
+      "value": "cigloyaccts-$(TARGET_APP_SERVICE_LOCATION)-asp-$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+    "function_worker_runtime": {
+      "type": "string",
+      "value": "java"
+    },
+    "function_sku": {
+      "type": "string",
+      "value": "P1V3"
+    },
+    "app_service_resource_group_name": {
+      "type": "string",
+      "value": "cigloyaccts-$(TARGET_APP_SERVICE_LOCATION)-rg-$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+    "application_version": {
+      "type": "string",
+      "value": "$(TARGET_CODE_VERSION)"
+    },
+    "application_runtime_environment": {
+      "type": "string",
+      "value": "$(TARGET_APP_SERVICE_ENVIRONMENT)"
+    },
+
+    "apim_vnet_resource_group_name": {
+      "type": "string",
+      "value": "digengsharedservicesvnets-uw-rg-p"
+    },
+    "apim_vnet_name": {
+      "type": "string",
+      "value": "digengsharedservices-uw-vnet-p"
+    },
+    "apim_subnet_name": {
+      "type": "string",
+      "value": "apimngt-uw-sn-$(TARGET_NETWORK_ENVIRONMENT)"
+    },
+    "slot_name": {
+      "type": "string",
+      "value": "slot_name"
+    }
+  },
+  "resources": []
+}

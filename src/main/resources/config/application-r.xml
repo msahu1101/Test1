@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <!-- Enable Cache  -->
+  <entry key="cache.disabled.global">false</entry>
+  <entry key="cache.expiry.customer-promo">120</entry>
+  <!-- RCX Pending Balance  -->
+ <!-- <entry key="rcx.pending.balance.url">https://mgm-nonprod-qa.apigee.net/rcxapi/members/%d/profile?select=purses.balance,purses.name</entry> -->
+  <entry key="rcx.pending.balance.url">https://qa2-api.apigee.devtest.vegas/rcxapi2/extapi/v1/members/%d/profile?select=purses.balance,purses.name</entry> <!--NEW APIGEE-X URL-->
+  <entry key="apim.oauth.endpoint">https://preprod-api.apigee.devtest.vegas/identity/authorization/v1/mgmsvc/token</entry> <!--NEW APIGEE-X TOKEN URL-->
+
+  <!--<entry key="rcx.platform.base.url">https://mgm-nonprod-qa.apigee.net/rcxapi2</entry> OLD URL-->
+  <entry key="rcx.platform.base.url">https://qa2-api.apigee.devtest.vegas/rcxapi2</entry>
+</properties>

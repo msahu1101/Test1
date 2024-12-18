@@ -1,0 +1,109 @@
+{
+	"id": "fbbaad4b-1e35-4709-aec4-a9af04baec37",
+	"name": "loyalty-info-environment",
+	"values": [
+		{
+			"key": "ps.function.stopcode.player",
+			"value": "77432765",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.linked.player",
+			"value": "32093716",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.player.comments",
+			"value": "4387797",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.player.balance",
+			"value": "4387797",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.player.promo",
+			"value": "72619330",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.player.search_param",
+			"value": "prem",
+			"enabled": false
+		},
+		{
+			"key": "ps.function.player.taxinformation_year",
+			"value": "2019",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.player.taxinformation_playerid",
+			"value": "75710067",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.player.taxinformation_quarter",
+			"value": "1",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.customer.promo_id",
+			"value": "285535",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.customer.eventid",
+			"value": "24904",
+			"enabled": true
+		},
+		{
+			"key": "ls.function.update.scope",
+			"value": "profile:update",
+			"enabled": true
+		},
+		{
+			"key": "ps.customer.blockId",
+			"value": "87670",
+			"enabled": true
+		},
+		{
+			"key": "ps.customer.description",
+			"value": "Tickets",
+			"enabled": true
+		},
+		{
+			"key": "ps.customer.tickets",
+			"value": "562",
+			"enabled": true
+		},
+		{
+			"key": "ps.customer.maxperplayer",
+			"value": "72",
+			"enabled": true
+		},
+		{
+			"key": "ps.customer.defaultAmount",
+			"value": "2",
+			"enabled": true
+		},
+		{
+			"key": "ps.customer.status",
+			"value": "A",
+			"enabled": true
+		},
+		{
+			"key": "ps.customer.siteid",
+			"value": "18",
+			"enabled": true
+		},
+		{
+			"key": "ps.function.player.slotdollarbalance",
+			"value": "49239615",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2022-08-29T20:41:38.791Z",
+	"_postman_exported_using": "Postman/7.36.1"
+}

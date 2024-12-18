@@ -1,0 +1,794 @@
+{
+	"info": {
+		"_postman_id": "d8670f62-a960-465a-96dc-016208afbac0",
+		"name": "loyalty_info_collection_oauth",
+		"description": "Player Search API Collction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "player-stop_codes",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"   if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerStopCode.length).to.be.above(0);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/stop-codes/{{ps.function.stopcode.player}}",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"stop-codes",
+						"{{ps.function.stopcode.player}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player-links",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {\r",
+							"   if(pm.response.code === 200){\r",
+							"        pm.response.to.have.status(200);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-content-type\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-header\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-body\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.linkedPlayers.length).to.be.above(0);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/linked-player/{{ps.function.linked.player}}",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"linked-player",
+						"{{ps.function.linked.player}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player-comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"   if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.comments.length).to.be.above(0);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/comments/{{ps.function.player.comments}}",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"comments",
+						"{{ps.function.player.comments}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				},
+				"description": "This API retrive player comments"
+			},
+			"response": []
+		},
+		{
+			"name": "player-balance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"   if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerBalances);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/balance/{{ps.function.player.balance}}",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"balance",
+						"{{ps.function.player.balance}}"
+					]
+				},
+				"description": "This API is used to retrive customer balance."
+			},
+			"response": []
+		},
+		{
+			"name": "player-promo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"   if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerPromotions.length).to.be.above(0);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/player-promo/{{ps.function.player.promo}}",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"player-promo",
+						"{{ps.function.player.promo}}"
+					]
+				},
+				"description": "This API is used to promotions"
+			},
+			"response": []
+		},
+		{
+			"name": "player-tax_information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"   if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerTaxInfo);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/tax-information/{{ps.function.player.taxinformation_playerid}}/{{ps.function.player.taxinformation_year}}",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"tax-information",
+						"{{ps.function.player.taxinformation_playerid}}",
+						"{{ps.function.player.taxinformation_year}}"
+					]
+				},
+				"description": "This API is used to fetch player tax information ."
+			},
+			"response": []
+		},
+		{
+			"name": "promo-event-blocks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"   if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-promo-events-type-promo\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.promoEventBlocks[0].eventId).to.equal(Number(pm.variables.get(\"ps.function.customer.eventid\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].blockId).to.equal(Number(pm.variables.get(\"ps.customer.blockId\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].description).to.equal(pm.variables.get(\"ps.customer.description\"));",
+							"    pm.expect(jsonData.promoEventBlocks[0].tickets).to.equal(Number(pm.variables.get(\"ps.customer.tickets\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].maxPerPlayer).to.equal(Number(pm.variables.get(\"ps.customer.maxperplayer\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].defaultAmount).to.equal(Number(pm.variables.get(\"ps.customer.defaultAmount\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].status).to.equal(pm.variables.get(\"ps.customer.status\"));",
+							"    pm.expect(jsonData.promoEventBlocks[0].siteId).to.equal(Number(pm.variables.get(\"ps.customer.siteid\")));  ",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{oauth_access_token}}"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"type": "text",
+						"value": "{{$guid}}"
+					}
+				],
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/promo-events/{{ps.function.customer.promo_id}}?type=promo",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"promo-events",
+						"{{ps.function.customer.promo_id}}"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "promo"
+						}
+					]
+				},
+				"description": "This API is used to fetch player tax information ."
+			},
+			"response": []
+		},
+		{
+			"name": "issue-promo-event",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {\r",
+							"   if(pm.response.code === 500){\r",
+							"        pm.response.to.have.status(500);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-content-type\", function () {\r",
+							"   pm.response.to.have.header(\"Content-Type\");\r",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"   \r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-header\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"FAILURE\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-body\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.customerTaxInfo);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{$guid}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"playerId\" : 16524395,\n    \"promoId\" : 3603180,\n    \"blockId\" : 120016,\n    \"ticketCount\" : 1,\n    \"pickedUp\" : \"N\"\n}\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/issue-promo",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"issue-promo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player-slot_dollar_balance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"  if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.slotDollarBalance);",
+							"    pm.expect(jsonData.slotDollarBalance);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{oauth_access_token}}",
+						"type": "text"
+					},
+					{
+						"key": "x-mgm-correlation-id",
+						"value": "{{guid}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://{{global.apim.endpoint}}/{{global.api.version}}/patron/slot-dollar-balance/{{ps.function.player.slotdollarbalance}}",
+					"protocol": "https",
+					"host": [
+						"{{global.apim.endpoint}}"
+					],
+					"path": [
+						"{{global.api.version}}",
+						"patron",
+						"slot-dollar-balance",
+						"{{ps.function.player.slotdollarbalance}}"
+					]
+				},
+				"description": "This API is used to fetch player slot dollar balance ."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

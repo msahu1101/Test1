@@ -1,0 +1,767 @@
+{
+    "definitions": {
+        "customerStopCode": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.CustomerStopCode",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The stop code's identification id."
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The stop code's priority."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The stop code's identification's id."
+                },
+                "isActive": {
+                    "type": "boolean",
+                    "description": "The stop code's status."
+                }
+            }
+        },
+        "customerTaxInfo": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.CustomerTaxInfo",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "customerId": {
+                    "type": "string",
+                    "description": "The customer's identification number."
+                },
+                "title": {
+                    "type": "string",
+                    "required": false
+                },
+                "firstName": {
+                    "type": "string",
+                    "required": false
+                },
+                "lastName": {
+                    "type": "string",
+                    "required": false
+                },
+                 "address": {
+                        "required": false,
+                        "$ref": "#/definitions/address"
+                },
+                "totalCoinIn": {
+                    "type": "number",
+                    "description": "The tax's total Coin In."
+                },
+                "totalCoinOut": {
+                    "type": "number",
+                    "description": "The tax's total Coin Out."
+                },
+                "totalJackPot": {
+                    "type": "number",
+                    "description": "The tax's total jack pot."
+                },
+                "totalSlotWin": {
+                    "type": "number",
+                    "description": "The tax's total slot win."
+                },
+                "totalTableWin": {
+                    "type": "number",
+                    "description": "The tax's total table win."
+                },
+                "totalWin": {
+                    "type": "number",
+                    "description": "The tax's total win."
+                },
+                "siteTotals": {
+                    "type": "array",
+                    "description": "The tax's site totals.",
+                    "items": {
+                        "required": true,
+                        "$ref": "#/definitions/customerTaxBySite"
+                    }
+                }
+            }
+        },
+        "address": {
+            "type": "object",
+            "required": false,
+            "additionalProperties": false,
+            "javaType": "com.mgmresorts.profile.dto.common.Address",
+            "properties": {
+                "street1": {
+                    "type": "string",
+                    "required": false,
+                    "additionalProperties": false
+                },
+                "street2": {
+                    "type": "string",
+                    "required": false,
+                    "additionalProperties": false
+                },
+                "city": {
+                    "type": "string",
+                    "required": false,
+                    "additionalProperties": false
+                },
+                "state": {
+                    "type": "string",
+                    "required": false,
+                    "additionalProperties": false
+                },
+                "country": {
+                    "type": "string",
+                    "required": true,
+                    "additionalProperties": false,
+                    "description": "country name should in the ISO-3166-alpha2 format ex:US"
+                },
+                "zipCode": {
+                    "type": "string",
+                    "required": true,
+                    "additionalProperties": false
+                }
+            }
+        },
+        "customerTaxBySite": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.CustomerTaxBySite",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "siteId": {
+                    "type": "string",
+                    "description": "The tax's site identification id."
+                },
+                 "siteName": {
+                    "type": "string",
+                    "description": "The tax's site identification id."
+                },
+                "coinIn": {
+                    "type": "number",
+                    "description": "Tax on coin In."
+                },
+                "coinOut": {
+                    "type": "number",
+                    "description": "Tax on coin out."
+                },
+                "jackPot": {
+                    "type": "number",
+                    "description": "Tax on jack pot."
+                },
+                "slotWin": {
+                    "type": "number",
+                    "description": "Tax on slot win."
+                },
+                "tableWin": {
+                    "type": "number",
+                    "description": "Tax on table win."
+                },
+                "totalWin": {
+                    "type": "number"
+                },
+                "month": {
+                    "type": "string",
+                    "description": "Tax for the month."
+                },
+                "monthlyInfoTaxes": {
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "$ref": "#/definitions/monthlyInfoTaxes"
+                    }
+                }
+            }
+        },
+        "monthlyInfoTaxes": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.MonthlyInfoTaxes",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+            	"siteId": {
+                    "type": "string",
+                    "description": "The tax's site identification id."
+                },
+                "siteName": {
+                    "type": "string",
+                    "description": "The tax's site identification id."
+                },
+                "month": {
+                    "type": "string",
+                    "description": "Patron's taxes information monthly."
+                },
+                "coinIn": {
+                    "type": "number",
+                    "description": "Monthly tax on coin in."
+                },
+                "coinOut": {
+                    "type": "number",
+                    "description": "Monthly tax on coin out."
+                },
+                "jackPot": {
+                    "type": "number",
+                    "description": "Monthly tax on jack pot."
+                },
+                "slotWin": {
+                    "type": "number",
+                    "description": "Monthly tax on slot win."
+                },
+                "tableWin": {
+                    "type": "number",
+                    "description": "Monthly tax on total win."
+                },
+                "totalWin": {
+                    "type": "number",
+                    "description": "Monthly tax on total win."
+                }
+            }
+        },
+        "customerPromotion": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.CustomerPromotion",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "promoId": {
+                    "type": "string",
+                    "description": "The patron id for the promotion."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the promotion."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the promotion."
+                },
+                "publicDescription": {
+                    "type": "string",
+                    "description": "A short description of the promotion."
+                },
+                "startDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The start date for the promotion."
+                },
+                "endDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The last date for the promotion."
+                },
+                "siteInfo": {
+                    "type": "object",
+                    "required": true,
+                    "$ref": "#/definitions/promoSiteInfo"
+                }
+            }
+        },
+        "customerBalances": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.CustomerBalances",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "tier": {
+                    "type": "object",
+                    "required": true,
+                    "$ref": "#definitions/tier"
+                },
+                "balance": {
+                    "type": "object",
+                    "required": true,
+                    "$ref": "#definitions/balance"
+                },
+                "giftPointBalancesInfo": {
+                    "type": "object",
+                    "description": "A GiftPointBalancesInfo object is used by the CustomerBalancesFull object.",
+                    "required": true,
+                    "$ref": "#definitions/giftPointBalancesInfo"
+                },
+                "giftPoints": {
+                    "type": "object",
+                    "description": "A GiftPointBalances object is used by the GiftPointBalancesInfo objec.",
+                    "required": true,
+                    "$ref": "#definitions/giftPoints"
+                }
+            }
+        },
+        "giftPointBalances": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.GiftPointBalances",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "programId": {
+                    "type": "integer",
+                    "description": "A GiftPoint identification program id."
+                },
+                "programName": {
+                    "type": "string",
+                    "description": "A GiftPoint program name."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "A GiftPoint status."
+                },
+                "expired": {
+                    "type": "integer",
+                    "description": "A GiftPoint balance expired."
+                },
+                "points": {
+                    "type": "number",
+                    "description": "Gift Point."
+                }
+            }
+        },
+        "siteInfo": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.SiteInfo",
+            "type": "object",
+            "description": "A SiteTypeCommon object is used by the SiteInfo object.",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "siteInfo": {
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "additionalProperties": false,
+                        "$ref": "#/definitions/siteTypeCommon"
+                    }
+                }
+            }
+        },
+        "siteTypeCommon": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.SiteTypeCommon",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "configHotelSystemId": {
+                    "type": "integer",
+                    "description": "Hotel configuration system id."
+                },
+                "corpSortOrder": {
+                    "type": "integer",
+                    "description": "Hotel configuration system id."
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "Site type common id."
+                },
+                "lastStayDate": {
+                    "required": false,
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "last date stay on the site.",
+                    "additionalProperties": false
+                },
+                "roomNights": {
+                    "type": "integer",
+                    "description": "Night stay in the room."
+                },
+                "siteDescription": {
+                    "type": "string",
+                    "description": "A sort descriptions of site."
+                },
+                "siteId": {
+                    "type": "string",
+                    "description": "A site's identification id."
+                },
+                "siteIdPm": {
+                    "type": "integer",
+                    "description": "A site's identification id pm."
+                },
+                "siteName": {
+                    "type": "string",
+                    "description": "Name of the site."
+                },
+                "sitemasterId": {
+                    "type": "integer",
+                    "description": "A site master identification id."
+                },
+                "totalTheoWin": {
+                    "type": "number",
+                    "description": "A total winning amount for site."
+                }
+            }
+        },
+        "xtraCreditBalancesLocal": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.XtraCreditBalancesLocal",
+            "type": "object",
+            "required": false,
+            "additionalProperties": false,
+            "properties": {
+                "siteId": {
+                    "type": "string",
+                    "description" : "it's site id."
+                },
+                "siteName": {
+                    "type": "string",
+                    "description" : "it's site name."
+                },
+                "xtraCreditBalanceLocal": {
+                    "type": "number"
+                }
+            }
+        },
+        "balance": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.Balance",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "A balance count."
+                },
+                "playerId": {
+                    "type": "integer",
+                    "description": "Customer's Mlife number."
+                },
+                "promoId": {
+                    "type": "integer",
+                    "description": "The patron id for the promotion"
+                },
+                "startDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The start date for the balance"
+                },
+                "endDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "The end date for the balance"
+                },
+                "orderBy": {
+                    "type": "string",
+                    "description": "A name of customer who has balance."
+                },
+                "rewardBalance": {
+                    "type": "integer",
+                    "description": "A reward balance."
+                },
+                "compBalance": {
+                    "type": "number",
+                    "description": "A complete balance."
+                },
+                "secondCompBalance": {
+                    "type": "number",
+                    "description": "A second complete balance."
+                },
+                "pendingPointsBalance": {
+                    "type": "number",
+                    "description": "This represnt the pending express comps balance."
+                },
+                "giftPoints": {
+                    "type": "number",
+                    "description": "A gift points."
+                },
+                "xtraCreditBalanceLocal": {
+                    "type": "number",
+                    "description": "A extra credit balance for local."
+                },
+                "xtraCreditBalanceGlobal": {
+                    "type": "number",
+                    "description": "A extra credit balance for global."
+                },
+                "pointBalance": {
+                    "type": "long",
+                    "description": "A balance point."
+                },
+                "compBalanceLinked": {
+                    "type": "number",
+                    "description": "A complete balance linked."
+                },
+                "secondCompBalanceLinked": {
+                    "type": "number",
+                    "description": "A second coplete balance linked."
+                },
+                "pointBalanceLinked": {
+                    "type": "long",
+                    "description": "A point balance linked."
+                },
+                "xtraCreditBalancesLocal": {
+                    "type": "array",
+                    "description": "A extra credit balance for local.",
+                    "items": {
+                        "required": true,
+                        "additionalProperties": false,
+                        "$ref": "#/definitions/xtraCreditBalancesLocal"
+                    }
+                },
+                "sites": {
+                    "type": "object",
+                    "required": true,
+                    "$ref": "#/definitions/siteInfo"
+                }
+            }
+        },
+        "tier": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.Tier",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "playerTierName": {
+                    "type": "string",
+                    "required": true,
+                    "description": "A patron player's tier name."
+                },
+                "tierCredits": {
+                    "type": "integer",
+                    "description": "A patron player's tier credit."
+                },
+                "achievedDate": {
+                    "required": false,
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "A patron player's tier credit achieved date.",
+                    "additionalProperties": false
+                },
+                "creditToNextTier": {
+                    "required": false,
+                    "description": "A patron player's credit for next tier.",
+                    "type": "string"
+                },
+                "nextTier": {
+                    "required": false,
+                    "description": "A patron player's credit for next tier.",
+                    "type": "string"
+                },
+                "previousTier": {
+                    "required": false,
+                    "description": "A patron player's credit for previous tier.",
+                    "type": "string"
+                },
+                "expireDate": {
+                    "required": true,
+                    "type": "string",
+                    "description": "A patron player's credit tier expire date.",
+                    "format": "date-time",
+                    "additionalProperties": false
+                },
+                "earnedDate": {
+                    "required": false,
+                    "type": "string",
+                    "description": "A patron player's credit earned date.",
+                    "format": "date-time",
+                    "additionalProperties": false
+                }
+            }
+        },
+        "giftPointBalancesInfo": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.GiftPointBalancesInfo",
+            "type": "object",
+            "required": true,
+            "description": "A object for gift point balance informations.",
+            "additionalProperties": false,
+            "properties": {
+                "giftPointBalances": {
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "additionalProperties": false,
+                        "$ref": "#/definitions/giftPointBalances"
+                    }
+                }
+            }
+        },
+        "giftPoints": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.GiftPoints",
+            "type": "object",
+            "description": "A object for gift point .",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "hgsPoints": {
+                    "type": "number"
+                },
+                "giftPointsLinked": {
+                    "type": "number"
+                }
+            }
+        },
+        "customerComment": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.CustomerComment",
+            "type": "object",
+            "description": "A object for customer comments.",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "siteId": {
+                    "type": "string",
+                    "description": "A site's identification id."
+                },
+                "number": {
+                    "type": "string",
+                    "description": "comments number."
+                },
+                "text": {
+                    "type": "string",
+                    "description": "A comments sort descriptions."
+                },
+                "createDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "A comment created date."
+                },
+                "expiryDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "A comment expired date."
+                },
+                "isPrivate": {
+                    "type": "boolean",
+                    "description": "is this private comments."
+                },
+                "isHighPriority": {
+                    "type": "boolean",
+                    "description": "Priority of comments"
+                }
+            }
+        },
+        "linkedPlayer": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.LinkedPlayer",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "playerId": {
+                    "type": "integer",
+                    "description": "Customer's Mlife number."
+                },
+                "linkNumber": {
+                    "type": "integer",
+                    "description": "Customer's link identification number ."
+                }
+            }
+        },
+        "promoSiteInfo": {
+            "javaType": "com.mgmresorts.loyalty.dto.promo.PromoSiteInfo",
+            "type": "object",
+            "description": "A SiteTypeCommon object is used by the SiteInfo object.",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "siteId": {
+                    "type": "string",
+                    "description": "The patron site id for the promotion."
+                },
+                "siteDescription": {
+                    "type": "string",
+                    "description": "The patron site description for the promotion."
+                }
+            }
+        },
+        "promoEvent": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.PromoEvent",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "eventId": {
+                    "type": "integer",
+                    "description": "The eventId created in the system."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description if avaialble for the eventId returned."
+                },
+                "date": {
+                    "type": "string",
+                    "description": "Applicable date for the eventId returned."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status for the eventId returned."
+                },
+                "siteId": {
+                    "type": "integer",
+                    "description": "Site Id or Venue or property to which the eventId returned is applicable."
+                },
+                "promoId": {
+                    "type": "integer",
+                    "description": "Promotion Id associated for the property and eventId returned."
+                },
+                "noOfBlocks": {
+                    "type": "integer",
+                    "description": "Number of blocks allocated for the eventId."
+                }
+            }
+        },
+        "promoEventBlocks": {
+            "javaType": "com.mgmresorts.loyalty.dto.customer.PromoEventBlocks",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "eventId": {
+                    "type": "integer",
+                    "description": "The eventId created in the system."
+                },
+                "blockId": {
+                    "type": "integer",
+                    "description": "The blockid for the tickets associated with the eventId returned."
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description if avaialble for the eventId returned."
+                },
+                "tickets": {
+                    "type": "integer",
+                    "description": "Promotion Id associated for the property and eventId returned."
+                },
+                "maxPerPlayer": {
+                    "type": "integer",
+                    "description": "Number of blocks allocated for the eventId."
+                },
+                "defaultAmount": {
+                    "type": "integer",
+                    "description": "Number of blocks allocated for the eventId."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status for the eventId returned."
+                },
+                "siteId": {
+                    "type": "integer",
+                    "description": "Site Id or Venue or property to which the eventId returned is applicable."
+                }
+            }
+        },
+        "member": {
+			"type": "object",
+			"required": false,
+			"additionalProperties": false,
+			"javaType": "com.mgmresorts.loyalty.dto.loyalty.Member",
+			"properties": {
+				"purses": {
+					"type": "array",
+					"items": {
+						"required": true,
+						"$ref": "#/definitions/purses"
+					}
+				}
+			}
+		},
+		"purses": {
+			"type": "object",
+			"required": false,
+			"additionalProperties": false,
+			"javaType": "com.mgmresorts.loyalty.dto.common.Purses",
+			"properties": {
+				"name": {
+					"type": "string",
+					"required": true
+				},
+				"balance": {
+					"required": false,
+					"type": "integer"
+				}
+			}
+		}
+        
+        
+    }
+}

@@ -1,0 +1,270 @@
+<CRMAcresMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://localhost/CRM.xsd">
+	<Header>
+		<OriginalMessageID>0</OriginalMessageID>
+		<TimeStamp>2019-09-30T15:52:18.033</TimeStamp>
+		<Operation Data="PlayerPromos" Operand="Information"/>
+	</Header>
+	<PlayerID>77199941</PlayerID>
+	<Body>
+		<PlayerPromos>
+			<PromoID>349997</PromoID>
+			<PromoName>AR 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>16</SiteID>
+			<SiteDescription>ARIA</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350029</PromoID>
+			<PromoName>BCH 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>6</SiteID>
+			<SiteDescription>Bellagio</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350061</PromoID>
+			<PromoName>DLV 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>9</SiteID>
+			<SiteDescription>Mandalay Bay</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350093</PromoID>
+			<PromoName>EX 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>12</SiteID>
+			<SiteDescription>Excalibur</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350125</PromoID>
+			<PromoName>LX 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>11</SiteID>
+			<SiteDescription>Luxor</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350157</PromoID>
+			<PromoName>MB 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>9</SiteID>
+			<SiteDescription>Mandalay Bay</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350189</PromoID>
+			<PromoName>PARK 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>10</SiteID>
+			<SiteDescription>Park MGM</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350249</PromoID>
+			<PromoName>MGM 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>3</SiteID>
+			<SiteDescription>MGM Grand</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350281</PromoID>
+			<PromoName>MGMWW 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>3</SiteID>
+			<SiteDescription>MGM Grand</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350313</PromoID>
+			<PromoName>--MIR 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>1</SiteID>
+			<SiteDescription>Mirage</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350345</PromoID>
+			<PromoName>NYNY 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>4</SiteID>
+			<SiteDescription>New York New York</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350377</PromoID>
+			<PromoName>VD 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>16</SiteID>
+			<SiteDescription>ARIA</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>350377</PromoID>
+			<PromoName>VD 2019-04 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-04-15T00:00:00</BeginDate>
+			<EndDate>2019-10-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>17</SiteID>
+			<SiteDescription>Vdara</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353133</PromoID>
+			<PromoName>AR 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>16</SiteID>
+			<SiteDescription>ARIA</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353262</PromoID>
+			<PromoName>BCH 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>6</SiteID>
+			<SiteDescription>Bellagio</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353294</PromoID>
+			<PromoName>DLV 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>9</SiteID>
+			<SiteDescription>Mandalay Bay</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353326</PromoID>
+			<PromoName>EX 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>12</SiteID>
+			<SiteDescription>Excalibur</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353358</PromoID>
+			<PromoName>LX 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>11</SiteID>
+			<SiteDescription>Luxor</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353390</PromoID>
+			<PromoName>MB 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>9</SiteID>
+			<SiteDescription>Mandalay Bay</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353422</PromoID>
+			<PromoName>PARK 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>10</SiteID>
+			<SiteDescription>Park MGM</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353454</PromoID>
+			<PromoName>MGM 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>3</SiteID>
+			<SiteDescription>MGM Grand</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353486</PromoID>
+			<PromoName>MGMWW 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>3</SiteID>
+			<SiteDescription>MGM Grand</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353518</PromoID>
+			<PromoName>--MIR 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>1</SiteID>
+			<SiteDescription>Mirage</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353550</PromoID>
+			<PromoName>NYNY 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>4</SiteID>
+			<SiteDescription>New York New York</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353582</PromoID>
+			<PromoName>VD 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>16</SiteID>
+			<SiteDescription>ARIA</SiteDescription>
+		</PlayerPromos>
+		<PlayerPromos>
+			<PromoID>353582</PromoID>
+			<PromoName>VD 2019-05 Occ BA T44</PromoName>
+			<PublicDescription/>
+			<BeginDate>2019-05-15T00:00:00</BeginDate>
+			<EndDate>2019-11-15T23:59:00</EndDate>
+			<Status>Mailer Sent</Status>
+			<SiteID>17</SiteID>
+			<SiteDescription>Vdara</SiteDescription>
+		</PlayerPromos>
+	</Body>
+</CRMAcresMessage>

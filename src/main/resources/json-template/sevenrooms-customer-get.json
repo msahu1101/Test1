@@ -1,0 +1,81 @@
+{
+	"status": 0,
+	"data": {
+		"limit": 0,
+		"results": [
+			{
+				"last_name": "String",
+				"send_reminder_email": true,
+				"updated": "2019-01-14",
+				"check_numbers": "",
+				"shift_persistent_id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yHAsSD25pZ2h0bG9vcF9WZW51ZRiAgJDQtOO6Cgw-DINNER-1533676508.0",
+				"left_time": null,
+				"email": "",
+				"status_simple": "Incomplete",
+				"postal_code": null,
+				"comps_price_type": null,
+				"duration": 90,
+				"id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yJQsSG25pZ2h0bG9vcF9SZXNlcnZhdGlvbkFjdHVhbBiribXrAQw",
+				"reservation_type": "",
+				"seated_time": null,
+				"first_name": "John",
+				"venue_id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yHAsSD25pZ2h0bG9vcF9WZW51ZRiAgJDQtOO6Cgw",
+				"reservation_sms_opt_in": null,
+				"venue_group_client_id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yJAsSGm5pZ2h0bG9vcF9WZW51ZUdyb3VwQ2xpZW50GMvNtdkBDA",
+				"arrived_guests": null,
+				"client_reference_code": "7JGT6Z",
+				"state": null,
+				"send_reminder_sms": null,
+				"venue_group_id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yIQsSFG5pZ2h0bG9vcF9WZW51ZUdyb3VwGICAkNC4kY0LDA",
+				"address_2": null,
+				"min_price": null,
+				"custom_fields": [
+				],
+				"served_by": null,
+				"client_requests": null,
+				"status": "CONFIRMED",
+				"booked_by": "MGM API",
+				"phone_number": "2012222222",
+				"total_payment": null,
+				"prepayment": null,
+				"loyalty_id": null,
+				"tags": [
+				],
+				"deleted": null,
+				"mf_ratio_male": 0,
+				"mf_ratio_female": 0,
+				"comps": null,
+				"external_client_id": null,
+				"client_id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yJAsSGm5pZ2h0bG9vcF9WZW51ZUdyb3VwQ2xpZW50GMvNtdkBDA",
+				"address": null,
+				"date": "2018-08-22",
+				"source_client_id": null,
+				"loyalty_rank": null,
+				"paid_by": null,
+				"loyalty_tier": null,
+				"onsite_payment": null,
+				"shift_category": "DINNER",
+				"table_numbers": [
+				],
+				"max_guests": 2,
+				"arrival_time": "8:00 PM",
+				"country": null,
+				"cost_option": 0,
+				"created": "2018-08-22T22:49:25.902695",
+				"pos_tickets": [
+				],
+				"access_persistent_id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yHAsSD25pZ2h0bG9vcF9WZW51ZRiAgJDQtOO6Cgw-1533844665.05-0.801368040448",
+				"city": null,
+				"is_vip": false,
+				"reference_code": "RWD91OW",
+				"status_display": "Confirmed",
+				"external_id": null,
+				"notes": "",
+				"user": {
+					"id": "ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yFQsSCGdhZV9Vc2VyGICAkIiTga8LDA",
+					"name": "MGM API"
+				}
+			}
+		]
+	}
+}

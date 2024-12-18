@@ -1,0 +1,1054 @@
+{
+	"info": {
+		"_postman_id": "4b3bc0e3-43ad-4e46-997f-f2d2d08bd1b6",
+		"name": "loyalty_info_collection",
+		"description": "Player Search API Collction",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "player-stop_codes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function() {\r",
+							"   if(pm.response.code === 200){\r",
+							"        pm.response.to.have.status(200);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-content-type\", function() {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-header\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-body\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.customerStopCode.length).to.be.above(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-access-token\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/stop-codes/' + pm.variables.get(\"ps.function.stopcode.player\") + '?code=invalid', function(err, response) {\r",
+							"        pm.test(\"validate-invalid-access-token | unauthorized response\", function() {\r",
+							"            pm.expect(response.code).to.equal(401);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/stop-codes/ ?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.customerStopCode.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/stop-codes/test?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.customerStopCode.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-no-stopcodes\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/stop-codes/89151239?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-no-stopcodes\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.equal(\"Player does not have any stop codes\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3006\");\r",
+							"            pm.expect(responseStatus.customerStopCode.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-request\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/stop-codes?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-request\", function() {\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/stop-codes/{{ps.function.stopcode.player}}?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"stop-codes",
+						"{{ps.function.stopcode.player}}"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player-links",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function() {\r",
+							"    if(pm.response.code === 200){\r",
+							"        pm.response.to.have.status(200);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-content-type\", function() {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-header\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-body\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.linkedPlayers.length).to.be.above(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-access-token\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/linked-player/' + pm.variables.get(\"ps.function.linked.player\") + '?code=invalid', function(err, response) {\r",
+							"        pm.test(\"validate-invalid-access-token | unauthorized response\", function() {\r",
+							"            pm.expect(response.code).to.equal(401);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/linked-player/ ?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.linkedPlayers.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/linked-player/test?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.linkedPlayers.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-no-linked-player\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/linked-player/89151239?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-no-linked-player\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.equal(\"Player does not have any linked player.\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3004\");\r",
+							"            pm.expect(responseStatus.linkedPlayers.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-request\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/linked-player?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-request\", function() {\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/linked-player/{{ps.function.linked.player}}?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"linked-player",
+						"{{ps.function.linked.player}}"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player-comment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function() {\r",
+							"    if(pm.response.code === 200){\r",
+							"        pm.response.to.have.status(200);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-content-type\", function() {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-header\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-body\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.comments.length).to.be.above(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-access-token\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/comments/' + pm.variables.get(\"ps.function.player.comments\") + '?code=invalid', function(err, response) {\r",
+							"        pm.test(\"validate-invalid-access-token | unauthorized response\", function() {\r",
+							"            pm.expect(response.code).to.equal(401);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-request-high-priority-false\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/comments/' + pm.variables.get(\"ps.function.player.comments\") + '?high-priority=false&code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-valid-request-high-priority-false\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.comments.length).not.equal(0);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"SUCCESS\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"OK\");\r",
+							"            pm.expect(response.code).to.equal(200);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/comments/ ?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.comments.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/comments/test?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.comments.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-request\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/comments?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-request\", function() {\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/comments/{{ps.function.player.comments}}?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"comments",
+						"{{ps.function.player.comments}}"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				},
+				"description": "This API retrive player comments"
+			},
+			"response": []
+		},
+		{
+			"name": "player-balance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function() {\r",
+							"   if(pm.response.code === 200){\r",
+							"        pm.response.to.have.status(200);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-content-type\", function() {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-header\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-body\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.customerBalances);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-access-token\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/balance/' + pm.variables.get(\"ps.function.player.balance\") + '?code=invalid', function(err, response) {\r",
+							"        pm.test(\"validate-invalid-access-token | unauthorized response\", function() {\r",
+							"            pm.expect(response.code).to.equal(401);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-request-siteId\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/balance/' + pm.variables.get(\"ps.function.player.balance\") + '?site=2&code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-valid-request-siteId\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.customerBalances.length).not.equal(0);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"SUCCESS\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"OK\");\r",
+							"            pm.expect(response.code).to.equal(200);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/balance/ ?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/balance/test?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-request\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/balance?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-request\", function() {\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/balance/{{ps.function.player.balance}}?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"balance",
+						"{{ps.function.player.balance}}"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				},
+				"description": "This API is used to retrive customer balance."
+			},
+			"response": []
+		},
+		{
+			"name": "player-promo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function() {\r",
+							"    if(pm.response.code === 200){\r",
+							"        pm.response.to.have.status(200);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-content-type\", function() {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-header\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-response-body\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.customerPromotions.length).to.be.above(0);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-access-token\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/player-promo/' + pm.variables.get(\"ps.function.player.promo\") + '?code=invalid', function(err, response) {\r",
+							"        pm.test(\"validate-invalid-access-token | unauthorized response\", function() {\r",
+							"            pm.expect(response.code).to.equal(401);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/player-promo/ ?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-blank-player\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.customerPromotions.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/player-promo/test?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-mlifeno\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.customerPromotions.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-no-promotions\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/player-promo/89151239?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-no-promotions\", function() {\r",
+							"            var responseStatus = JSON.parse(response.stream);\r",
+							"            pm.expect(responseStatus.header.origin).to.equal(\"API\");\r",
+							"            pm.expect(responseStatus.header.executionId).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.code).to.equal(\"FAILURE\");\r",
+							"            pm.expect(responseStatus.header.status.messages.length).to.equal(1);\r",
+							"            pm.expect(responseStatus.header.status.messages[0]).not.equal(null);\r",
+							"            pm.expect(responseStatus.header.status.messages[0].text).to.contain(\"Invalid patron id\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].type).to.equal(\"ERROR\");\r",
+							"            pm.expect(responseStatus.header.status.messages[0].code).to.equal(\"101-2-3001\");\r",
+							"            pm.expect(responseStatus.customerPromotions.length).to.equal(0);\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-invalid-request\", function() {\r",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\") + '/api/patron/player-promo?code=' + pm.variables.get(\"global.functions.auth.token\"), function(err, response) {\r",
+							"        pm.test(\"validate-invalid-request\", function() {\r",
+							"            pm.expect(response.status).to.equal(\"Not Found\");\r",
+							"            pm.expect(response.code).to.equal(404);\r",
+							"        });\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/player-promo/{{ps.function.player.promo}}?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"player-promo",
+						"{{ps.function.player.promo}}"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				},
+				"description": "This API is used to promotions"
+			},
+			"response": []
+		},
+		{
+			"name": "player-tax_information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"  if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerTaxInfo);",
+							"});",
+							"",
+							"pm.test(\"validate-invalid-access-token\", function () {",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\")+'/api/patron/tax-information/'+pm.variables.get(\"ps.function.player.taxinfomation\")+'?code=invalid', function (err, response) {",
+							"            pm.test(\"validate-invalid-access-token | unauthorized response\", function () {",
+							"                pm.expect(response.code).to.equal(404);",
+							"        });",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-wo-taxinfo\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.customerTaxInfo.customerId).to.equal(\"75710067\");",
+							"    pm.expect(jsonData.customerTaxInfo.siteTotals[0].siteId).to.equal(\"11\");",
+							"    pm.expect(jsonData.customerTaxInfo.siteTotals[0].coinIn).to.equal(0.0000);",
+							"    pm.expect(jsonData.customerTaxInfo.siteTotals[0].monthlyInfoTaxes[0].month).to.equal(\"January\");",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-wo-taxinfo-quater2\", function () {",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\")+'/api/patron/tax-information/'+pm.variables.get(\"ps.function.player.taxinformation_playerid\") +'/'+ pm.variables.get(\"ps.function.player.taxinformation_year\")+'?quarter=2&code='+pm.variables.get(\"global.functions.auth.token\"), function (err, response) {",
+							"        pm.test(\"validate-valid-response-wo-taxinfo-quater2\", function () {",
+							"        pm.expect(response.json().customerTaxInfo.siteTotals.length).not.equal(0);",
+							"        });",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/tax-information/{{ps.function.player.taxinformation_playerid}}/{{ps.function.player.taxinformation_year}}?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"tax-information",
+						"{{ps.function.player.taxinformation_playerid}}",
+						"{{ps.function.player.taxinformation_year}}"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				},
+				"description": "This API is used to fetch player tax information ."
+			},
+			"response": []
+		},
+		{
+			"name": "promo-event-blocks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-promoeventblocks-response-code\", function () {",
+							"  if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-promoeventblocks-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-promoeventblocks-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-invalid-promoeventblocks-access-token\", function () {",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\")+'/api/patron/promo-events/'+pm.variables.get(\"ps.function.customer.promo_id\")+'?code=invalid', function (err, response) {",
+							"            pm.test(\"validate-invalid-access-token | unauthorized response\", function () {",
+							"                pm.expect(response.code).to.equal(401);",
+							"        });",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-promo-events-type-promo\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.promoEventBlocks[0].eventId).to.equal(Number(pm.variables.get(\"ps.function.customer.eventid\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].blockId).to.equal(Number(pm.variables.get(\"ps.customer.blockId\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].description).to.equal(pm.variables.get(\"ps.customer.description\"));",
+							"    pm.expect(jsonData.promoEventBlocks[0].tickets).to.equal(Number(pm.variables.get(\"ps.customer.tickets\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].maxPerPlayer).to.equal(Number(pm.variables.get(\"ps.customer.maxperplayer\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].defaultAmount).to.equal(Number(pm.variables.get(\"ps.customer.defaultAmount\")));",
+							"    pm.expect(jsonData.promoEventBlocks[0].status).to.equal(pm.variables.get(\"ps.customer.status\"));",
+							"    pm.expect(jsonData.promoEventBlocks[0].siteId).to.equal(Number(pm.variables.get(\"ps.customer.siteid\")));  ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-promo-events-type-event\", function () {",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\")+'/api/patron/promo-events/'+pm.variables.get(\"ps.function.customer.eventid\")+'?type=event&code='+ pm.variables.get(\"global.functions.auth.token\"), function (err, response) {",
+							"        pm.test(\"validate-valid-response-promo-events-type-event\", function () {",
+							"            var jsonData = response.json();",
+							"              pm.expect(jsonData.promoEventBlocks[0].eventId).to.equal(Number(pm.variables.get(\"ps.function.customer.eventid\")));",
+							"              pm.expect(jsonData.promoEventBlocks[0].blockId).to.equal(Number(pm.variables.get(\"ps.customer.blockId\")));",
+							"              pm.expect(jsonData.promoEventBlocks[0].description).to.equal(pm.variables.get(\"ps.customer.description\"));",
+							"              pm.expect(jsonData.promoEventBlocks[0].tickets).to.equal(Number(pm.variables.get(\"ps.customer.tickets\")));",
+							"              pm.expect(jsonData.promoEventBlocks[0].maxPerPlayer).to.equal(Number(pm.variables.get(\"ps.customer.maxperplayer\")));",
+							"              pm.expect(jsonData.promoEventBlocks[0].defaultAmount).to.equal(Number(pm.variables.get(\"ps.customer.defaultAmount\")));",
+							"              pm.expect(jsonData.promoEventBlocks[0].status).to.equal(\"A\");",
+							"              pm.expect(jsonData.promoEventBlocks[0].siteId).to.equal(Number(pm.variables.get(\"ps.customer.siteid\")));",
+							"        });",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/promo-events/{{ps.function.customer.promo_id}}?type=promo&code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"promo-events",
+						"{{ps.function.customer.promo_id}}"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "promo"
+						},
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				},
+				"description": "This API is used to fetch player tax information ."
+			},
+			"response": []
+		},
+		{
+			"name": "issue-promo-event",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-issuepromo-response-code\", function() {\r",
+							"    if(pm.response.code === 500){\r",
+							"        pm.response.to.have.status(500);\r",
+							"    }else{\r",
+							"        var jsonData = pm.response.json();\r",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)\r",
+							"    }\r",
+							"\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-issuepromo-content-type\", function() {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"    pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-issuepromo-response-body\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"validate-valid-issuepromo-response-header\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");\r",
+							"    pm.expect(jsonData.header.transactionId).not.equal(null);\r",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"FAILURE\");\r",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(1);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-scopes",
+						"type": "text",
+						"value": "{{ls.function.update.scope}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"playerId\" : 51774598,\n    \"promoId\" : 3603180,\n    \"blockId\" : 120016,\n    \"ticketCount\" : 1,\n    \"pickedUp\" : \"N\"\n}\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/issue-promo?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"issue-promo"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "player-slot_dollar_balance",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"validate-valid-response-code\", function () {",
+							"  if(pm.response.code === 200){",
+							"        pm.response.to.have.status(200);",
+							"    }else{",
+							"        var jsonData = pm.response.json();",
+							"        console.log(\"message: \"+jsonData.header.status.messages[0].text+\" type: \"+jsonData.header.status.messages[0].type+\" errorCode: \"+jsonData.header.status.messages[0].code)",
+							"    }",
+							"});",
+							"",
+							"pm.test(\"validate-valid-content-type\", function () {",
+							"   pm.response.to.have.header(\"Content-Type\");",
+							"   pm.expect(postman.getResponseHeader(\"Content-Type\")).to.equal(\"application/json; charset=utf-8\");",
+							"   ",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-header\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.header.origin).to.equal(\"API\");",
+							"    pm.expect(jsonData.header.executionId).not.equal(null);",
+							"    pm.expect(jsonData.header.status.code).to.equal(\"SUCCESS\");",
+							"    pm.expect(jsonData.header.status.messages.length).to.equal(0);",
+							"});",
+							"",
+							"pm.test(\"validate-valid-response-body\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.slotDollarBalance).to.be.an('object');",
+							"});",
+							"",
+							"pm.test(\"validate-invalid-access-token\", function () {",
+							"    pm.sendRequest(pm.variables.get(\"global.ps.app.endpoint\")+'/api/patron/slot-dollar-balance/'+pm.variables.get(\"ps.function.player.slotdollarbalance\")+'?code=invalid', function (err, response) {",
+							"            pm.test(\"validate-invalid-access-token | unauthorized response\", function () {",
+							"                pm.expect(response.code).to.equal(401);",
+							"        });",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{global.ps.app.endpoint}}/api/patron/slot-dollar-balance/{{ps.function.player.slotdollarbalance}}?code={{global.functions.auth.token}}",
+					"host": [
+						"{{global.ps.app.endpoint}}"
+					],
+					"path": [
+						"api",
+						"patron",
+						"slot-dollar-balance",
+						"{{ps.function.player.slotdollarbalance}}"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "{{global.functions.auth.token}}"
+						}
+					]
+				},
+				"description": "This API is used to fetch player slot dollar balance ."
+			},
+			"response": []
+		}
+	]
+}

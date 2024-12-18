@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="application.backend.canned-mode">true</entry>
+	<entry key="cache.disabled.global">true</entry>
+	<entry key="security.disabled.global">true</entry>
+	<entry key="test.config">test.config.value.test</entry>
+	<entry key="test.config.int">1234</entry>
+	<entry key="test.config.replace">{test.config}/test2</entry>
+	<entry key="test.config.replace2">{test.config.invalid}/test2</entry>
+	<entry key="apim.auth.url">https://azdeapi-dev.mgmresorts.com/int/identity/authorization/v1/mgmsvc/.well-known/oauth-authorization-server</entry>
+	<entry key="event.storage.endpoint">DefaultEndpointsProtocol=https;AccountName=cc10snapshotuwsb;AccountKey=;EndpointSuffix=core.windows.net</entry>
+	<entry key="event.eventhub.endpoint">Endpoint=sb://customersearchuwehsb.servicebus.windows.net/;SharedAccessKeyName=key;SharedAccessKey=1cB3wA+QgrhzVF2zTBSD9sb+7NjxD8tqYYI9r8Tf0pM=;EntityPath=events</entry>
+	<entry key="eventor-pool.size">100</entry>
+	<entry key="application.backend.canned-mode">true</entry>
+	<entry key="apim.auth.url">https://azdeapi-dev.mgmresorts.com/int/identity/authorization/v1/mgmsvc/.well-known/oauth-authorization-server</entry>
+
+
+</properties>

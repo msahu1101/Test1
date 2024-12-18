@@ -1,0 +1,76 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="OriginalMessageID" type="xs:byte" />
+	<xs:element name="TimeStamp" type="xs:dateTime" />
+	<xs:element name="Operation">
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string">
+					<xs:attribute type="xs:string" name="Data" />
+					<xs:attribute type="xs:string" name="Operand" />
+				</xs:extension>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PromoID" type="xs:int" />
+	<xs:element name="PromoName" type="xs:string" />
+	<xs:element name="PublicDescription" type="xs:string" />
+	<xs:element name="BeginDate" type="xs:dateTime" />
+	<xs:element name="EndDate" type="xs:dateTime" />
+	<xs:element name="Status" type="xs:string" />
+	<xs:element name="SiteID" type="xs:byte" />
+	<xs:element name="SiteDescription" type="xs:string" />
+	<xs:element name="PlayerPromos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PromoID" />
+				<xs:element ref="PromoName" />
+				<xs:element ref="PublicDescription" />
+				<xs:element ref="BeginDate" />
+				<xs:element ref="EndDate" />
+				<xs:element ref="Status" />
+				<xs:element ref="SiteID" />
+				<xs:element ref="SiteDescription" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Header">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="OriginalMessageID" />
+				<xs:element ref="TimeStamp" />
+				<xs:element ref="Operation" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PlayerID" type="xs:int" />
+	<xs:element name="Body">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PlayerPromos" maxOccurs="unbounded" minOccurs="0" />
+				<xs:element name="Error">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ErrorCode">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16" />
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ErrorDescription" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CRMAcresMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Header" />
+				<xs:element ref="PlayerID" />
+				<xs:element ref="Body" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

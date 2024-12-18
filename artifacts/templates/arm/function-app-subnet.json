@@ -1,0 +1,109 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "function_app_name": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the function app that you wish to create."
+            }
+        },
+        "apim_vnet_resource_group_name": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource group where api management is running"
+            }
+        },
+        "apim_vnet_name": {
+            "type": "string",
+            "metadata": {
+                "description": "Api management vnet"
+            }
+        },
+        "apim_subnet_name": {
+            "type": "string",
+            "metadata": {
+                "description": "Api management subnet"
+            }
+        }
+    },
+    
+    "variables": {
+        "appManagementId": "[resourceId('a07a1ed6-22e4-4781-b58e-aa1685bc93b2', parameters('apim_vnet_resource_group_name'),'Microsoft.Network/virtualNetworks/subnets',parameters('apim_vnet_name'), parameters('apim_subnet_name'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-11-01",
+            "name": "[parameters('function_app_name')]",
+            "location": "[resourceGroup().location]",
+            "kind": "functionapp",
+            "properties": {
+                "siteConfig": {
+                    "ipSecurityRestrictions": [
+                        {
+                            "vnetSubnetResourceId": "[variables('appManagementId')]",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 100,
+                            "name": "Apim Subnet"
+                        },
+                        {   
+                            "vnetSubnetResourceId": "/subscriptions/a07a1ed6-22e4-4781-b58e-aa1685bc93b2/resourceGroups/digengsharedservicesvnets-uw-rg-p/providers/Microsoft.Network/virtualNetworks/digengsharedservices-uw-vnet-p/subnets/vmsprivate-uw-sn-p",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 100,
+                            "name": "Apim Subnet"
+                        },
+                        {
+                            "ipAddress": "69.162.0.0/24",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 110,
+                            "name": "MGM VPN 1"
+                        },
+                        {
+                            "ipAddress": "69.162.1.0/24",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 110,
+                            "name": "MGM VPN 1"
+                        },
+                        {
+                            "ipAddress": "69.162.2.0/24",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 110,
+                            "name": "MGM VPN 1"
+                        },
+                        {
+                            "ipAddress": "69.162.16.0/24",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 110,
+                            "name": "MGM VPN 1"
+                        },{
+                            "ipAddress": "69.162.8.0/24",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 120,
+                            "name": "MGM VPN 2"
+                        },{
+                            "ipAddress": "69.162.9.0/24",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 130,
+                            "name": "MGM VPN 3"
+                        },{
+                            "ipAddress": "69.162.11.0/24",
+                            "action": "Allow",
+                            "tag": "Default",
+                            "priority": 140,
+                            "name": "MGM VPN 4"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

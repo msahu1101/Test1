@@ -1,0 +1,26 @@
+[
+    {
+      "id": "41",
+      "priority": 1,
+      "description": "No ID",
+      "isActive": true
+    },
+    {
+      "id": "4",
+      "priority": 10,
+      "description": "No Signature",
+      "isActive": true
+    },
+    {
+      "id": "5",
+      "priority": 10,
+      "description": "ID Not Scanned",
+      "isActive": true
+    },
+    {
+      "id": "21",
+      "priority": 15,
+      "description": "No PIN",
+      "isActive": true
+    }
+  ]

@@ -1,0 +1,230 @@
+{
+    "type": "object",
+    "required": false,
+    "javaType": "com.mgmresorts.loyalty.dto.services.Wrapper",
+    "additionalProperties": false,
+    "properties": {
+        "customerStopCodeResponse": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.StopCodeResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "additionalProperties": false,
+            "properties": {
+                "customerStopCode": {
+                    "required": true,
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "$ref": "entities/customer.json#/definitions/customerStopCode"
+                    }
+                }
+            }
+        },
+        "customerTaxInfoResponse": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.TaxInfoResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "additionalProperties": false,
+            "properties": {
+                "customerTaxInfo": {
+                    "required": true,
+                    "$ref": "entities/customer.json#/definitions/customerTaxInfo"
+                }
+            }
+        },
+        "customerPromotionsResponse": {
+            "javaType": "com.mgmresorts.loyalty.dto.services.PromotionsResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "type": "object",
+            "required": false,
+            "additionalProperties": false,
+            "properties": {
+                "customerPromotions": {
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "additionalProperties": false,
+                        "$ref": "entities/customer.json#/definitions/customerPromotion"
+                    }
+                }
+            }
+        },
+        "customerBalancesResponse": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.BalancesResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "additionalProperties": false,
+            "properties": {
+                "customerBalances": {
+                    "required": false,
+                    "$ref": "entities/customer.json#/definitions/customerBalances"
+                }
+            }
+        },
+        "playerCommentsResponse": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.PlayerCommentsResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "additionalProperties": false,
+            "properties": {
+                "comments": {
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "additionalProperties": false,
+                        "$ref": "entities/customer.json#/definitions/customerComment"
+                    }
+                }
+            }
+        },
+        "linkedPlayersResponse": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.LinkedPlayersResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "additionalProperties": false,
+            "properties": {
+                "linkedPlayers": {
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "additionalProperties": false,
+                        "$ref": "entities/customer.json#/definitions/linkedPlayer"
+                    }
+                }
+            }
+        },
+        "issuePromoEventTicketRequest": {
+            "javaType": "com.mgmresorts.loyalty.dto.services.IssuePromoEventTicketRequest",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.InHeaderSupport",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "playerId": {
+                    "type": "integer",
+                    "description": "The stop code's player id."
+                },
+                "blockId": {
+                    "type": "integer",
+                    "description": "The stop code's block id."
+                },
+                "pickedUp": {
+                    "type": "string",
+                    "description": "The stop code's picked up."
+                },
+                "promoId": {
+                    "type": "integer",
+                    "description": "The stop code's promo id."
+                },
+                "ticketCount": {
+                    "type": "integer",
+                    "description": "The stop code's ticket count."
+                }
+            }
+        },
+        "issuePromoEventTicketResponse": {
+            "javaType": "com.mgmresorts.loyalty.dto.services.IssuePromoEventTicketResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "description": "The stop code's result.",
+                    "required": true,
+                    "additionalProperties": false,
+                    "properties": {
+                        "status": {
+                            "type": "string",
+                            "description": "Response status",
+                            "required": false
+                        }
+                    }
+                }
+            }
+        },
+        "getPromoEventRequest": {
+            "javaType": "com.mgmresorts.loyalty.dto.services.PromoEventsRequest",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.InHeaderSupport",
+            "type": "object",
+            "required": true,
+            "additionalProperties": false,
+            "properties": {
+                "promoId": {
+                    "type": "integer",
+                    "description": "The promo id for a given player"
+                }
+            }
+        },
+        "promoEventsResponse": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.PromoEventsResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "additionalProperties": false,
+            "properties": {
+                "promoEvents": {
+                    "required": true,
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "$ref": "entities/customer.json#/definitions/promoEvent"
+                    }
+                }
+            }
+        },
+        "promoEventBlocksResponse": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.PromoEventsBlockResponse",
+            "extendsJavaClass": "com.mgmresorts.common.dto.services.OutHeaderSupport",
+            "additionalProperties": false,
+            "properties": {
+                "promoEventBlocks": {
+                    "required": true,
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "$ref": "entities/customer.json#/definitions/promoEventBlocks"
+                    }
+                }
+            }
+        },
+        "rcxPendingBalanceResponse": {
+			"type": "object",
+			"required": false,
+			"javaType": "com.mgmresorts.loyalty.dto.services.RcxPendingBalanceResponse",
+			"additionalProperties": false,
+			"properties": {
+				"member": {
+					"required": true,
+					"$ref": "entities/customer.json#/definitions/member"
+				}
+			}
+		}
+    },
+    "definitions": {
+        "linkedPlayers": {
+            "type": "object",
+            "required": false,
+            "javaType": "com.mgmresorts.loyalty.dto.services.LinkedPlayers",
+            "additionalProperties": false,
+            "properties": {
+                "comment": {
+                    "type": "array",
+                    "items": {
+                        "required": true,
+                        "additionalProperties": false,
+                        "$ref": "entities/customer.json#/definitions/linkedPlayer"
+                    }
+                }
+            }
+        }
+    }
+}

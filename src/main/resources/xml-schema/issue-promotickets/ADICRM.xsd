@@ -1,0 +1,4487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- edited with XMLSpy v2015 rel. 3 (x64) (http://www.altova.com) by Steve Waldner (International Game Technology) -->
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Jeff Fiegel (Acres Gaming) -->
+<xs:schema xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
+	 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	 version="2.30"
+	 elementFormDefault="qualified"
+	 attributeFormDefault="unqualified">
+	<xs:element name="CRMAcresMessage">
+		<xs:annotation>
+			<xs:documentation>This general schema is used for the communication of messaging between the CRM project and IGT Patron Management.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Header"/>
+				<xs:element ref="PlayerID" minOccurs="0"/>
+				<xs:element name="Site" type="SiteType" minOccurs="0"/>
+				<xs:element ref="Body" minOccurs="0"/>
+				<xs:element ref="CreditID"/>
+			</xs:sequence>
+			<xs:attribute name="SchemaVersion" type="xs:decimal"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Header">
+		<xs:annotation>
+			<xs:documentation>GSA/HITIS compatible message Header.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FromURI" type="xs:anyURI" minOccurs="0"/>
+				<xs:element name="ToURI" type="xs:anyURI" minOccurs="0"/>
+				<xs:element name="ReplyToURI" type="xs:anyURI" minOccurs="0"/>
+				<xs:element name="MessageID" type="SQLInt" minOccurs="0"/>
+				<xs:element name="OriginalMessageID" type="SQLInt" minOccurs="0"/>
+				<xs:element name="TimeStamp" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="Token" type="xs:string" minOccurs="0"/>
+				<xs:element name="PropertyID" type="xs:string" minOccurs="0"/>
+				<xs:element name="Operation">
+					<xs:complexType>
+						<xs:attribute name="Operand">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Add"/>
+									<xs:enumeration value="Update"/>
+									<xs:enumeration value="Delete"/>
+									<xs:enumeration value="Request"/>
+									<xs:enumeration value="Information"/>
+									<xs:enumeration value="Success"/>
+									<xs:enumeration value="Validate"/>
+									<xs:enumeration value="Lock"/>
+									<xs:enumeration value="Create"/>
+									<xs:enumeration value="Error"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="Data">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="AbsUser"/>
+									<xs:enumeration value="AddressType"/>
+									<xs:enumeration value="Affiliation"/>
+									<xs:enumeration value="CardPrint"/>
+									<xs:enumeration value="CardsIssued"/>
+									<xs:enumeration value="Comments"/>
+									<xs:enumeration value="Comp"/>
+									<xs:enumeration value="CompCenter"/>
+									<xs:enumeration value="CompHistory"/>
+									<xs:enumeration value="CompIssuance"/>
+									<xs:enumeration value="CompList"/>
+									<xs:enumeration value="CompListMessage"/>
+									<xs:enumeration value="CompListType"/>
+									<xs:enumeration value="CompRedemption"/>
+									<xs:enumeration value="CountryInfo"/>
+									<xs:enumeration value="CouponIssuance"/>
+									<xs:enumeration value="CouponList"/>
+									<xs:enumeration value="CouponListPlayer"/>
+									<xs:enumeration value="CouponRedemption"/>
+									<xs:enumeration value="CreditConditions"/>
+									<xs:enumeration value="CreditInfo"/>
+									<xs:enumeration value="EmailType"/>
+									<xs:enumeration value="Error"/>
+									<xs:enumeration value="FindPlayer"/>
+									<xs:enumeration value="GamingProfile"/>
+									<xs:enumeration value="General"/>
+									<xs:enumeration value="Itinerary"/>
+									<xs:enumeration value="Language"/>
+									<xs:enumeration value="LinkInfo"/>
+									<xs:enumeration value="LoginModify"/>
+									<xs:enumeration value="Merge"/>
+									<xs:enumeration value="Messages"/>
+									<xs:enumeration value="PhoneType"/>
+									<xs:enumeration value="PINInfo"/>
+									<xs:enumeration value="PlayerActivity"/>
+									<xs:enumeration value="PlayerBalanceAdjustment"/>
+									<xs:enumeration value="PlayerBalances"/>
+									<xs:enumeration value="PlayerSecondCompBalanceSet"/>
+									<xs:enumeration value="PlayerXtraCreditBalances"/>
+									<xs:enumeration value="PlayerCard"/>
+									<xs:enumeration value="PlayerCompListMessage"/>
+									<xs:enumeration value="PlayerFind"/>
+									<xs:enumeration value="PlayerFind2"/>
+									<xs:enumeration value="PlayerGroupAdd"/>
+									<xs:enumeration value="PlayerGroupLookup"/>
+									<xs:enumeration value="PlayerHost"/>
+									<xs:enumeration value="PlayerIDByCreditID"/>
+									<xs:enumeration value="PlayerImage"/>
+									<xs:enumeration value="PlayerInterests"/>
+									<xs:enumeration value="PlayerPIN"/>
+									<xs:enumeration value="PlayerProfile"/>
+									<xs:enumeration value="PlayerPromoEvent"/>
+									<xs:enumeration value="PromoEventTicketIssuance"/>
+									<xs:enumeration value="PlayerPromos"/>
+									<xs:enumeration value="PlayerPromotions"/>
+									<xs:enumeration value="PlayerRanking"/>
+									<xs:enumeration value="PlayerReservation"/>
+									<xs:enumeration value="PlayerReservations"/>
+									<xs:enumeration value="PlayerRestrictions"/>
+									<xs:enumeration value="PlayerStatus"/>
+									<xs:enumeration value="PointsConversionRate"/>
+									<xs:enumeration value="Promo"/>
+									<xs:enumeration value="PromoWithFilter"/>
+									<xs:enumeration value="PromotionAwardsIssuance"/>
+									<xs:enumeration value="PromotionAwardsList"/>
+									<xs:enumeration value="PromotionAwardsListPlayer"/>
+									<xs:enumeration value="PromoAwardPlayerBalance"/>
+									<xs:enumeration value="PromotionPlayerStatusUpdate"/>
+									<xs:enumeration value="PromotionListSystem"/>
+									<xs:enumeration value="PromotionListPlayer"/>
+									<xs:enumeration value="PromoEvent"/>
+									<xs:enumeration value="PromoEventsWithFilter"/>
+									<xs:enumeration value="PromoEventBlock"/>
+									<xs:enumeration value="PromoEventBlocksWithFilter"/>
+									<xs:enumeration value="PromoMaster"/>
+									<xs:enumeration value="PromoStatus"/>
+									<xs:enumeration value="PromoType"/>
+									<xs:enumeration value="RateRestriction"/>
+									<xs:enumeration value="RateType"/>
+									<xs:enumeration value="Rating"/>
+									<xs:enumeration value="Reason"/>
+									<xs:enumeration value="ReservationType"/>
+									<xs:enumeration value="Restrictions"/>
+									<xs:enumeration value="RoomRestriction"/>
+									<xs:enumeration value="RoomType"/>
+									<xs:enumeration value="SiteInfo"/>
+									<xs:enumeration value="StopCodes"/>
+									<xs:enumeration value="TripComment"/>
+									<xs:enumeration value="TripInformation"/>
+									<xs:enumeration value="TripSummary"/>
+									<xs:enumeration value="UnMerge"/>
+									<xs:enumeration value="UpdatePlayer"/>
+									<xs:enumeration value="ZipCode"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="Command" type="xs:string"/>
+						<xs:attribute name="WhereClause" type="xs:string"/>
+						<xs:attribute name="MaxRecords" type="SQLInt"/>
+						<xs:attribute name="TotalRecords" type="SQLInt"/>
+						<xs:attribute name="Success">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Yes"/>
+									<xs:enumeration value="No"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="PageNumber" type="xs:string"/>
+						<xs:attribute name="MaxPages" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Information" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="ImmediateResponseRequired" type="xs:boolean"/>
+			<xs:attribute name="OriginalBodyRequested" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PlayerID" type="xs:string"/>
+	<xs:element name="CreditID" type="xs:string" nillable="true"/>
+	<xs:element name="Site" type="SiteType" nillable="true"/>
+	<xs:element name="Body">
+		<xs:complexType>
+			<xs:choice minOccurs="0">
+				<xs:element sql:relation="AbsUser" name="AbsUser">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="UserID" type="SQLInt"/>
+							<xs:element sql:field="LoginName" sql:relation="AbsUser" sql:datatype="varchar" name="LoginName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="30"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="LastName" sql:relation="AbsUser" sql:datatype="varchar" name="LastName" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="FirstName" sql:relation="AbsUser" sql:datatype="varchar" name="FirstName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="MiddleInitial" sql:relation="AbsUser" sql:datatype="char" name="MiddleInitial" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="AbsUser" sql:datatype="char" name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="License" sql:relation="AbsUser" sql:datatype="varchar" name="License" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt" default="1"/>
+							<xs:element sql:field="XRef" sql:relation="AbsUser" sql:datatype="varchar" name="XRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="DisplayName" sql:relation="AbsUser" sql:datatype="varchar" name="DisplayName" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="15"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="JobTitle" sql:relation="AbsUser" sql:datatype="varchar" name="JobTitle" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="StaffID" type="SQLInt" nillable="true" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="AddressType" name="AddressType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TypeID" type="SQLSmallInt"/>
+							<xs:element sql:field="Description" sql:relation="AddressType" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="AddressType" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="XRef" sql:relation="AddressType" sql:datatype="varchar" name="XRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Type" type="SQLTinyInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="Affiliation" name="Affiliation">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="AffiliationID" type="SQLSmallInt"/>
+							<xs:element sql:field="Description" sql:relation="Affiliation" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="Affiliation" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CardPrint">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CardPrintRequestType" type="SQLTinyInt"/>
+							<xs:element name="Quantity" type="SQLSmallInt"/>
+							<xs:element name="UserID" type="SQLInt"/>
+							<xs:element name="Location" type="xs:string" minOccurs="0"/>
+							<xs:element name="Workstation" type="xs:string" minOccurs="0"/>
+							<xs:element name="Embosser" type="xs:string" minOccurs="0"/>
+							<xs:element name="SerialNumber" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="256"/>
+										<xs:minLength value="0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RankingID" type="SQLSmallInt" minOccurs="0"/>
+							<xs:element name="RankingName" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CardID" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="20"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="FormattedCardID" type="xs:string" minOccurs="0"/>
+							<xs:element name="PlayerName" type="Name" minOccurs="0"/>
+							<xs:element name="CardStatus" type="xs:string" minOccurs="0"/>
+							<xs:element name="ActivateDate" type="xs:dateTime" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Comments">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Sites" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Site" type="SiteType" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="CommentGroup" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>If not present, applies to all groups.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CommentGroupID" type="SQLInt" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="CreatedBefore" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="CreatedAfter" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="HighPriority" type="xs:boolean" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Comment" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="IsHighPriority" type="xs:boolean" default="false"/>
+										<xs:element name="Number" type="SQLInt" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Acres' Ordinal that keeps the comments in order.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="IsPrivate" type="xs:boolean" default="false" minOccurs="0"/>
+										<xs:element name="IsGlobal" type="xs:boolean" default="false" minOccurs="0"/>
+										<xs:element name="IsActive" type="xs:boolean" default="true" minOccurs="0"/>
+										<xs:element name="Text" type="xs:string"/>
+										<xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="ExpirationDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="EnteredBy">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="User" type="User"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Site" type="SiteType" minOccurs="0"/>
+										<xs:element name="CommentGroup" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>If not present, applies to all groups.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CommentGroupID" type="SQLInt" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CardsIssued">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CardID" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="20"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="FormattedCardID" type="xs:string" minOccurs="0"/>
+							<xs:element name="CardStatus" type="xs:string" minOccurs="0"/>
+							<xs:element name="ActivateDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="IssuedCount" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="SQLInt">
+										<xs:minInclusive value="0"/>
+										<xs:maxInclusive value="999"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Comp">
+					<xs:annotation>
+						<xs:documentation>Source attribute optional.  "CompDollars" means comp will be posted against the player's comp dollars.  "Points" means the comp will be posted against the player's points.  If no Source is specified, the comp will be posted against points.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Quantity" type="SQLInt" minOccurs="0"/>
+							<xs:element name="PrintedComments" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RestrictedComments" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RedemptionNumber" type="SQLBigInt" minOccurs="0"/>
+							<xs:element name="Status" type="xs:string" minOccurs="0"/>
+							<xs:element name="IssuedDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="EffectiveDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="DollarValue" type="xs:decimal" minOccurs="0"/>
+							<xs:element name="ItemNumber" minOccurs="0">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="SQLInt">
+											<xs:attribute name="Description" type="xs:string"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CurrentUser">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="User" type="User"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Authorizer">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="User" type="User"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Site" type="SiteType"/>
+							<xs:element name="VoidReasonID" type="SQLInt" minOccurs="0"/>
+							<xs:element name="VoidDescription" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+						<xs:attribute name="Source" default="CompDollars">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="CompDollars"/>
+									<xs:enumeration value="Points"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="CompCenter" name="CompCenter" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CenterID" type="SQLInt"/>
+							<xs:element name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ItemNumber" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="Status" sql:relation="CompCenter" sql:datatype="char" name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt" default="1"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CompHistory">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="MaxNumber" type="SQLInt" minOccurs="0"/>
+										<xs:element name="CompID" type="SQLInt" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Comps" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RedemptionNumber" type="SQLBigInt"/>
+										<xs:element name="Status">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="Description" type="xs:string"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="IssuedDate" type="xs:dateTime"/>
+										<xs:element name="AccountingDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="EffectiveDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="DollarValue" type="xs:decimal"/>
+										<xs:element name="ItemNumber">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="SQLInt">
+														<xs:attribute name="Description" type="xs:string"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Site" type="SiteType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CompIssuance">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CompID" type="SQLInt"/>
+							<xs:element name="CompDescription" type="xs:string" minOccurs="0"/>
+							<xs:element name="Quantity" type="SQLInt"/>
+							<xs:element name="CompAmount" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="CompSource" type="xs:string"/>
+							<xs:element name="FreeCompType" type="xs:string" minOccurs="0"/>
+							<xs:element name="IssuanceID" type="xs:long" minOccurs="0"/>
+							<xs:element name="CompStatus" type="xs:string" minOccurs="0"/>
+							<xs:element name="IssuerLogin" type="xs:string" minOccurs="0"/>
+							<xs:element name="AuthorizerLogin" type="xs:string" minOccurs="0"/>
+							<xs:element name="IssuanceDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="EffectiveDate" type="xs:date" minOccurs="0"/>
+							<xs:element name="Receipt" type="xs:string" minOccurs="0"/>
+							<xs:element name="PrintedComment" type="xs:string" minOccurs="0"/>
+							<xs:element name="RestrictedComment" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="CompList" name="CompList" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ItemNumber" type="SQLInt"/>
+							<xs:element name="TypeID" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="Description" sql:relation="CompList" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="DefaultDollarValue" sql:relation="CompList" sql:datatype="money" name="DefaultDollarValue" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="19"/>
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PercentToCharge" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element name="DaysValid" type="SQLSmallInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="PrintReceipt" sql:relation="CompList" sql:datatype="char" name="PrintReceipt" default="N">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt" default="1"/>
+							<xs:element name="PrinterType" type="SQLTinyInt" default="0"/>
+							<xs:element name="OptionalPrinter" type="SQLTinyInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="OptionalForm" sql:relation="CompList" sql:datatype="varchar" name="OptionalForm" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DeptID" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element name="CheckID" type="SQLSmallInt" default="1"/>
+							<xs:element sql:field="Status" sql:relation="CompList" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="XRef" sql:relation="CompList" sql:datatype="varchar" name="XRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="AutoRedeem" sql:relation="CompList" sql:datatype="char" name="AutoRedeem" default="N">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SystemVisibility" type="SQLInt" default="1"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CompListMessage" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CompID" type="SQLBigInt"/>
+							<xs:element name="CompType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CompDescription" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Department" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RestrictedBy" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="System" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="20"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="AutoRedeem" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PrintReceipt" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ExternalReference" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DaysValid" type="SQLSmallInt" minOccurs="0"/>
+							<xs:element name="CompRetailValue" type="xs:decimal" minOccurs="0"/>
+							<xs:element name="ChargePercentage" type="SQLInt" minOccurs="0"/>
+							<xs:element name="PointsValue" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CompValue" type="xs:decimal" minOccurs="0"/>
+							<xs:element name="CRBValue" type="SQLInt" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="CompListType" name="CompListType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TypeID" type="SQLInt"/>
+							<xs:element sql:field="Description" sql:relation="CompListType" sql:datatype="varchar" name="Description" nillable="true">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Expense" sql:relation="CompListType" sql:datatype="char" name="Expense">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SubTypeOf" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="Code" sql:relation="CompListType" sql:datatype="varchar" name="Code" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="CompListType" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="AllowPastDateIssue" sql:relation="CompListType" sql:datatype="char" name="AllowPastDateIssue" default="N">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CompRedemption">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="IssuanceID" type="xs:long"/>
+							<xs:element name="CompID" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CompDescription" type="xs:string" minOccurs="0"/>
+							<xs:element name="Quantity" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CompAmount" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="UserLogin" type="xs:string" minOccurs="0"/>
+							<xs:element name="RedemptionCenter" type="xs:string" minOccurs="0"/>
+							<xs:element name="CompStatus" type="xs:string" minOccurs="0"/>
+							<xs:element name="RedeemedDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Itemizers" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="Item">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Ordinal" type="SQLSmallInt"/>
+													<xs:element name="Amount" type="SQLMoney"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="Country" name="CountryInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CountryID" type="SQLInt"/>
+							<xs:element sql:field="CountryDescription" sql:relation="Country" sql:datatype="varchar" name="CountryDescription">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="50"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="ZipFormat" sql:relation="Country" sql:datatype="varchar" name="ZipFormat" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="GovtIDFormat" sql:relation="Country" sql:datatype="varchar" name="GovtIDFormat" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Abrv2" sql:relation="Country" sql:datatype="char" name="Abrv2" default="XX">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="2"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Abrv3" sql:relation="Country" sql:datatype="char" name="Abrv3" default="XXX">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="PhoneFormat" sql:relation="Country" sql:datatype="varchar" name="PhoneFormat" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Validate" sql:relation="Country" sql:datatype="char" name="Validate" default="Y">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SegmentID" type="SQLInt" nillable="true" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CouponList" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CouponID" type="SQLInt"/>
+							<xs:element name="CouponDescription">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="CreatedBy" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="StartDate" type="xs:date" minOccurs="0"/>
+							<xs:element name="ExpirationDate" type="xs:date" minOccurs="0"/>
+							<xs:element name="CouponType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="NumberOffered" type="SQLInt" minOccurs="0"/>
+							<xs:element name="MaxAllowedPerDay" type="SQLInt"/>
+							<xs:element name="MaxAllowedTotal" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CouponValueType">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="LocalOrGlobal" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CouponItem" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CouponValue" type="SQLMoney"/>
+							<xs:element name="DaysValid" type="SQLInt" minOccurs="0"/>
+							<xs:element name="Tiered" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TierType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TierTracking" minOccurs="0"/>
+							<xs:element name="Qualify">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="QualifyValue" type="xs:int" minOccurs="0"/>
+							<xs:element name="QualifyType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="QualifyIn" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TrackedBy">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TrackedPeriod" type="SQLInt" minOccurs="0"/>
+							<xs:element name="EarnSite" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RedeemSite" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Availability">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AvailabilityRestricted">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityStart" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityEnd" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityRecurrencePattern" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityMonthlyDay" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="SQLTinyInt">
+													<xs:minInclusive value="1"/>
+													<xs:maxInclusive value="31"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityMonthlyFrequency" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityMonthlyFrequencyDay" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityYearlyMonth" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityYearlyDay" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="SQLTinyInt">
+													<xs:maxInclusive value="31"/>
+													<xs:minInclusive value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityRangeStart" type="xs:date" minOccurs="0"/>
+										<xs:element name="AvailabilityRangeEnd" type="xs:date" minOccurs="0"/>
+										<xs:element name="AvailabilityExceptionDate" type="xs:date" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="AvailabilityWeeklyDay" minOccurs="0" maxOccurs="7">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CouponListPlayer" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CouponID" type="SQLInt"/>
+							<xs:element name="CouponDescription">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="CreatedBy" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="StartDate" type="xs:date" minOccurs="0"/>
+							<xs:element name="ExpirationDate" type="xs:date" minOccurs="0"/>
+							<xs:element name="CouponType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CouponValueType">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="LocalOrGlobal" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CouponItem" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CouponValue" type="SQLMoney"/>
+							<xs:element name="DaysValid" type="SQLInt" minOccurs="0"/>
+							<xs:element name="Tiered" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TierType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TierTracking" minOccurs="0"/>
+							<xs:element name="Qualify">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="QualifyValue" type="xs:int" minOccurs="0"/>
+							<xs:element name="QualifyType" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="QualifyIn" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TrackedBy">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="TrackedPeriod" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CouponStatus" type="xs:string" minOccurs="0"/>
+							<xs:element name="RedeemedBy" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RedeemedDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Quantity" type="SQLSmallInt" minOccurs="0"/>
+							<xs:element name="EarnSite" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RedeemSite" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Availability" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AvailabilityRestricted">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityStart" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityEnd" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="10"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityRecurrencePattern" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityMonthlyDay" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="SQLTinyInt">
+													<xs:minInclusive value="1"/>
+													<xs:maxInclusive value="31"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityMonthlyFrequency" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityMonthlyFrequencyDay" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityYearlyMonth" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityYearlyDay" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="SQLTinyInt">
+													<xs:maxInclusive value="31"/>
+													<xs:minInclusive value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityRangeStart" type="xs:date" minOccurs="0"/>
+										<xs:element name="AvailabilityRangeEnd" type="xs:date" minOccurs="0"/>
+										<xs:element name="AvailabilityWeeklyDay" minOccurs="0" maxOccurs="7">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AvailabilityExceptionDate" type="xs:date" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CouponRedemption">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CouponID" type="SQLInt"/>
+							<xs:element name="CouponDescription" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="UserLogin" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="30"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CouponQuantity" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CouponAmount" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="CouponItem" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CouponStatus" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CreditConditions">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Sites" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Site" type="SiteType" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PropertyCreditConditions">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Site" type="SiteType"/>
+										<xs:element name="Condition" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CreditConditionID" type="xs:string"/>
+													<xs:element name="Description" type="xs:string"/>
+													<xs:element name="Priority" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="CreditInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CreditAccount" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CreditLine" type="xs:decimal"/>
+										<xs:element name="FrontMoney" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="Used" type="xs:decimal"/>
+										<xs:element name="InTransit" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="Available" type="xs:decimal"/>
+										<xs:element name="LastMarkerDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="CreditStopCodes" type="xs:string" minOccurs="0"/>
+										<xs:element name="Site" type="SiteType"/>
+									</xs:sequence>
+									<xs:attribute name="Account" type="SQLInt"/>
+									<xs:attribute name="TTO" type="xs:boolean"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="EmailType" name="EmailType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TypeID" type="SQLTinyInt"/>
+							<xs:element sql:field="Description" sql:relation="EmailType" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="EmailType" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="XRef" sql:relation="EmailType" sql:datatype="varchar" name="XRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Error">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ErrorCode">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ErrorDescription" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="GamingProfiles">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="GamingProfile" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CompStatus" type="xs:string" nillable="true" minOccurs="0"/>
+										<xs:element name="FavoriteGame" type="xs:string" nillable="true" minOccurs="0"/>
+										<xs:element name="CompBalance" type="SQLMoney" minOccurs="0"/>
+										<xs:element name="Site" type="SiteType" minOccurs="0"/>
+										<xs:element name="AccountStatus" nillable="true" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="Description" type="xs:string"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Host" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="UserID" type="SQLInt"/>
+													<xs:element name="LoginName" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="30"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="FirstName" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="50"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="LastName" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="50"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="License" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="16"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Ranking" nillable="true" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="SQLSmallInt">
+														<xs:attribute name="Description" type="xs:string"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Itinerary">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ReservationID" type="xs:string" minOccurs="0"/>
+							<xs:element name="ItineraryStartDate" type="xs:string" minOccurs="0"/>
+							<xs:element name="ItineraryEndDate" type="xs:string" minOccurs="0"/>
+							<xs:element name="CRMGUID" type="xs:string"/>
+							<xs:element name="RoomReservation" type="RoomReservation" minOccurs="0" maxOccurs="unbounded"/>
+							<xs:element name="Promotion" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Action" type="xs:string"/>
+										<xs:element name="PromoID" type="SQLInt"/>
+										<xs:element name="PromoStatus" type="PromoStatus"/>
+										<xs:element name="CRMGUID" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="16"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Site" type="SiteType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TripComment" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ReservationID" type="SQLInt" nillable="true" minOccurs="0"/>
+										<xs:element name="ReservationXRef" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="16"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CommentID" type="SQLInt" nillable="true" minOccurs="0"/>
+										<xs:element name="CommentXRef" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="16"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Confirmation" minOccurs="0"/>
+										<xs:element name="Action">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="Add"/>
+													<xs:enumeration value="Update"/>
+													<xs:enumeration value="Cancel"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Site" type="SiteType" minOccurs="0"/>
+										<xs:element name="Date" type="xs:dateTime" nillable="true" minOccurs="0"/>
+										<xs:element name="Comment" nillable="true" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="User" type="User" minOccurs="0"/>
+										<xs:element name="CRMGUID" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="Language" name="Language">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="LanguageID" type="SQLSmallInt"/>
+							<xs:element sql:field="Description" sql:relation="Language" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="Language" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="LinkInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="LinkID"/>
+							<xs:element name="LinkedPlayers" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="LinkedPlayer" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PlayerID" type="SQLInt"/>
+													<xs:element name="FirstName" type="xs:string"/>
+													<xs:element name="LastName" type="xs:string"/>
+													<xs:element name="CompBalance" type="SQLMoney"/>
+													<xs:element name="PointBalance" type="SQLBigInt" minOccurs="0"/>
+													<xs:element name="Site" type="SiteType"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="LoginModify">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Status">
+								<xs:annotation>
+									<xs:documentation>Status to set the user to 'A' = Activated, 'D' = Deactivated</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="LoginName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="15"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Merge">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VictimPlayerID" type="SQLInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Messages">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="HostMessage">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Site" type="SiteType"/>
+										<xs:element name="MessageID" type="SQLInt" minOccurs="0"/>
+										<xs:element name="Action" type="xs:string"/>
+										<xs:element name="Subject" type="xs:string"/>
+										<xs:element name="Date" type="xs:dateTime"/>
+										<xs:element name="MessageBody" type="xs:string"/>
+										<xs:element name="Command" type="xs:string" minOccurs="0"/>
+										<xs:element name="Count" type="SQLInt" minOccurs="0"/>
+										<xs:element name="Orderby" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Message" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ContactID" type="SQLInt"/>
+										<xs:element name="FollowUpID" type="SQLInt" minOccurs="0"/>
+										<xs:element name="Subject" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Subject and MessageBody fields are nullable in the database. SiteId and ContacctID may be populated while these fields are null.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Date" type="xs:dateTime"/>
+										<xs:element name="MessageBody" type="xs:string" minOccurs="0"/>
+										<xs:element name="Command" type="xs:string"/>
+										<xs:element name="Site" type="SiteType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PhoneType" name="PhoneType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TypeID" type="SQLTinyInt"/>
+							<xs:element sql:field="Description" sql:relation="PhoneType" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="PhoneType" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="XRef" sql:relation="PhoneType" sql:datatype="varchar" name="XRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Type" type="SQLTinyInt" default="3"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PINInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PINDigest" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="60"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Sentinel" type="SQLInt" minOccurs="0"/>
+							<xs:element name="EncryptIndex" type="SQLInt" minOccurs="0"/>
+							<xs:element name="Seed" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="21"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PINLock" type="xs:boolean" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerActivity">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="StartDate" type="xs:date"/>
+							<xs:element name="EndDate" type="xs:date"/>
+							<xs:element name="SlotPointsEarned" type="SQLInt" minOccurs="0"/>
+							<xs:element name="TablePointsEarned" type="SQLInt" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerBalanceAdjustment">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BalanceType">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="20"/>
+										<xs:enumeration value="Comp"/>
+										<xs:enumeration value="SecondComp"/>
+										<xs:enumeration value="Points"/>
+										<xs:enumeration value="Reward"/>
+										<xs:enumeration value="XtraCredit"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CreditOrDebit">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Amount" type="SQLMoney"/>
+							<xs:element name="RewardProgram" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="LocalOrGlobal" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="AvailableDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="ExpirationDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="OldCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="NewCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="OldSecondCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="NewSecondCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="OldXtraCreditBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="NewXtraCreditBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="OldPointBalance" type="SQLBigInt" minOccurs="0"/>
+							<xs:element name="NewPointBalance" type="SQLBigInt" minOccurs="0"/>
+							<xs:element name="OldRewardBalance" type="SQLBigInt" minOccurs="0"/>
+							<xs:element name="NewRewardBalance" type="SQLBigInt" minOccurs="0"/>
+							<xs:element name="UserLogin">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="30"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerSecondCompBalanceSet">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BalanceType">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="20"/>
+										<xs:enumeration value="Comp"/>
+										<xs:enumeration value="SecondComp"/>
+										<xs:enumeration value="Points"/>
+										<xs:enumeration value="Reward"/>
+										<xs:enumeration value="XtraCredit"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Amount">
+								<xs:simpleType>
+									<xs:restriction base="SQLInt">
+										<xs:minInclusive value="0"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="OldSecondCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="NewSecondCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="UserLogin">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="30"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerBalances">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RewardBalance" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="SecondCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="GiftPoints" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="18"/>
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="XtraCreditBalanceLocal" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="XtraCreditBalanceGlobal" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="PointBalance" type="SQLBigInt" minOccurs="0"/>
+							<xs:element name="CompBalanceLinked" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="SecondCompBalanceLinked" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="GiftPointsLinked" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="18"/>
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PointBalanceLinked" type="SQLBigInt" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerXtraCreditBalances">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="GlobalBalance" type="SQLMoney"/>
+							<xs:element name="LocalBalances">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="LocalBalance" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SiteID" type="SQLSmallInt" minOccurs="0"/>
+													<xs:element name="SiteDescription" type="xs:string" minOccurs="0"/>
+													<xs:element name="Balance" type="SQLMoney" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerCard">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CardNumbers" type="CardNumbers"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerCompListMessage">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Comp" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="CompID" type="SQLInt" minOccurs="0"/>
+										<xs:element name="IssuanceID" type="SQLInt" minOccurs="0"/>
+										<xs:element name="IssuanceDate" type="xs:date" minOccurs="0"/>
+										<xs:element name="CompType" type="xs:string" minOccurs="0"/>
+										<xs:element name="CompDescription" type="xs:string" minOccurs="0"/>
+										<xs:element name="CompSource" type="xs:string" minOccurs="0"/>
+										<xs:element name="FreeCompType" type="xs:string" minOccurs="0"/>
+										<xs:element name="RestrictedBy" type="xs:string" minOccurs="0"/>
+										<xs:element name="System" type="xs:string" minOccurs="0"/>
+										<xs:element name="CompStatus" type="xs:string" minOccurs="0"/>
+										<xs:element name="LastStatusChangeDate" type="xs:date" minOccurs="0"/>
+										<xs:element name="DaysValid" type="SQLInt" minOccurs="0"/>
+										<xs:element name="CompRetailValue" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="ChargePercentage" type="SQLInt" minOccurs="0"/>
+										<xs:element name="PointValue" type="SQLInt" minOccurs="0"/>
+										<xs:element name="CompValue" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="CRBValue" type="SQLInt" minOccurs="0"/>
+										<xs:element name="Quantity" type="SQLInt" minOccurs="0"/>
+										<xs:element name="TripNumber" type="SQLInt" minOccurs="0"/>
+										<xs:element name="PostedBy" type="xs:string" minOccurs="0"/>
+										<xs:element name="VoidedBy" type="xs:string" minOccurs="0"/>
+										<xs:element name="VoidReason" type="xs:string" minOccurs="0"/>
+										<xs:element name="IssuerLogin" type="xs:string" minOccurs="0"/>
+										<xs:element name="AuthorizerLogin" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerFind">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter">
+								<xs:complexType>
+									<xs:choice maxOccurs="unbounded">
+										<xs:element name="SearchPlayerID" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PlayerID" type="SQLInt"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="SearchCardID" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CardID">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="20"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="SearchName" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+													<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="SearchSSN" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SSN" type="xs:string"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Search" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="License" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="32"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DateOfBirth" type="xs:date" minOccurs="0"/>
+													<xs:element name="PhoneNumber" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="16"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="PostalCode" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="16"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Status" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="32"/>
+																<xs:enumeration value="All"/>
+																<xs:enumeration value="In House"/>
+																<xs:enumeration value="Checked Out"/>
+																<xs:enumeration value="Cancelled"/>
+																<xs:enumeration value="No Show"/>
+																<xs:enumeration value="Pending"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PlayersFound">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PlayerFound" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PlayerID" type="SQLInt"/>
+													<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+													<xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+													<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+													<xs:element name="PreferredName" type="xs:string" minOccurs="0"/>
+													<xs:element name="MailingCity" type="xs:string" minOccurs="0"/>
+													<xs:element name="MailingState" type="xs:string" minOccurs="0"/>
+													<xs:element name="MailingCountry" type="xs:string" minOccurs="0"/>
+													<xs:element name="Ranking" type="xs:string" minOccurs="0"/>
+													<xs:element name="SSN" type="xs:string" minOccurs="0"/>
+													<xs:element name="DateOfBirth" type="xs:string" minOccurs="0"/>
+													<xs:element name="CreditAccount" type="xs:boolean" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerFind2">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter">
+								<xs:complexType>
+									<xs:choice maxOccurs="unbounded">
+										<xs:element name="PlayerID" type="SQLInt" minOccurs="0"/>
+										<xs:element name="CardID" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+										<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+										<xs:element name="SSN" type="xs:string" minOccurs="0"/>
+										<xs:element name="License" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DateOfBirth" type="xs:date" minOccurs="0"/>
+										<xs:element name="PhoneNumber" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="16"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PostalCode" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="16"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Status" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+													<xs:enumeration value="All"/>
+													<xs:enumeration value="In House"/>
+													<xs:enumeration value="Checked Out"/>
+													<xs:enumeration value="Cancelled"/>
+													<xs:enumeration value="No Show"/>
+													<xs:enumeration value="Pending"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:choice>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PlayersFound">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PlayerFound" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PlayerID" type="SQLInt"/>
+													<xs:element name="CardID" minOccurs="0"/>
+													<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+													<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+													<xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+													<xs:element name="PreferredName" type="xs:string" minOccurs="0"/>
+													<xs:element name="DateOfBirth" type="xs:string" minOccurs="0"/>
+													<xs:element name="City" type="xs:string" minOccurs="0"/>
+													<xs:element name="State" type="xs:string" minOccurs="0"/>
+													<xs:element name="Country" type="xs:string" minOccurs="0"/>
+													<xs:element name="CreditAccount" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="3"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Ranking" type="xs:string" minOccurs="0"/>
+													<xs:element name="Status" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="32"/>
+																<xs:enumeration value="In House"/>
+																<xs:enumeration value="Play Only"/>
+																<xs:enumeration value="Checked Out"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerGroupAdd">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Site" type="SiteType"/>
+							<xs:element name="GroupName" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerGroupLookup">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="GroupName" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="GroupInfo">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Site" type="SiteType" nillable="true"/>
+										<xs:element name="Group" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="GroupID" type="xs:string" minOccurs="0"/>
+													<xs:element name="GroupName" type="xs:string"/>
+													<xs:element name="Status" type="xs:string" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PlayerGroup" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Player" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Location" type="xs:string" minOccurs="0"/>
+																<xs:element name="InCasino">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:enumeration value="TRUE"/>
+																			<xs:enumeration value="FALSE"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="PlayerID" type="xs:string"/>
+																<xs:element name="Name" type="Name" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PlayerHost" name="PlayerHost">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PlayerID" type="SQLInt"/>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+							<xs:element name="HostID" type="SQLInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerImage">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ImageType" type="SQLSmallInt">
+								<xs:annotation>
+									<xs:documentation>1 = Photo, 2 = Identification, 3 = Signature</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="ImageSubType" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Image sub type, such as type of photo or ID.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Image" type="xs:base64Binary">
+								<xs:annotation>
+									<xs:documentation>Base64 Binary encoded data of image</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerInterests">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PlayerInterest" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="InterestNumber" type="SQLSmallInt"/>
+										<xs:element name="Description" type="xs:string" minOccurs="0"/>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="User" type="User"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerPIN">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PINNumber" type="SQLInt" minOccurs="0"/>
+							<xs:element name="PINDigest" type="xs:string" minOccurs="0"/>
+							<xs:element name="OldPINNumber" type="SQLInt" minOccurs="0"/>
+							<xs:element name="OldPINDigest" type="xs:string" minOccurs="0"/>
+							<xs:element name="PINNumberVerify" type="SQLInt" minOccurs="0"/>
+							<xs:element name="UserID" type="SQLInt" minOccurs="0"/>
+							<xs:element name="ValidateResult" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerProfile">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="DateofBirth" type="xs:date" minOccurs="0"/>
+							<xs:element name="Anniversary" type="xs:date" minOccurs="0"/>
+							<xs:element name="CreditAccount" type="xs:boolean" minOccurs="0"/>
+							<xs:element name="Gender" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PINLocked" type="xs:string" minOccurs="0"/>
+							<xs:element name="WebEnabled" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Exempt" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Attraction" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Affiliation" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CrossReference" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="20"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="EnrollmentLocation" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DateEnrolled" type="xs:date" minOccurs="0"/>
+							<xs:element ref="Name" minOccurs="0"/>
+							<xs:element name="Addresses" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Address" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Address1" type="xs:string" minOccurs="0"/>
+													<xs:element name="Address2" type="xs:string" minOccurs="0"/>
+													<xs:element name="City" type="xs:string" minOccurs="0"/>
+													<xs:element name="StateProvince" type="xs:string" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>State or Province abbreviation</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="PostalCode" type="xs:string" minOccurs="0"/>
+													<xs:element name="Country" type="xs:string" nillable="true" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>ISO 3166 compliant country number.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Location" type="xs:string">
+														<xs:annotation>
+															<xs:documentation>Home / Business / Other</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Deliverable" type="xs:boolean" minOccurs="0"/>
+													<xs:element name="Preferred" type="xs:boolean" minOccurs="0"/>
+													<xs:element name="Suburb" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="40"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="CreditAddress" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="1"/>
+																<xs:enumeration value="Y"/>
+																<xs:enumeration value="N"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PhoneNumbers" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PhoneNumber" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Number" type="xs:string"/>
+													<xs:element name="Extension" type="xs:string" minOccurs="0"/>
+													<xs:element name="Location" type="xs:string">
+														<xs:annotation>
+															<xs:documentation>Home / Business / Other</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Preferred" type="xs:boolean" minOccurs="0"/>
+													<xs:element name="PermitTextMsg" type="xs:string" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Identifications" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Identification" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Type" type="xs:string">
+														<xs:annotation>
+															<xs:documentation>SSN | Driver's License | Passport | State ID</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="IDNumber" type="xs:string"/>
+													<xs:element name="ExpirationDate" type="xs:date" minOccurs="0"/>
+													<xs:element name="VerificationDate" type="xs:date" minOccurs="0"/>
+													<xs:element name="StateProvince" type="xs:string" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>State or Province abbreviation</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Country" type="xs:string" nillable="true" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>ISO 3166 compliant country number.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Primary" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="1"/>
+																<xs:enumeration value="Y"/>
+																<xs:enumeration value="N"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Emails" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Email" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Address" type="xs:string"/>
+													<xs:element name="Location" type="xs:string">
+														<xs:annotation>
+															<xs:documentation>Home / Business / Other</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="Preferred" type="xs:boolean" minOccurs="0"/>
+													<xs:element name="AddDate" type="xs:date" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Languages" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Language" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="EnrolledBy" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="User" type="User"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Status" minOccurs="0">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:string">
+											<xs:attribute name="Description" type="xs:string"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="CardNumbers" type="CardNumbers" minOccurs="0"/>
+							<xs:element name="PlayerRestrictions" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Restriction" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Description" type="xs:string" minOccurs="0"/>
+													<xs:element name="Expiration" type="xs:dateTime" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Interests" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Interest" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Code" type="xs:int" minOccurs="0"/>
+													<xs:element name="Description">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="64"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ModifyInterest" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="6"/>
+																<xs:enumeration value="Add"/>
+																<xs:enumeration value="Delete"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Employment" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Company" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Position" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="40"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="FrequentFlyers" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="FrequentFlyer">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Description">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="32"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Value" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="32"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="Preferred" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="1"/>
+																<xs:enumeration value="Y"/>
+																<xs:enumeration value="N"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ModifyFrequentFlyer" minOccurs="0">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:maxLength value="6"/>
+																<xs:enumeration value="Add"/>
+																<xs:enumeration value="Delete"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PhysicalDescription" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Height" minOccurs="0"/>
+										<xs:element name="Weight" minOccurs="0"/>
+										<xs:element name="EyeColor" minOccurs="0"/>
+										<xs:element name="HairColor" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SiteParameters" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteInfo" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SiteID" type="xs:string"/>
+													<xs:element name="PointBalance" type="SQLBigInt" minOccurs="0"/>
+													<xs:element name="Ranking" nillable="true" minOccurs="0">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="SQLSmallInt">
+																	<xs:attribute name="Description" type="xs:string"/>
+																	<xs:attribute name="RankingExpireDate" type="xs:string"/>
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Host" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="UserID" type="SQLInt"/>
+																<xs:element name="LoginName" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="30"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="FirstName" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="50"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="LastName" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="50"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="License" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="16"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PlayerPromoEvent" name="PlayerPromoEvent" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PlayerID" type="SQLInt" minOccurs="0"/>
+							<xs:element name="PromoID" type="SQLInt"/>
+							<xs:element name="BlockID" type="SQLInt"/>
+							<xs:element name="Tickets" type="SQLInt"/>
+							<xs:element sql:field="Received" sql:relation="PlayerPromoEvent" sql:datatype="char" name="Received">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="OldBlockID" type="SQLInt" minOccurs="0"/>
+							<xs:element name="UserLogin" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerPromos">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="PlayerPromoFilter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PromoID" type="SQLInt" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Return information for this PromoID for this player</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Count" type="SQLInt" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Retrn top X Promos for player using other filters.  Not valid when PromoID is not null.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="StartDate" type="xs:dateTime" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Start date for returning promotions.  If not set, not starting bound is set.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="EndDate" type="xs:dateTime" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>End date for returning promotions.  If not set, not upper bound is used.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="Sites" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Site" type="SiteType" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Status" type="xs:string" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Only return promos of this status.  If not set, return all statuses.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="OrderBy" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PlayerPromo" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PromoID" type="SQLInt"/>
+										<xs:element name="PromoName" type="xs:string"/>
+										<xs:element name="PublicDescription" type="xs:string"/>
+										<xs:element name="BeginDate" type="xs:string"/>
+										<xs:element name="EndDate" type="xs:string"/>
+										<xs:element name="Status" type="xs:string"/>
+										<xs:element name="Site" type="SiteType" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerPromotions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Promotion" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Site" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SiteID" type="SQLSmallInt" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PromoID" type="SQLInt"/>
+										<xs:element name="PromoStatus">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Status" type="SQLInt"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="CRMGUID" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerRanking">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Site" type="SiteType"/>
+							<xs:element name="Ranking" nillable="true" minOccurs="0">
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="SQLSmallInt">
+											<xs:attribute name="Description" type="xs:string"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RankingExpireDate" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:date"/>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerReservation" type="Reservation"/>
+				<xs:element name="PlayerReservations">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SourceReservationID" type="xs:string" minOccurs="0"/>
+										<xs:element name="StartDate" type="xs:date" minOccurs="0"/>
+										<xs:element name="EndDate" type="xs:date" minOccurs="0"/>
+										<xs:element name="SourceReservationNumber" type="xs:string" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Reservation" type="Reservation" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerRestrictions">
+					<xs:complexType>
+						<xs:sequence minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="PlayerRestriction">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RestrictionName" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="500"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RestrictionType" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="200"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="RestrictionExpiration" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="RestrictionActions" type="xs:string" minOccurs="0"/>
+										<xs:element name="RestrictedActions" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="RestrictedAction" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PlayerStatus" name="PlayerStatus">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element sql:field="Status" sql:relation="PlayerStatus" sql:datatype="char" name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Description" sql:relation="PlayerStatus" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PointsConversionRate">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element sql:field="ConfigValue" sql:relation="Config" sql:datatype="varchar" name="PointDollarValue" type="xs:decimal" minOccurs="0"/>
+							<xs:element sql:field="ConfigValue" sql:relation="Config" sql:datatype="varchar" name="RewardDollarValue" type="xs:decimal" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="Promo" name="Promo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PromoID" type="SQLInt"/>
+							<xs:element sql:field="PromoName" sql:relation="Promo" sql:datatype="varchar" name="PromoName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="StartDate" sql:relation="Promo" sql:datatype="datetime" name="StartDate" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:dateTime"/>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="EndDate" sql:relation="Promo" sql:datatype="datetime" name="EndDate" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:dateTime"/>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Description" sql:relation="Promo" sql:datatype="varchar" name="Description" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="Promo" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="MasterID" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="PublicDescription" sql:relation="Promo" sql:datatype="varchar" name="PublicDescription" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="ImageURL" sql:relation="Promo" sql:datatype="varchar" name="ImageURL" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="XRef" sql:relation="Promo" sql:datatype="varchar" name="XRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="InternetDisplay" sql:relation="Promo" sql:datatype="char" name="InternetDisplay" nillable="true" default="N" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="InternetDisplayText" sql:relation="Promo" sql:datatype="varchar" name="InternetDisplayText" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PromoEvent" name="PromoEvent" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="EventID" type="SQLInt"/>
+							<xs:element sql:field="Description" sql:relation="PromoEvent" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Date" sql:relation="PromoEvent" sql:datatype="datetime" name="Date">
+								<xs:simpleType>
+									<xs:restriction base="xs:dateTime"/>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="PromoEvent" sql:datatype="char" name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+							<xs:element name="PromoID" type="SQLInt"/>
+							<xs:element name="NumberOfBlocks" type="xs:int"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PromoEventBlock" name="PromoEventBlock" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BlockID" type="SQLInt"/>
+							<xs:element name="EventID" type="SQLInt"/>
+							<xs:element sql:field="Description" sql:relation="PromoEventBlock" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Tickets" type="SQLInt"/>
+							<xs:element name="MaxPerPlayer" type="SQLInt"/>
+							<xs:element name="DefaultAmount" type="SQLInt"/>
+							<xs:element sql:field="Status" sql:relation="PromoEventBlock" sql:datatype="char" name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt" nillable="true" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PromoMaster" name="PromoMaster">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MasterID" type="SQLInt"/>
+							<xs:element sql:field="MasterName" sql:relation="PromoMaster" sql:datatype="varchar" name="MasterName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Description" sql:relation="PromoMaster" sql:datatype="varchar" name="Description" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+							<xs:element sql:field="Status" sql:relation="PromoMaster" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="XRef" sql:relation="PromoMaster" sql:datatype="varchar" name="XRef" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PromoStatus" name="PromoStatus">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="StatusNumber" type="SQLInt"/>
+							<xs:element sql:field="Description" sql:relation="PromoStatus" sql:datatype="varchar" name="Description" type="xs:string" minOccurs="0"/>
+							<xs:element name="Type" type="SQLTinyInt" minOccurs="0"/>
+							<xs:element sql:field="Send" sql:relation="PromoStatus" sql:datatype="char" name="Send" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="PromoStatus" sql:datatype="char" name="Status" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PromoAwardPlayerBalance">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PromoAwardID" type="SQLInt"/>
+							<xs:element name="PromoID" type="SQLInt" minOccurs="0"/>
+							<xs:element name="PromotionName" type="xs:string" minOccurs="0"/>
+							<xs:element name="Earned" type="SQLInt" minOccurs="0"/>
+							<xs:element name="Received" type="SQLInt" minOccurs="0"/>
+							<xs:element name="Available" type="SQLInt" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PromotionAwardsIssuance">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PromoAwardID" type="SQLInt"/>
+							<xs:element name="PromoAwardName" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="IssueQuantity" type="SQLInt" minOccurs="0"/>
+							<xs:element name="UserLogin">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Ticket" type="SQLInt" minOccurs="0" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PromotionAwardsList" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PromoAwardID" type="SQLInt"/>
+							<xs:element name="PromoAwardName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Points" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="CreatedBy" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Hidden" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Locked" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DefaultReport" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Report" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="260"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PrintedComment" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="800"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="EarnSite" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RedeemSite" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PromotionAwardsListPlayer" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PromoAwardID" type="SQLInt"/>
+							<xs:element name="PromoAwardName">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="Points" type="SQLInt" minOccurs="0"/>
+							<xs:element name="EarnSite" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="RedeemSite" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="SiteID" type="SQLSmallInt"/>
+										<xs:element name="SiteDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="PromoType" name="PromoType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Type" type="SQLTinyInt"/>
+							<xs:element sql:field="Description" sql:relation="PromoType" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Multi" sql:relation="PromoType" sql:datatype="char" name="Multi" default="N">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="PromoType" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PromotionListPlayer">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Promotion">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PlayerID" type="SQLInt" minOccurs="0"/>
+										<xs:element name="PlayerCardID" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="20"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PromotionStatus" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="16"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PromotionName" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="CreatedBy" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="100"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Hidden" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Locked" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="MasterPromotion" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Criteria" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="64"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Description" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PublicDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="InternetDisplayEnabled" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ImageURL" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DisplayOnCalendar" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AutoClubEnroll" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AutoGamingEnroll" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="LineItems" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence maxOccurs="unbounded">
+													<xs:element name="LineItemAssigned" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Description" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BillTo" type="SQLInt" minOccurs="0"/>
+																<xs:element name="Cost" type="SQLMoney" minOccurs="0"/>
+																<xs:element name="Budget" type="SQLMoney" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PointMultiplier" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence maxOccurs="unbounded">
+													<xs:element name="Multiplier" type="SQLInt" minOccurs="0"/>
+													<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+													<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+													<xs:element name="Sites" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence maxOccurs="unbounded">
+																<xs:element name="Site">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="SiteDescription" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="32"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Used" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="3"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Machines" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="255"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Availability" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="RestrictedAvailability" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="Description" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="255"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ExceptionDates" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+																			<xs:element name="Date" type="xs:dateTime"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PromotionListSystem">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="Promotion">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="PromotionName" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="CreatedDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="CreatedBy" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="100"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Hidden" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Locked" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="MasterPromotion" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="32"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Criteria" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="64"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="Description" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PublicDescription" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="InternetDisplayEnabled" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ImageURL" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="255"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DisplayOnCalendar" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AutoClubEnroll" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="AutoGamingEnroll" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="3"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="LineItems" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence maxOccurs="unbounded">
+													<xs:element name="LineItemAssigned" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Description" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="40"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="BillTo" type="SQLInt" minOccurs="0"/>
+																<xs:element name="Cost" type="SQLMoney" minOccurs="0"/>
+																<xs:element name="Budget" type="SQLMoney" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="PointMultiplier" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence maxOccurs="unbounded">
+													<xs:element name="Multiplier" type="SQLInt" minOccurs="0"/>
+													<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+													<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+													<xs:element name="Sites" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence maxOccurs="unbounded">
+																<xs:element name="Site">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="SiteDescription" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="32"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Used" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="3"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element name="Machines" minOccurs="0">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:maxLength value="255"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Availability" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="RestrictedAvailability" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="Description" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="255"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="ExceptionDates" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+																			<xs:element name="Date" type="xs:dateTime"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PromotionPlayerStatusUpdate">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PromotionName" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="UserID" type="SQLInt"/>
+							<xs:element name="PlayerID" type="SQLInt" minOccurs="0"/>
+							<xs:element name="PlayerCardID" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="20"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PromotionNewStatus">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="StartDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="EndDate" type="xs:dateTime" minOccurs="0"/>
+							<xs:element name="SiteID" type="SQLSmallInt" minOccurs="0"/>
+							<xs:element name="SiteDescription" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="RateRestriction" name="RateRestriction">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RestrictionID" type="SQLSmallInt"/>
+							<xs:element name="RateTypeID" type="SQLSmallInt"/>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="RateType" name="RateType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RateTypeID" type="SQLSmallInt"/>
+							<xs:element sql:field="Description" sql:relation="RateType" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Comp" sql:relation="RateType" sql:datatype="char" name="Comp" default="Y">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Type" sql:relation="RateType" sql:datatype="char" name="Type" default="D">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+							<xs:element sql:field="RateTypeDefault" sql:relation="RateType" sql:datatype="char" name="RateTypeDefault" default="N">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="Reason" name="Reason">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ReasonNumber" type="SQLInt"/>
+							<xs:element name="ReasonTypeID" type="SQLTinyInt"/>
+							<xs:element sql:field="Description" sql:relation="Reason" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="40"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Status" sql:relation="Reason" sql:datatype="char" name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ReservationType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ReservationTypeID" type="SQLSmallInt"/>
+							<xs:element name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="XRef" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ReservationTypeDefault">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Status">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="RoomType" name="RoomType">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RoomTypeID" type="SQLSmallInt"/>
+							<xs:element sql:field="Code" sql:relation="RoomType" sql:datatype="varchar" name="Code">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="8"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Description" sql:relation="RoomType" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Charge" sql:relation="RoomType" sql:datatype="money" name="Charge">
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="19"/>
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="RoomTypeDefault" sql:relation="RoomType" sql:datatype="char" name="RoomTypeDefault" default="N">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="RoomRestriction" name="RoomRestriction">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element sql:field="Date" sql:relation="RoomRestriction" sql:datatype="datetime" name="Date">
+								<xs:simpleType>
+									<xs:restriction base="xs:dateTime"/>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+							<xs:element name="RestrictionID" type="SQLSmallInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="Site" name="SiteInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SiteID" type="SQLSmallInt"/>
+							<xs:element sql:field="Description" sql:relation="Site" sql:datatype="varchar" name="Description">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="32"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Abbreviation" sql:relation="Site" sql:datatype="varchar" name="Abbreviation" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Code" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element name="SiteGroupID" type="SQLSmallInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="Status" sql:relation="Site" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="StopCodes">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Filter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Sites">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SiteID" type="SQLSmallInt" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="PropertyStopCodes" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Site" type="SiteType"/>
+										<xs:element name="Code" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="StopCodeID"/>
+													<xs:element name="Description"/>
+													<xs:element name="Priority"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TripComment">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ReservationID" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element name="ReservationXRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CommentID" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element name="CommentXRef" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="Confirmation" minOccurs="0"/>
+							<xs:element name="Site" type="SiteType" minOccurs="0"/>
+							<xs:element name="Date" type="xs:dateTime" nillable="true" minOccurs="0"/>
+							<xs:element name="Comment" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="255"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="User" type="User" minOccurs="0"/>
+							<xs:element name="CRMGUID" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TripInformation">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="TripFilter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Site" type="SiteType" minOccurs="0"/>
+										<xs:element name="IncludeLinks" type="xs:boolean"/>
+										<xs:element name="LastTrip" type="SQLInt" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Indicates the last trip number to be sent back from Acres; if not present, Acres sends most recent trip.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="MaxTrips" type="SQLInt" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>The number of trips before the trip indicated in LastTrip to be returned from Acres</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="TripDetail" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TripNumber" type="SQLInt"/>
+										<xs:element name="BeginDate" type="xs:dateTime" minOccurs="0"/>
+										<xs:element name="Days"/>
+										<xs:element name="ActualIncome">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:totalDigits value="12"/>
+													<xs:fractionDigits value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TheoIncome">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:totalDigits value="12"/>
+													<xs:fractionDigits value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PointsEarned" type="SQLInt"/>
+										<xs:element name="TheoCompGuideline" type="xs:decimal"/>
+										<xs:element name="TotalExpAsPercentTheo" type="xs:decimal"/>
+										<xs:element name="ActualCompGuideline" type="xs:decimal"/>
+										<xs:element name="TotalExpAsPercentActual" type="xs:decimal"/>
+										<xs:element name="Promotions" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence minOccurs="0">
+													<xs:element name="PromotionID" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="RoomInfo" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Room" minOccurs="0" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="RoomNumber" minOccurs="0"/>
+																<xs:element name="RoomStatus" minOccurs="0"/>
+																<xs:element name="CompStatus" minOccurs="0"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="SlotStatistics">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CoinIn" type="xs:decimal"/>
+													<xs:element name="CoinOut" type="xs:decimal"/>
+													<xs:element name="Jackpots" type="xs:decimal"/>
+													<xs:element name="ActWin" type="xs:decimal"/>
+													<xs:element name="TheoWin" type="xs:decimal"/>
+													<xs:element name="XCUsed" type="xs:decimal"/>
+													<xs:element name="PointsEarned" type="SQLInt"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TableStatistics">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="AvgBet" type="xs:decimal"/>
+													<xs:element name="TimePlayed" type="xs:string"/>
+													<xs:element name="FourHrConv" type="xs:decimal"/>
+													<xs:element name="CashBuyIn" type="xs:decimal"/>
+													<xs:element name="NetMarkers" type="xs:decimal"/>
+													<xs:element name="ActWin" type="xs:decimal"/>
+													<xs:element name="TheoWin" type="xs:decimal"/>
+													<xs:element name="PointsEarned" type="SQLInt"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Revenue">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ActWin"/>
+													<xs:element name="TheoWin"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Expenses">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="TotalExpenses"/>
+													<xs:element name="CompLiability" minOccurs="0"/>
+													<xs:element name="ExpenseEntries" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Expense" minOccurs="0" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Type" type="xs:string"/>
+																			<xs:element name="Amount">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:decimal">
+																						<xs:totalDigits value="12"/>
+																						<xs:fractionDigits value="2"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TripSummary">
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="TripFilter">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Site" type="SiteType" minOccurs="0"/>
+										<xs:element name="IncludeLinks" type="xs:boolean"/>
+										<xs:element name="LastTrip" type="SQLInt" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Indicates the last trip number to be sent back from Acres; if not present, Acres sends most recent trip.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+										<xs:element name="MaxTrips" type="SQLInt" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>The number of trips before the trip indicated in LastTrip to be returned from Acres</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Summary" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ActualIncome">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:totalDigits value="12"/>
+													<xs:fractionDigits value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TheoIncome">
+											<xs:simpleType>
+												<xs:restriction base="xs:decimal">
+													<xs:totalDigits value="12"/>
+													<xs:fractionDigits value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="PointsEarned" type="SQLInt"/>
+										<xs:element name="TheoCompGuideline" type="xs:decimal"/>
+										<xs:element name="TotalExpAsPercentTheo" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="ActualCompGuideline" type="xs:decimal"/>
+										<xs:element name="TotalExpAsPercentActual" type="xs:decimal" minOccurs="0"/>
+										<xs:element name="SlotStatistics">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="CoinIn" type="xs:decimal"/>
+													<xs:element name="CoinOut" type="xs:decimal"/>
+													<xs:element name="Jackpots" type="xs:decimal"/>
+													<xs:element name="ActWin" type="xs:decimal"/>
+													<xs:element name="TheoWin" type="xs:decimal"/>
+													<xs:element name="XCUsed" type="xs:decimal"/>
+													<xs:element name="PointsEarned" type="SQLInt"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="TableStatistics">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="AvgBet" type="xs:decimal"/>
+													<xs:element name="TimePlayed" type="xs:string"/>
+													<xs:element name="FourHrConv" type="xs:decimal"/>
+													<xs:element name="CashBuyIn" type="xs:decimal"/>
+													<xs:element name="NetMarkers" type="xs:decimal"/>
+													<xs:element name="ActWin" type="xs:decimal"/>
+													<xs:element name="TheoWin" type="xs:decimal"/>
+													<xs:element name="PointsEarned" type="SQLInt"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Revenue">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ActWin"/>
+													<xs:element name="TheoWin"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Expenses">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="TotalExpenses"/>
+													<xs:element name="CompLiability" minOccurs="0"/>
+													<xs:element name="ExpenseEntries" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Expense" minOccurs="0" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Type" type="xs:string"/>
+																			<xs:element name="Amount">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:decimal">
+																						<xs:totalDigits value="12"/>
+																						<xs:fractionDigits value="2"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="SummaryType" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:enumeration value="CDay"/>
+												<xs:enumeration value="Curr"/>
+												<xs:enumeration value="MTD"/>
+												<xs:enumeration value="YTD"/>
+												<xs:enumeration value="LTD"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="UnMerge">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="VictimPlayerID" type="SQLInt"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element sql:relation="ZipCode" name="ZipCode">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ZipCodeID" type="SQLInt"/>
+							<xs:element sql:field="ZipCode" sql:relation="ZipCode" sql:datatype="varchar" name="ZipCode">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="City" sql:relation="ZipCode" sql:datatype="varchar" name="City">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="64"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="State" sql:relation="ZipCode" sql:datatype="char" name="State" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="CountryID" type="SQLInt"/>
+							<xs:element sql:field="Suburb" sql:relation="ZipCode" sql:datatype="varchar" name="Suburb" nillable="true" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="40"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element sql:field="Verified" sql:relation="ZipCode" sql:datatype="char" name="Verified" nillable="true" default="Y" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="SegmentID" type="SQLInt" nillable="true" minOccurs="0"/>
+							<xs:element sql:field="Status" sql:relation="ZipCode" sql:datatype="char" name="Status" default="A">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Restrictions">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Restriction" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="RestrictionName" type="xs:string"/>
+										<xs:element name="RestrictionType" type="xs:string"/>
+										<xs:element name="RestrictionExpiration" type="xs:string"/>
+										<xs:element name="RestrictionComment" type="xs:string"/>
+										<xs:element name="RestrictionNotifyRequired" type="xs:string"/>
+										<xs:element name="RestrictionDisplayStopCode" type="xs:string"/>
+										<xs:element name="RestrictionPostalMailOptOut" type="xs:string"/>
+										<xs:element name="RestrictionEmailOptOut" type="xs:string"/>
+										<xs:element name="RestrictionTextMessagingOptOut" type="xs:string"/>
+										<xs:element name="RestrictionPhoneOptOut" type="xs:string"/>
+										<xs:element name="RestrictionEGMMessaging" type="xs:string"/>
+										<xs:element name="RestrictedActions" type="xs:string"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="CardNumbers">
+		<xs:sequence>
+			<xs:element name="CardNumber" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CardID" type="xs:string"/>
+						<xs:element name="Status" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Name">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string" minOccurs="0"/>
+			<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+			<xs:element name="PreferredName" type="xs:string" minOccurs="0"/>
+			<xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+			<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+			<xs:element name="Suffix" type="xs:string" minOccurs="0"/>
+			<xs:element name="Generation" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PromoStatus">
+		<xs:sequence>
+			<xs:element name="StatusNumber" type="SQLInt"/>
+			<xs:element sql:field="Description" sql:relation="PromoStatus" sql:datatype="varchar" name="Description" type="xs:string" minOccurs="0"/>
+			<xs:element name="Type" type="SQLTinyInt" minOccurs="0"/>
+			<xs:element sql:field="Send" sql:relation="PromoStatus" sql:datatype="char" name="Send" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element sql:field="Status" sql:relation="PromoStatus" sql:datatype="char" name="Status" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RoomReservation">
+		<xs:sequence>
+			<xs:element name="Action" type="xs:string" minOccurs="0"/>
+			<xs:element name="SiteID" type="xs:string"/>
+			<xs:element name="RoomReservationID" type="xs:int" minOccurs="0"/>
+			<xs:element name="Confirmation" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Unique identifier of each room reservation.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Arrive" type="xs:date"/>
+			<xs:element name="Depart" type="xs:date"/>
+			<xs:element name="ETA" type="xs:time" minOccurs="0"/>
+			<xs:element name="ETD" type="xs:time" minOccurs="0"/>
+			<xs:element name="RoomAuthorizer">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="User" type="User"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RoomTypeID" type="SQLSmallInt"/>
+			<xs:element name="People" type="SQLTinyInt" minOccurs="0"/>
+			<xs:element name="Rooms" type="SQLInt" minOccurs="0"/>
+			<xs:element name="RoomStatus" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Inhouse, Pending, etc.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RoomNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="Number" type="xs:string" minOccurs="0"/>
+			<xs:element name="NightlyDetails" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="NightlyDetail" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Night" type="xs:date"/>
+									<xs:element name="RateTypeID" type="SQLSmallInt"/>
+									<xs:element name="Rate" type="xs:decimal"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CRMGUID" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Reservation">
+		<xs:sequence>
+			<xs:element name="ItineraryID" type="xs:string" minOccurs="0"/>
+			<xs:element name="ReservationID" type="xs:int" minOccurs="0"/>
+			<xs:element name="StartDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="EndDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="TripNumber" type="xs:int" minOccurs="0"/>
+			<xs:element name="AccountingDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="Xref" type="xs:string" minOccurs="0"/>
+			<xs:element name="ReservationStatus" type="xs:string" minOccurs="0"/>
+			<xs:element name="TripAuthorizer" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="User" type="User"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SecondAuthorizer" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="User" type="User"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RoomReservations" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RoomReservation" type="RoomReservation" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CurrentUser" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="User" type="User"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Site" type="SiteType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SiteType">
+		<xs:sequence>
+			<xs:element name="SiteID" type="SQLSmallInt" minOccurs="0"/>
+			<xs:element name="SiteDescription" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="User">
+		<xs:sequence>
+			<xs:element name="UserID" type="SQLInt" minOccurs="0"/>
+			<xs:element name="LoginName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="30"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="FirstName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LastName" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="50"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="License" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="16"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="SQLInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="-2147483648"/>
+			<xs:maxInclusive value="2147483647"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SQLSmallInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="-32768"/>
+			<xs:maxInclusive value="32767"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SQLBigInt">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:simpleType name="SQLTinyInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SQLMoney">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-922337203685477.5808"/>
+			<xs:maxInclusive value="922337203685477.5807"/>
+			<xs:fractionDigits value="4"/>
+			<xs:totalDigits value="19"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Name" type="Name"/>
+	<xs:element name="ExpirationDate" type="xs:dateTime"/>
+</xs:schema>

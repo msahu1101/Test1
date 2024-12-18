@@ -1,0 +1,34 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "environment": {
+            "type": "string",
+            "value": "$(TARGET_APP_SERVICE_ENVIRONMENT)"
+        },
+        "storage_account_name": {
+            "type": "string",
+            "value": "ciglicache$(TARGET_APP_SERVICE_LOCATION)$(TARGET_APP_SERVICE_ENVIRONMENT)"
+        },
+        "vnet_resource_group_name": {
+            "type": "string",
+            "value": "cigloyaltyvnet-$(TARGET_APP_SERVICE_LOCATION)-rg-$(TARGET_NETWORK_ENVIRONMENT)"
+        },
+        "vnet_name": {
+            "type": "string",
+            "value": "cigloyalty-$(TARGET_APP_SERVICE_LOCATION)-vnet-$(TARGET_NETWORK_ENVIRONMENT)"
+        },
+        "cache_subnet_name": {
+            "type": "string",
+            "value": "cigloyacctsred-$(TARGET_APP_SERVICE_LOCATION)-sn-$(TARGET_APP_SERVICE_ENVIRONMENT)"
+        },
+        "redis_cache_name": {
+            "value": "cigloyaccts-$(TARGET_APP_SERVICE_LOCATION)-rc-$(TARGET_APP_SERVICE_ENVIRONMENT)"
+        },
+        "redis_shard_count": {
+            "value": 2
+        }
+    },
+    "resources": [
+    ]
+}

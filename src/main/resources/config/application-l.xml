@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--global flags -->
+
+	<entry key="application.domain">loyalty-info-service</entry>
+	<entry key="application.domain.errorcode">101</entry>
+	<entry key="application.backend.canned-mode">false</entry>
+
+	<entry key="security.disabled.global">true</entry>
+	<entry key="cache.disabled.global">true</entry>
+	<entry key="auth.disabled.global">true</entry>
+	<entry key="livesite.disabled.global">false</entry>
+
+	<entry key="auth.mlifeid.enable">true</entry>
+	<entry key="auth.mlifeid.enforce">false</entry>
+	<entry key="auth.mlifeid.function.eliminate">none1,none2</entry>
+	<!--/global flags -->
+
+	<!--cache enable global or specific. default is on -->
+	<entry key="cache.disabled.stop-code">false</entry>
+	<!--/cache enable global or specific -->
+
+	<entry key="telementry.recording.pool">50</entry>
+
+	<!-- Key vault -->
+	<entry key="keyVault.ar.tenant">ddb8592f-ed74-4329-bfd2-571b7c34699e</entry>
+	<entry key="keyVault.client.id">d37af0d0-4c16-44d5-9a2e-9542e888dad3</entry>
+	<entry key="keyVault.base.url">https://cigloyaltyprv-uw-kv-d.vault.azure.net</entry>
+	<entry key="keyVault.client.key">to be replaced by app config</entry>
+
+	<!--customer search -->
+	<entry key="customer.search.service.name">profilesearch</entry>
+	<entry key="customer.search.index.name">profiledob-index</entry>
+	<entry key="customer.search.api.version">2019-05-06</entry>
+	<entry key="customer.search.api.key">D1B9D6DADD4A38E50CA442460F75033F</entry>
+
+	<entry key="payload.mask.config.file">security/mask-config/pii-tags-loyalty-info.json</entry>
+	<entry key="source.sevenrooms.url">https://demo.sevenrooms.com/api-ext/2_2</entry>
+	<entry key="source.sevenrooms.resource">/reservations</entry>
+	<entry key="source.sevenrooms.venue.group.id">ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yIQsSFG5pZ2h0bG9vcF9WZW51ZUdyb3VwGICAkNC4kY0LDA</entry>
+	<entry key="source.sevenrooms.venue.id">ahhzfnNldmVucm9vbXMtc2VjdXJlLWRlbW9yHAsSD25pZ2h0bG9vcF9WZW51ZRiAgJDQtOO6Cgw</entry>
+	<entry key="source.sevenrooms.auth">/auth</entry>
+	<entry key="source.sevenrooms.client.id">251fcddc74b27b89c4dace12ab22d3a44ebf3223bfafe229b45fe45ee2bb45fb0fee908d889a26aea7a65d971f0eb65325b4d02738aa1a6aabcdfe9c9dfa8b1a</entry>
+	<entry key="source.sevenrooms.client.secret@secure">test</entry>
+	<!--/customer search -->
+
+	<!--cache -->
+
+	<entry key="customer.cache.host">to be replaced by function configuration</entry>
+	<entry key="customer.cache.port">6380</entry>
+	<entry key="customer.cache.password">to be replaced by function configuration</entry>
+	<entry key="customer.cache.read.timeout">5000</entry>
+
+	<entry key="redis-client-thread-pool.expiry">10000</entry>
+	<entry key="redis-client-thread-pool.size">100</entry>
+	<!--/cache -->
+
+	<!--databases -->
+	<entry key="database.lme.connection.url">jdbc:sqlserver://P02WDLME01R.mgmmirage.org;databaseName=LMEDB</entry>
+	<entry key="database.lme.connection.user">lmeservice2</entry>
+	<entry key="database.lme.connection.password@secure">1ts@LLmiN3</entry>
+	<entry key="database.lme.connection.max.total">10</entry>
+	<entry key="database.lme.connection.max.idle">3</entry>
+
+	<entry key="database.pcis.connection.url">jdbc:sqlserver://S7PTRNDB01P.mgmmirage.org;databaseName=PCIS</entry>
+	<entry key="database.pcis.connection.user">serviceuserpcis</entry>
+	<entry key="database.pcis.connection.password@secure">$t@rbuck5</entry>
+	<entry key="database.pcis.connection.max.total">10</entry>
+	<entry key="database.pcis.connection.max.idle">3</entry>
+
+	<entry key="database.mlife.connection.url">jdbc:sqlserver://S7PTRNDB01P.mgmmirage.org;databaseName=MGMResortsMlife</entry>
+	<entry key="database.mlife.connection.user">ngl_mlife_s7</entry>
+	<entry key="database.mlife.connection.password@secure">$t@rbuck5</entry>
+	<entry key="database.mlife.connection.max.total">10</entry>
+	<entry key="database.mlife.connection.max.idle">3</entry>
+
+	<entry key="database.work.connection.url">jdbc:sqlserver://S7PTRNDB01P.mgmmirage.org;databaseName=tempWork</entry>
+	<entry key="database.work.connection.user">ngl_mlife_s7</entry>
+	<entry key="database.work.connection.password@secure">$t@rbuck5</entry>
+	<entry key="database.work.connection.max.total">10</entry>
+	<entry key="database.work.connection.max.idle">3</entry>
+
+	<entry key="database.player.connection.url">jdbc:sqlserver://S7PTRNDB01P.mgmmirage.org;databaseName=PlayerManagement</entry>
+	<entry key="database.player.connection.user">ngl_mlife_s7</entry>
+	<entry key="database.player.connection.password@secure">$t@rbuck5</entry>
+	<entry key="database.player.connection.max.total">10</entry>
+	<entry key="database.player.connection.max.idle">3</entry>
+
+	<entry key="database.reporting.connection.url">jdbc:sqlserver://S7PTRNDB01P.mgmmirage.org;databaseName=tempWork</entry>
+	<entry key="database.reporting.connection.user">ngl_mlife_s7</entry>
+	<entry key="database.reporting.connection.password@secure">$t@rbuck5</entry>
+	<entry key="database.reporting.connection.max.total">10</entry>
+	<entry key="database.reporting.connection.max.idle">3</entry>
+	<!--/databases -->
+
+	<!--/cache expiry -->
+	<entry key="cache.expiry.customer-promo">30</entry>
+	<entry key="cache.expiry.player-link">30</entry>
+	<entry key="cache.expiry.player-comment">30</entry>
+	<entry key="cache.expiry.tier">30</entry>
+	<entry key="cache.expiry.balance">30</entry>
+	<entry key="cache.expiry.gift-balances">30</entry>
+	<entry key="cache.expiry.seven-room-token">3600</entry>
+	<entry key="cache.expiry.stop-code">5</entry>
+	<!--/cache expiry -->
+
+	<!--stop codes -->
+	<entry key="patron.stopcode.userid">46483</entry>
+	<entry key="patron.stopcode.siteid">1</entry>
+	<entry key="patron.stopcode.priority">0</entry>
+	<!--/stop codes -->
+
+	<!--player balance -->
+	<entry key="customer.balance.thread.time.out">60000</entry>
+	<entry key="customer.balance.thread.pool.size">250</entry>
+	<entry key="customer.balance.gift.program.id">56</entry>
+	<entry key="customer.balance.xml.validation">true</entry>
+	<entry key="customer.balance.tier.expireDate" >2024-02-01T07:59:59.999</entry>
+	<!--/player balance -->
+
+	<!-- Not Needed -->
+	<entry key="livesite_event_hub_policy@secure">d-livesite-event-hub-connection</entry>
+	<entry key="apim.auth.url">https://azdeapi-dev.mgmresorts.com/int/identity/authorization/v1/mgmsvc/.well-known/oauth-authorization-server</entry>
+
+	<!-- ADI call for create & Update -->
+	<entry key="patron.http.url">http://V36WAMRACE11R.mgmmirage.org:1106</entry>
+	<entry key="http.connection.pool.config.info">https,azdeapi-dev.mgmresorts.com,443,10</entry>
+	<entry key="http.connection.pool.config.size">http,V36WAMRACE11R.mgmmirage.org,1106,10</entry>
+
+
+	<!-- issue promo tickets -->
+	<entry key="patron.http.header.promo.event.ticket.addOperand">Add</entry>
+	<entry key="patron.http.header.promo.event.ticket.data">PromoEventTicketIssuance</entry>
+	<entry key="patron.body.promo.event.ticket.userLogin">MGMUSER</entry>
+
+	<!-- get Promo Event/Block Info -->
+	<entry key="patron.http.header.addOperand.Request">Request</entry>
+	<entry key="patron.http.header.get.promo.events.data">PromoEventsWithFilter</entry>
+	<entry key="patron.http.header.get.event.blocks.data">PromoEventBlock</entry>
+
+	<entry key="patron.enrolledAt.user">58083</entry>
+
+	<!-- identity -->
+	<entry key="apim.oauth.endpoint">https://azdeapi-dev.mgmresorts.com/int/identity/authorization/v1/mgmsvc/token</entry>
+	<entry key="apim.oauth.client.id">devops_loyalty_profile</entry>
+	<!-- <entry key="apim.oauth.client.secret@secure">d-oauth-identity-secret</entry> -->
+	<entry key="apim.oauth.client.secret@secure">oauth-app-devops-loyalty-profile</entry>
+	<entry key="apim.oauth.profile.scopes">rcx:api:public:read</entry>
+	<!-- End -->
+
+	<!-- RCX Platform settings -->
+	<entry key="rcx.platform.base.url">https://mgm-nonprod-dev.apigee.net/rcxapi2</entry>
+	<entry key="rcx.platform.phase2.startTimeUtc">2022-08-01T23:59:59Z</entry>
+	<entry key="rcx.platform.phase3.startTimeUtc">2022-08-15T23:59:59Z</entry>
+	<entry key="rcx.platform.phase4.startTimeUtc">2022-09-01T23:59:59Z</entry>
+	<entry key="rcx.platform.phase5.startTimeUtc">2022-10-01T23:59:59Z</entry>
+	<!-- End  -->
+
+	<!-- RCX Pending Balance  -->
+	<entry key="rcx.pending.balance.url">https://mgm-nonprod-dev.apigee.net/rcxapi/members/%d/profile?select=purses.balance,purses.name</entry>
+	<entry key="rcx.thread.pool.size">10</entry>
+	<entry key="rcx.thread.time.out">6000</entry>
+
+	<entry key="circuit.breaker.balance.disabled">false</entry>
+	<entry key="circuit.breaker.balance.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.balance.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.comment.disabled">false</entry>
+	<entry key="circuit.breaker.comment.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.comment.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.linkedplayer.disabled">false</entry>
+	<entry key="circuit.breaker.linkedplayer.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.linkedplayer.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.promoevent.disabled">false</entry>
+	<entry key="circuit.breaker.promoevent.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.promoevent.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.promoeventticket.disabled">false</entry>
+	<entry key="circuit.breaker.promoeventticket.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.promoeventticket.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.tax-information.disabled">false</entry>
+	<entry key="circuit.breaker.tax-information.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.tax-information.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.promotion.disabled">false</entry>
+	<entry key="circuit.breaker.promotion.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.promotion.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.stop-code.disabled">false</entry>
+	<entry key="circuit.breaker.stop-code.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.stop-code.waitDurationInOpenState">30000</entry>
+
+	<entry key="circuit.breaker.slotdollarbalance.disabled">false</entry>
+	<entry key="circuit.breaker.slotdollarbalance.failureRateThreshold">50</entry>
+	<entry key="circuit.breaker.slotdollarbalance.waitDurationInOpenState">30000</entry>
+</properties>

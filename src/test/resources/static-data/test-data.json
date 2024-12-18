@@ -1,0 +1,1247 @@
+[
+  {
+    "Country": "Afghanistan",
+    "ISOAlpha2Code": "AF",
+    "ISONumericCode": 4
+  },
+  {
+    "Country": "Åland Islands",
+    "ISOAlpha2Code": "AX",
+    "ISONumericCode": 248
+  },
+  {
+    "Country": "Albania",
+    "ISOAlpha2Code": "AL",
+    "ISONumericCode": 8
+  },
+  {
+    "Country": "Algeria",
+    "ISOAlpha2Code": "DZ",
+    "ISONumericCode": 12
+  },
+  {
+    "Country": "American Samoa",
+    "ISOAlpha2Code": "AS",
+    "ISONumericCode": 16
+  },
+  {
+    "Country": "Andorra",
+    "ISOAlpha2Code": "AD",
+    "ISONumericCode": 20
+  },
+  {
+    "Country": "Angola",
+    "ISOAlpha2Code": "AO",
+    "ISONumericCode": 24
+  },
+  {
+    "Country": "Anguilla",
+    "ISOAlpha2Code": "AI",
+    "ISONumericCode": 660
+  },
+  {
+    "Country": "Antarctica",
+    "ISOAlpha2Code": "AQ",
+    "ISONumericCode": 10
+  },
+  {
+    "Country": "Antigua and Barbuda",
+    "ISOAlpha2Code": "AG",
+    "ISONumericCode": 28
+  },
+  {
+    "Country": "Argentina",
+    "ISOAlpha2Code": "AR",
+    "ISONumericCode": 32
+  },
+  {
+    "Country": "Armenia",
+    "ISOAlpha2Code": "AM",
+    "ISONumericCode": 51
+  },
+  {
+    "Country": "Aruba",
+    "ISOAlpha2Code": "AW",
+    "ISONumericCode": 533
+  },
+  {
+    "Country": "Australia",
+    "ISOAlpha2Code": "AU",
+    "ISONumericCode": 36
+  },
+  {
+    "Country": "Austria",
+    "ISOAlpha2Code": "AT",
+    "ISONumericCode": 40
+  },
+  {
+    "Country": "Azerbaijan",
+    "ISOAlpha2Code": "AZ",
+    "ISONumericCode": 31
+  },
+  {
+    "Country": "Bahamas",
+    "ISOAlpha2Code": "BS",
+    "ISONumericCode": 44
+  },
+  {
+    "Country": "Bahrain",
+    "ISOAlpha2Code": "BH",
+    "ISONumericCode": 48
+  },
+  {
+    "Country": "Bangladesh",
+    "ISOAlpha2Code": "BD",
+    "ISONumericCode": 50
+  },
+  {
+    "Country": "Barbados",
+    "ISOAlpha2Code": "BB",
+    "ISONumericCode": 52
+  },
+  {
+    "Country": "Belarus",
+    "ISOAlpha2Code": "BY",
+    "ISONumericCode": 112
+  },
+  {
+    "Country": "Belgium",
+    "ISOAlpha2Code": "BE",
+    "ISONumericCode": 56
+  },
+  {
+    "Country": "Belize",
+    "ISOAlpha2Code": "BZ",
+    "ISONumericCode": 84
+  },
+  {
+    "Country": "Benin",
+    "ISOAlpha2Code": "BJ",
+    "ISONumericCode": 204
+  },
+  {
+    "Country": "Bermuda",
+    "ISOAlpha2Code": "BM",
+    "ISONumericCode": 60
+  },
+  {
+    "Country": "Bhutan",
+    "ISOAlpha2Code": "BT",
+    "ISONumericCode": 64
+  },
+  {
+    "Country": "Bolivia (Plurinational State of)",
+    "ISOAlpha2Code": "BO",
+    "ISONumericCode": 68
+  },
+  {
+    "Country": "Bonaire, Sint Eustatius and Saba",
+    "ISOAlpha2Code": "BQ",
+    "ISONumericCode": 535
+  },
+  {
+    "Country": "Bosnia and Herzegovina",
+    "ISOAlpha2Code": "BA",
+    "ISONumericCode": 70
+  },
+  {
+    "Country": "Botswana",
+    "ISOAlpha2Code": "BW",
+    "ISONumericCode": 72
+  },
+  {
+    "Country": "Bouvet Island",
+    "ISOAlpha2Code": "BV",
+    "ISONumericCode": 74
+  },
+  {
+    "Country": "Brazil",
+    "ISOAlpha2Code": "BR",
+    "ISONumericCode": 76
+  },
+  {
+    "Country": "British Indian Ocean Territory",
+    "ISOAlpha2Code": "IO",
+    "ISONumericCode": 86
+  },
+  {
+    "Country": "Brunei Darussalam",
+    "ISOAlpha2Code": "BN",
+    "ISONumericCode": 96
+  },
+  {
+    "Country": "Bulgaria",
+    "ISOAlpha2Code": "BG",
+    "ISONumericCode": 100
+  },
+  {
+    "Country": "Burkina Faso",
+    "ISOAlpha2Code": "BF",
+    "ISONumericCode": 854
+  },
+  {
+    "Country": "Burundi",
+    "ISOAlpha2Code": "BI",
+    "ISONumericCode": 108
+  },
+  {
+    "Country": "Cabo Verde",
+    "ISOAlpha2Code": "CV",
+    "ISONumericCode": 132
+  },
+  {
+    "Country": "Cambodia",
+    "ISOAlpha2Code": "KH",
+    "ISONumericCode": 116
+  },
+  {
+    "Country": "Cameroon",
+    "ISOAlpha2Code": "CM",
+    "ISONumericCode": 120
+  },
+  {
+    "Country": "Canada",
+    "ISOAlpha2Code": "CA",
+    "ISONumericCode": 124
+  },
+  {
+    "Country": "Cayman Islands",
+    "ISOAlpha2Code": "KY",
+    "ISONumericCode": 136
+  },
+  {
+    "Country": "Central African Republic",
+    "ISOAlpha2Code": "CF",
+    "ISONumericCode": 140
+  },
+  {
+    "Country": "Chad",
+    "ISOAlpha2Code": "TD",
+    "ISONumericCode": 148
+  },
+  {
+    "Country": "Chile",
+    "ISOAlpha2Code": "CL",
+    "ISONumericCode": 152
+  },
+  {
+    "Country": "China",
+    "ISOAlpha2Code": "CN",
+    "ISONumericCode": 156
+  },
+  {
+    "Country": "Christmas Island",
+    "ISOAlpha2Code": "CX",
+    "ISONumericCode": 162
+  },
+  {
+    "Country": "Cocos (Keeling) Islands",
+    "ISOAlpha2Code": "CC",
+    "ISONumericCode": 166
+  },
+  {
+    "Country": "Colombia",
+    "ISOAlpha2Code": "CO",
+    "ISONumericCode": 170
+  },
+  {
+    "Country": "Comoros",
+    "ISOAlpha2Code": "KM",
+    "ISONumericCode": 174
+  },
+  {
+    "Country": "Congo",
+    "ISOAlpha2Code": "CG",
+    "ISONumericCode": 178
+  },
+  {
+    "Country": "Congo, Democratic Republic of the",
+    "ISOAlpha2Code": "CD",
+    "ISONumericCode": 180
+  },
+  {
+    "Country": "Cook Islands",
+    "ISOAlpha2Code": "CK",
+    "ISONumericCode": 184
+  },
+  {
+    "Country": "Costa Rica",
+    "ISOAlpha2Code": "CR",
+    "ISONumericCode": 188
+  },
+  {
+    "Country": "Côte d'Ivoire",
+    "ISOAlpha2Code": "CI",
+    "ISONumericCode": 384
+  },
+  {
+    "Country": "Croatia",
+    "ISOAlpha2Code": "HR",
+    "ISONumericCode": 191
+  },
+  {
+    "Country": "Cuba",
+    "ISOAlpha2Code": "CU",
+    "ISONumericCode": 192
+  },
+  {
+    "Country": "Curaçao",
+    "ISOAlpha2Code": "CW",
+    "ISONumericCode": 531
+  },
+  {
+    "Country": "Cyprus",
+    "ISOAlpha2Code": "CY",
+    "ISONumericCode": 196
+  },
+  {
+    "Country": "Czechia",
+    "ISOAlpha2Code": "CZ",
+    "ISONumericCode": 203
+  },
+  {
+    "Country": "Denmark",
+    "ISOAlpha2Code": "DK",
+    "ISONumericCode": 208
+  },
+  {
+    "Country": "Djibouti",
+    "ISOAlpha2Code": "DJ",
+    "ISONumericCode": 262
+  },
+  {
+    "Country": "Dominica",
+    "ISOAlpha2Code": "DM",
+    "ISONumericCode": 212
+  },
+  {
+    "Country": "Dominican Republic",
+    "ISOAlpha2Code": "DO",
+    "ISONumericCode": 214
+  },
+  {
+    "Country": "Ecuador",
+    "ISOAlpha2Code": "EC",
+    "ISONumericCode": 218
+  },
+  {
+    "Country": "Egypt",
+    "ISOAlpha2Code": "EG",
+    "ISONumericCode": 818
+  },
+  {
+    "Country": "El Salvador",
+    "ISOAlpha2Code": "SV",
+    "ISONumericCode": 222
+  },
+  {
+    "Country": "Equatorial Guinea",
+    "ISOAlpha2Code": "GQ",
+    "ISONumericCode": 226
+  },
+  {
+    "Country": "Eritrea",
+    "ISOAlpha2Code": "ER",
+    "ISONumericCode": 232
+  },
+  {
+    "Country": "Estonia",
+    "ISOAlpha2Code": "EE",
+    "ISONumericCode": 233
+  },
+  {
+    "Country": "Eswatini",
+    "ISOAlpha2Code": "SZ",
+    "ISONumericCode": 748
+  },
+  {
+    "Country": "Ethiopia",
+    "ISOAlpha2Code": "ET",
+    "ISONumericCode": 231
+  },
+  {
+    "Country": "Falkland Islands (Malvinas)",
+    "ISOAlpha2Code": "FK",
+    "ISONumericCode": 238
+  },
+  {
+    "Country": "Faroe Islands",
+    "ISOAlpha2Code": "FO",
+    "ISONumericCode": 234
+  },
+  {
+    "Country": "Fiji",
+    "ISOAlpha2Code": "FJ",
+    "ISONumericCode": 242
+  },
+  {
+    "Country": "Finland",
+    "ISOAlpha2Code": "FI",
+    "ISONumericCode": 246
+  },
+  {
+    "Country": "France",
+    "ISOAlpha2Code": "FR",
+    "ISONumericCode": 250
+  },
+  {
+    "Country": "French Guiana",
+    "ISOAlpha2Code": "GF",
+    "ISONumericCode": 254
+  },
+  {
+    "Country": "French Polynesia",
+    "ISOAlpha2Code": "PF",
+    "ISONumericCode": 258
+  },
+  {
+    "Country": "French Southern Territories",
+    "ISOAlpha2Code": "TF",
+    "ISONumericCode": 260
+  },
+  {
+    "Country": "Gabon",
+    "ISOAlpha2Code": "GA",
+    "ISONumericCode": 266
+  },
+  {
+    "Country": "Gambia",
+    "ISOAlpha2Code": "GM",
+    "ISONumericCode": 270
+  },
+  {
+    "Country": "Georgia",
+    "ISOAlpha2Code": "GE",
+    "ISONumericCode": 268
+  },
+  {
+    "Country": "Germany",
+    "ISOAlpha2Code": "DE",
+    "ISONumericCode": 276
+  },
+  {
+    "Country": "Ghana",
+    "ISOAlpha2Code": "GH",
+    "ISONumericCode": 288
+  },
+  {
+    "Country": "Gibraltar",
+    "ISOAlpha2Code": "GI",
+    "ISONumericCode": 292
+  },
+  {
+    "Country": "Greece",
+    "ISOAlpha2Code": "GR",
+    "ISONumericCode": 300
+  },
+  {
+    "Country": "Greenland",
+    "ISOAlpha2Code": "GL",
+    "ISONumericCode": 304
+  },
+  {
+    "Country": "Grenada",
+    "ISOAlpha2Code": "GD",
+    "ISONumericCode": 308
+  },
+  {
+    "Country": "Guadeloupe",
+    "ISOAlpha2Code": "GP",
+    "ISONumericCode": 312
+  },
+  {
+    "Country": "Guam",
+    "ISOAlpha2Code": "GU",
+    "ISONumericCode": 316
+  },
+  {
+    "Country": "Guatemala",
+    "ISOAlpha2Code": "GT",
+    "ISONumericCode": 320
+  },
+  {
+    "Country": "Guernsey",
+    "ISOAlpha2Code": "GG",
+    "ISONumericCode": 831
+  },
+  {
+    "Country": "Guinea",
+    "ISOAlpha2Code": "GN",
+    "ISONumericCode": 324
+  },
+  {
+    "Country": "Guinea-Bissau",
+    "ISOAlpha2Code": "GW",
+    "ISONumericCode": 624
+  },
+  {
+    "Country": "Guyana",
+    "ISOAlpha2Code": "GY",
+    "ISONumericCode": 328
+  },
+  {
+    "Country": "Haiti",
+    "ISOAlpha2Code": "HT",
+    "ISONumericCode": 332
+  },
+  {
+    "Country": "Heard Island and McDonald Islands",
+    "ISOAlpha2Code": "HM",
+    "ISONumericCode": 334
+  },
+  {
+    "Country": "Holy See",
+    "ISOAlpha2Code": "VA",
+    "ISONumericCode": 336
+  },
+  {
+    "Country": "Honduras",
+    "ISOAlpha2Code": "HN",
+    "ISONumericCode": 340
+  },
+  {
+    "Country": "Hong Kong",
+    "ISOAlpha2Code": "HK",
+    "ISONumericCode": 344
+  },
+  {
+    "Country": "Hungary",
+    "ISOAlpha2Code": "HU",
+    "ISONumericCode": 348
+  },
+  {
+    "Country": "Iceland",
+    "ISOAlpha2Code": "IS",
+    "ISONumericCode": 352
+  },
+  {
+    "Country": "India",
+    "ISOAlpha2Code": "IN",
+    "ISONumericCode": 356
+  },
+  {
+    "Country": "Indonesia",
+    "ISOAlpha2Code": "ID",
+    "ISONumericCode": 360
+  },
+  {
+    "Country": "Iran (Islamic Republic of)",
+    "ISOAlpha2Code": "IR",
+    "ISONumericCode": 364
+  },
+  {
+    "Country": "Iraq",
+    "ISOAlpha2Code": "IQ",
+    "ISONumericCode": 368
+  },
+  {
+    "Country": "Ireland",
+    "ISOAlpha2Code": "IE",
+    "ISONumericCode": 372
+  },
+  {
+    "Country": "Isle of Man",
+    "ISOAlpha2Code": "IM",
+    "ISONumericCode": 833
+  },
+  {
+    "Country": "Israel",
+    "ISOAlpha2Code": "IL",
+    "ISONumericCode": 376
+  },
+  {
+    "Country": "Italy",
+    "ISOAlpha2Code": "IT",
+    "ISONumericCode": 380
+  },
+  {
+    "Country": "Jamaica",
+    "ISOAlpha2Code": "JM",
+    "ISONumericCode": 388
+  },
+  {
+    "Country": "Japan",
+    "ISOAlpha2Code": "JP",
+    "ISONumericCode": 392
+  },
+  {
+    "Country": "Jersey",
+    "ISOAlpha2Code": "JE",
+    "ISONumericCode": 832
+  },
+  {
+    "Country": "Jordan",
+    "ISOAlpha2Code": "JO",
+    "ISONumericCode": 400
+  },
+  {
+    "Country": "Kazakhstan",
+    "ISOAlpha2Code": "KZ",
+    "ISONumericCode": 398
+  },
+  {
+    "Country": "Kenya",
+    "ISOAlpha2Code": "KE",
+    "ISONumericCode": 404
+  },
+  {
+    "Country": "Kiribati",
+    "ISOAlpha2Code": "KI",
+    "ISONumericCode": 296
+  },
+  {
+    "Country": "Korea (Democratic People's Republic of)",
+    "ISOAlpha2Code": "KP",
+    "ISONumericCode": 408
+  },
+  {
+    "Country": "Korea, Republic of",
+    "ISOAlpha2Code": "KR",
+    "ISONumericCode": 410
+  },
+  {
+    "Country": "Kuwait",
+    "ISOAlpha2Code": "KW",
+    "ISONumericCode": 414
+  },
+  {
+    "Country": "Kyrgyzstan",
+    "ISOAlpha2Code": "KG",
+    "ISONumericCode": 417
+  },
+  {
+    "Country": "Lao People's Democratic Republic",
+    "ISOAlpha2Code": "LA",
+    "ISONumericCode": 418
+  },
+  {
+    "Country": "Latvia",
+    "ISOAlpha2Code": "LV",
+    "ISONumericCode": 428
+  },
+  {
+    "Country": "Lebanon",
+    "ISOAlpha2Code": "LB",
+    "ISONumericCode": 422
+  },
+  {
+    "Country": "Lesotho",
+    "ISOAlpha2Code": "LS",
+    "ISONumericCode": 426
+  },
+  {
+    "Country": "Liberia",
+    "ISOAlpha2Code": "LR",
+    "ISONumericCode": 430
+  },
+  {
+    "Country": "Libya",
+    "ISOAlpha2Code": "LY",
+    "ISONumericCode": 434
+  },
+  {
+    "Country": "Liechtenstein",
+    "ISOAlpha2Code": "LI",
+    "ISONumericCode": 438
+  },
+  {
+    "Country": "Lithuania",
+    "ISOAlpha2Code": "LT",
+    "ISONumericCode": 440
+  },
+  {
+    "Country": "Luxembourg",
+    "ISOAlpha2Code": "LU",
+    "ISONumericCode": 442
+  },
+  {
+    "Country": "Macao",
+    "ISOAlpha2Code": "MO",
+    "ISONumericCode": 446
+  },
+  {
+    "Country": "Madagascar",
+    "ISOAlpha2Code": "MG",
+    "ISONumericCode": 450
+  },
+  {
+    "Country": "Malawi",
+    "ISOAlpha2Code": "MW",
+    "ISONumericCode": 454
+  },
+  {
+    "Country": "Malaysia",
+    "ISOAlpha2Code": "MY",
+    "ISONumericCode": 458
+  },
+  {
+    "Country": "Maldives",
+    "ISOAlpha2Code": "MV",
+    "ISONumericCode": 462
+  },
+  {
+    "Country": "Mali",
+    "ISOAlpha2Code": "ML",
+    "ISONumericCode": 466
+  },
+  {
+    "Country": "Malta",
+    "ISOAlpha2Code": "MT",
+    "ISONumericCode": 470
+  },
+  {
+    "Country": "Marshall Islands",
+    "ISOAlpha2Code": "MH",
+    "ISONumericCode": 584
+  },
+  {
+    "Country": "Martinique",
+    "ISOAlpha2Code": "MQ",
+    "ISONumericCode": 474
+  },
+  {
+    "Country": "Mauritania",
+    "ISOAlpha2Code": "MR",
+    "ISONumericCode": 478
+  },
+  {
+    "Country": "Mauritius",
+    "ISOAlpha2Code": "MU",
+    "ISONumericCode": 480
+  },
+  {
+    "Country": "Mayotte",
+    "ISOAlpha2Code": "YT",
+    "ISONumericCode": 175
+  },
+  {
+    "Country": "Mexico",
+    "ISOAlpha2Code": "MX",
+    "ISONumericCode": 484
+  },
+  {
+    "Country": "Micronesia (Federated States of)",
+    "ISOAlpha2Code": "FM",
+    "ISONumericCode": 583
+  },
+  {
+    "Country": "Moldova, Republic of",
+    "ISOAlpha2Code": "MD",
+    "ISONumericCode": 498
+  },
+  {
+    "Country": "Monaco",
+    "ISOAlpha2Code": "MC",
+    "ISONumericCode": 492
+  },
+  {
+    "Country": "Mongolia",
+    "ISOAlpha2Code": "MN",
+    "ISONumericCode": 496
+  },
+  {
+    "Country": "Montenegro",
+    "ISOAlpha2Code": "ME",
+    "ISONumericCode": 499
+  },
+  {
+    "Country": "Montserrat",
+    "ISOAlpha2Code": "MS",
+    "ISONumericCode": 500
+  },
+  {
+    "Country": "Morocco",
+    "ISOAlpha2Code": "MA",
+    "ISONumericCode": 504
+  },
+  {
+    "Country": "Mozambique",
+    "ISOAlpha2Code": "MZ",
+    "ISONumericCode": 508
+  },
+  {
+    "Country": "Myanmar",
+    "ISOAlpha2Code": "MM",
+    "ISONumericCode": 104
+  },
+  {
+    "Country": "Namibia",
+    "ISOAlpha2Code": "NA",
+    "ISONumericCode": 516
+  },
+  {
+    "Country": "Nauru",
+    "ISOAlpha2Code": "NR",
+    "ISONumericCode": 520
+  },
+  {
+    "Country": "Nepal",
+    "ISOAlpha2Code": "NP",
+    "ISONumericCode": 524
+  },
+  {
+    "Country": "Netherlands",
+    "ISOAlpha2Code": "NL",
+    "ISONumericCode": 528
+  },
+  {
+    "Country": "New Caledonia",
+    "ISOAlpha2Code": "NC",
+    "ISONumericCode": 540
+  },
+  {
+    "Country": "New Zealand",
+    "ISOAlpha2Code": "NZ",
+    "ISONumericCode": 554
+  },
+  {
+    "Country": "Nicaragua",
+    "ISOAlpha2Code": "NI",
+    "ISONumericCode": 558
+  },
+  {
+    "Country": "Niger",
+    "ISOAlpha2Code": "NE",
+    "ISONumericCode": 562
+  },
+  {
+    "Country": "Nigeria",
+    "ISOAlpha2Code": "NG",
+    "ISONumericCode": 566
+  },
+  {
+    "Country": "Niue",
+    "ISOAlpha2Code": "NU",
+    "ISONumericCode": 570
+  },
+  {
+    "Country": "Norfolk Island",
+    "ISOAlpha2Code": "NF",
+    "ISONumericCode": 574
+  },
+  {
+    "Country": "North Macedonia",
+    "ISOAlpha2Code": "MK",
+    "ISONumericCode": 807
+  },
+  {
+    "Country": "Northern Mariana Islands",
+    "ISOAlpha2Code": "MP",
+    "ISONumericCode": 580
+  },
+  {
+    "Country": "Norway",
+    "ISOAlpha2Code": "NO",
+    "ISONumericCode": 578
+  },
+  {
+    "Country": "Oman",
+    "ISOAlpha2Code": "OM",
+    "ISONumericCode": 512
+  },
+  {
+    "Country": "Pakistan",
+    "ISOAlpha2Code": "PK",
+    "ISONumericCode": 586
+  },
+  {
+    "Country": "Palau",
+    "ISOAlpha2Code": "PW",
+    "ISONumericCode": 585
+  },
+  {
+    "Country": "Palestine, State of",
+    "ISOAlpha2Code": "PS",
+    "ISONumericCode": 275
+  },
+  {
+    "Country": "Panama",
+    "ISOAlpha2Code": "PA",
+    "ISONumericCode": 591
+  },
+  {
+    "Country": "Papua New Guinea",
+    "ISOAlpha2Code": "PG",
+    "ISONumericCode": 598
+  },
+  {
+    "Country": "Paraguay",
+    "ISOAlpha2Code": "PY",
+    "ISONumericCode": 600
+  },
+  {
+    "Country": "Peru",
+    "ISOAlpha2Code": "PE",
+    "ISONumericCode": 604
+  },
+  {
+    "Country": "Philippines",
+    "ISOAlpha2Code": "PH",
+    "ISONumericCode": 608
+  },
+  {
+    "Country": "Pitcairn",
+    "ISOAlpha2Code": "PN",
+    "ISONumericCode": 612
+  },
+  {
+    "Country": "Poland",
+    "ISOAlpha2Code": "PL",
+    "ISONumericCode": 616
+  },
+  {
+    "Country": "Portugal",
+    "ISOAlpha2Code": "PT",
+    "ISONumericCode": 620
+  },
+  {
+    "Country": "Puerto Rico",
+    "ISOAlpha2Code": "PR",
+    "ISONumericCode": 630
+  },
+  {
+    "Country": "Qatar",
+    "ISOAlpha2Code": "QA",
+    "ISONumericCode": 634
+  },
+  {
+    "Country": "Réunion",
+    "ISOAlpha2Code": "RE",
+    "ISONumericCode": 638
+  },
+  {
+    "Country": "Romania",
+    "ISOAlpha2Code": "RO",
+    "ISONumericCode": 642
+  },
+  {
+    "Country": "Russian Federation",
+    "ISOAlpha2Code": "RU",
+    "ISONumericCode": 643
+  },
+  {
+    "Country": "Rwanda",
+    "ISOAlpha2Code": "RW",
+    "ISONumericCode": 646
+  },
+  {
+    "Country": "Saint Barthélemy",
+    "ISOAlpha2Code": "BL",
+    "ISONumericCode": 652
+  },
+  {
+    "Country": "Saint Helena, Ascension and Tristan da Cunha",
+    "ISOAlpha2Code": "SH",
+    "ISONumericCode": 654
+  },
+  {
+    "Country": "Saint Kitts and Nevis",
+    "ISOAlpha2Code": "KN",
+    "ISONumericCode": 659
+  },
+  {
+    "Country": "Saint Lucia",
+    "ISOAlpha2Code": "LC",
+    "ISONumericCode": 662
+  },
+  {
+    "Country": "Saint Martin (French part)",
+    "ISOAlpha2Code": "MF",
+    "ISONumericCode": 663
+  },
+  {
+    "Country": "Saint Pierre and Miquelon",
+    "ISOAlpha2Code": "PM",
+    "ISONumericCode": 666
+  },
+  {
+    "Country": "Saint Vincent and the Grenadines",
+    "ISOAlpha2Code": "VC",
+    "ISONumericCode": 670
+  },
+  {
+    "Country": "Samoa",
+    "ISOAlpha2Code": "WS",
+    "ISONumericCode": 882
+  },
+  {
+    "Country": "San Marino",
+    "ISOAlpha2Code": "SM",
+    "ISONumericCode": 674
+  },
+  {
+    "Country": "Sao Tome and Principe",
+    "ISOAlpha2Code": "ST",
+    "ISONumericCode": 678
+  },
+  {
+    "Country": "Saudi Arabia",
+    "ISOAlpha2Code": "SA",
+    "ISONumericCode": 682
+  },
+  {
+    "Country": "Senegal",
+    "ISOAlpha2Code": "SN",
+    "ISONumericCode": 686
+  },
+  {
+    "Country": "Serbia",
+    "ISOAlpha2Code": "RS",
+    "ISONumericCode": 688
+  },
+  {
+    "Country": "Seychelles",
+    "ISOAlpha2Code": "SC",
+    "ISONumericCode": 690
+  },
+  {
+    "Country": "Sierra Leone",
+    "ISOAlpha2Code": "SL",
+    "ISONumericCode": 694
+  },
+  {
+    "Country": "Singapore",
+    "ISOAlpha2Code": "SG",
+    "ISONumericCode": 702
+  },
+  {
+    "Country": "Sint Maarten (Dutch part)",
+    "ISOAlpha2Code": "SX",
+    "ISONumericCode": 534
+  },
+  {
+    "Country": "Slovakia",
+    "ISOAlpha2Code": "SK",
+    "ISONumericCode": 703
+  },
+  {
+    "Country": "Slovenia",
+    "ISOAlpha2Code": "SI",
+    "ISONumericCode": 705
+  },
+  {
+    "Country": "Solomon Islands",
+    "ISOAlpha2Code": "SB",
+    "ISONumericCode": 90
+  },
+  {
+    "Country": "Somalia",
+    "ISOAlpha2Code": "SO",
+    "ISONumericCode": 706
+  },
+  {
+    "Country": "South Africa",
+    "ISOAlpha2Code": "ZA",
+    "ISONumericCode": 710
+  },
+  {
+    "Country": "South Georgia and the South Sandwich Islands",
+    "ISOAlpha2Code": "GS",
+    "ISONumericCode": 239
+  },
+  {
+    "Country": "South Sudan",
+    "ISOAlpha2Code": "SS",
+    "ISONumericCode": 728
+  },
+  {
+    "Country": "Spain",
+    "ISOAlpha2Code": "ES",
+    "ISONumericCode": 724
+  },
+  {
+    "Country": "Sri Lanka",
+    "ISOAlpha2Code": "LK",
+    "ISONumericCode": 144
+  },
+  {
+    "Country": "Sudan",
+    "ISOAlpha2Code": "SD",
+    "ISONumericCode": 729
+  },
+  {
+    "Country": "Suriname",
+    "ISOAlpha2Code": "SR",
+    "ISONumericCode": 740
+  },
+  {
+    "Country": "Svalbard and Jan Mayen",
+    "ISOAlpha2Code": "SJ",
+    "ISONumericCode": 744
+  },
+  {
+    "Country": "Sweden",
+    "ISOAlpha2Code": "SE",
+    "ISONumericCode": 752
+  },
+  {
+    "Country": "Switzerland",
+    "ISOAlpha2Code": "CH",
+    "ISONumericCode": 756
+  },
+  {
+    "Country": "Syrian Arab Republic",
+    "ISOAlpha2Code": "SY",
+    "ISONumericCode": 760
+  },
+  {
+    "Country": "Taiwan, Province of China",
+    "ISOAlpha2Code": "TW",
+    "ISONumericCode": 158
+  },
+  {
+    "Country": "Tajikistan",
+    "ISOAlpha2Code": "TJ",
+    "ISONumericCode": 762
+  },
+  {
+    "Country": "Tanzania, United Republic of",
+    "ISOAlpha2Code": "TZ",
+    "ISONumericCode": 834
+  },
+  {
+    "Country": "Thailand",
+    "ISOAlpha2Code": "TH",
+    "ISONumericCode": 764
+  },
+  {
+    "Country": "Timor-Leste",
+    "ISOAlpha2Code": "TL",
+    "ISONumericCode": 626
+  },
+  {
+    "Country": "Togo",
+    "ISOAlpha2Code": "TG",
+    "ISONumericCode": 768
+  },
+  {
+    "Country": "Tokelau",
+    "ISOAlpha2Code": "TK",
+    "ISONumericCode": 772
+  },
+  {
+    "Country": "Tonga",
+    "ISOAlpha2Code": "TO",
+    "ISONumericCode": 776
+  },
+  {
+    "Country": "Trinidad and Tobago",
+    "ISOAlpha2Code": "TT",
+    "ISONumericCode": 780
+  },
+  {
+    "Country": "Tunisia",
+    "ISOAlpha2Code": "TN",
+    "ISONumericCode": 788
+  },
+  {
+    "Country": "Turkey",
+    "ISOAlpha2Code": "TR",
+    "ISONumericCode": 792
+  },
+  {
+    "Country": "Turkmenistan",
+    "ISOAlpha2Code": "TM",
+    "ISONumericCode": 795
+  },
+  {
+    "Country": "Turks and Caicos Islands",
+    "ISOAlpha2Code": "TC",
+    "ISONumericCode": 796
+  },
+  {
+    "Country": "Tuvalu",
+    "ISOAlpha2Code": "TV",
+    "ISONumericCode": 798
+  },
+  {
+    "Country": "Uganda",
+    "ISOAlpha2Code": "UG",
+    "ISONumericCode": 800
+  },
+  {
+    "Country": "Ukraine",
+    "ISOAlpha2Code": "UA",
+    "ISONumericCode": 804
+  },
+  {
+    "Country": "United Arab Emirates",
+    "ISOAlpha2Code": "AE",
+    "ISONumericCode": 784
+  },
+  {
+    "Country": "United Kingdom of Great Britain and Northern Ireland",
+    "ISOAlpha2Code": "GB",
+    "ISONumericCode": 826
+  },
+  {
+    "Country": "United States of America",
+    "ISOAlpha2Code": "US",
+    "ISONumericCode": 840
+  },
+  {
+    "Country": "United States Minor Outlying Islands",
+    "ISOAlpha2Code": "UM",
+    "ISONumericCode": 581
+  },
+  {
+    "Country": "Uruguay",
+    "ISOAlpha2Code": "UY",
+    "ISONumericCode": 858
+  },
+  {
+    "Country": "Uzbekistan",
+    "ISOAlpha2Code": "UZ",
+    "ISONumericCode": 860
+  },
+  {
+    "Country": "Vanuatu",
+    "ISOAlpha2Code": "VU",
+    "ISONumericCode": 548
+  },
+  {
+    "Country": "Venezuela (Bolivarian Republic of)",
+    "ISOAlpha2Code": "VE",
+    "ISONumericCode": 862
+  },
+  {
+    "Country": "Viet Nam",
+    "ISOAlpha2Code": "VN",
+    "ISONumericCode": 704
+  },
+  {
+    "Country": "Virgin Islands (British)",
+    "ISOAlpha2Code": "VG",
+    "ISONumericCode": 92
+  },
+  {
+    "Country": "Virgin Islands (U.S.)",
+    "ISOAlpha2Code": "VI",
+    "ISONumericCode": 850
+  },
+  {
+    "Country": "Wallis and Futuna",
+    "ISOAlpha2Code": "WF",
+    "ISONumericCode": 876
+  },
+  {
+    "Country": "Western Sahara",
+    "ISOAlpha2Code": "EH",
+    "ISONumericCode": 732
+  },
+  {
+    "Country": "Yemen",
+    "ISOAlpha2Code": "YE",
+    "ISONumericCode": 887
+  },
+  {
+    "Country": "Zambia",
+    "ISOAlpha2Code": "ZM",
+    "ISONumericCode": 894
+  },
+  {
+    "Country": "Zimbabwe",
+    "ISOAlpha2Code": "ZW",
+    "ISONumericCode": 716
+  }
+]

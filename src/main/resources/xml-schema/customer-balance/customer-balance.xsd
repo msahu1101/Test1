@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- edited with XMLSpy v2015 rel. 3 (x64) (http://www.altova.com) by Steve Waldner (International Game Technology) -->
+<!-- edited with XMLSPY v2004 rel. 3 U (http://www.xmlspy.com) by Jeff Fiegel (Acres Gaming) -->
+<xs:schema xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:XS="http://www.w3.org/2001/XMLSchema"
+		   version="2.30"
+		   elementFormDefault="qualified"
+		   attributeFormDefault="unqualified">
+	<xs:element name = "CRMPlayerBalance">
+		<xs:complexType>
+			<xs:sequence maxOccurs="3">
+				<xs:element name="CRMChoice">
+					<xs:complexType>
+						<xs:sequence>
+				<xs:element name="CRMAcresMessage" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>This general schema is used for the communication of messaging between the CRM project and IGT Patron Management.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="Header"/>
+							<xs:element ref="PlayerID" minOccurs="0"/>
+							<xs:element name="Site" type="SiteType" minOccurs="0"/>
+							<xs:element ref="Body" minOccurs="0"/>
+						</xs:sequence>
+						<xs:attribute name="SchemaVersion" type="xs:decimal"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerXtraCreditBalances" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="GlobalBalance" type="SQLMoney"/>
+							<xs:element name="LocalBalances">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="LocalBalance" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SiteID" type="SQLSmallInt" minOccurs="0"/>
+													<xs:element name="SiteDescription" type="xs:string" minOccurs="0"/>
+													<xs:element name="Balance" type="SQLMoney" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+						<xs:sequence>
+							<xs:element name="TheoValues" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="ID" minOccurs="0"/>
+										<xs:element ref="SiteID" minOccurs="0"/>
+										<xs:element ref="TotalTheoWin" minOccurs="0"/>
+										<xs:element ref="RoomNights" minOccurs="0"/>
+										<xs:element ref="LastStayDate" minOccurs="0"/>
+										<xs:element ref="SitemasterID" minOccurs="0"/>
+										<xs:element ref="SiteName" minOccurs="0"/>
+										<xs:element ref="SiteIDPM" minOccurs="0"/>
+										<xs:element ref="ConfigHotelSystemID" minOccurs="0"/>
+										<xs:element ref="CorpSortOrder" minOccurs="0"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SiteID" type="xs:int"/>
+	<xs:element name="TotalTheoWin" type="xs:double"/>
+	<xs:element name="ID" type="xs:int"/>
+	<xs:element name="RoomNights" type="xs:int"/>
+	<xs:element name="LastStayDate" type="xs:dateTime"/>
+	<xs:element name="SitemasterID" type="xs:int"/>
+	<xs:element name="SiteName" type="xs:string"/>
+	<xs:element name="SiteIDPM" type="xs:int"/>
+	<xs:element name="ConfigHotelSystemID" type="xs:int"/>
+	<xs:element name="CorpSortOrder" type="xs:int"/>
+	<xs:element name="Header">
+		<xs:annotation>
+			<xs:documentation>GSA/HITIS compatible message Header.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FromURI" type="xs:anyURI" minOccurs="0"/>
+				<xs:element name="ToURI" type="xs:anyURI" minOccurs="0"/>
+				<xs:element name="ReplyToURI" type="xs:anyURI" minOccurs="0"/>
+				<xs:element name="MessageID" type="SQLInt" minOccurs="0"/>
+				<xs:element name="OriginalMessageID" type="SQLInt" minOccurs="0"/>
+				<xs:element name="TimeStamp" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="Token" type="xs:string" minOccurs="0"/>
+				<xs:element name="PropertyID" type="xs:string" minOccurs="0"/>
+				<xs:element name="Operation">
+					<xs:complexType>
+						<xs:attribute name="Operand">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Add"/>
+									<xs:enumeration value="Update"/>
+									<xs:enumeration value="Delete"/>
+									<xs:enumeration value="Request"/>
+									<xs:enumeration value="Information"/>
+									<xs:enumeration value="Success"/>
+									<xs:enumeration value="Validate"/>
+									<xs:enumeration value="Lock"/>
+									<xs:enumeration value="Create"/>
+									<xs:enumeration value="Error"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="Data">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="AbsUser"/>
+									<xs:enumeration value="AddressType"/>
+									<xs:enumeration value="Affiliation"/>
+									<xs:enumeration value="CardPrint"/>
+									<xs:enumeration value="CardsIssued"/>
+									<xs:enumeration value="Comments"/>
+									<xs:enumeration value="Comp"/>
+									<xs:enumeration value="CompCenter"/>
+									<xs:enumeration value="CompHistory"/>
+									<xs:enumeration value="CompIssuance"/>
+									<xs:enumeration value="CompList"/>
+									<xs:enumeration value="CompListMessage"/>
+									<xs:enumeration value="CompListType"/>
+									<xs:enumeration value="CompRedemption"/>
+									<xs:enumeration value="CountryInfo"/>
+									<xs:enumeration value="CouponIssuance"/>
+									<xs:enumeration value="CouponList"/>
+									<xs:enumeration value="CouponListPlayer"/>
+									<xs:enumeration value="CouponRedemption"/>
+									<xs:enumeration value="CreditConditions"/>
+									<xs:enumeration value="CreditInfo"/>
+									<xs:enumeration value="EmailType"/>
+									<xs:enumeration value="Error"/>
+									<xs:enumeration value="FindPlayer"/>
+									<xs:enumeration value="GamingProfile"/>
+									<xs:enumeration value="General"/>
+									<xs:enumeration value="Itinerary"/>
+									<xs:enumeration value="Language"/>
+									<xs:enumeration value="LinkInfo"/>
+									<xs:enumeration value="LoginModify"/>
+									<xs:enumeration value="Merge"/>
+									<xs:enumeration value="Messages"/>
+									<xs:enumeration value="PhoneType"/>
+									<xs:enumeration value="PINInfo"/>
+									<xs:enumeration value="PlayerActivity"/>
+									<xs:enumeration value="PlayerBalanceAdjustment"/>
+									<xs:enumeration value="PlayerBalances"/>
+									<xs:enumeration value="PlayerSecondCompBalanceSet"/>
+									<xs:enumeration value="PlayerXtraCreditBalances"/>
+									<xs:enumeration value="PlayerCard"/>
+									<xs:enumeration value="PlayerCompListMessage"/>
+									<xs:enumeration value="PlayerFind"/>
+									<xs:enumeration value="PlayerFind2"/>
+									<xs:enumeration value="PlayerGroupAdd"/>
+									<xs:enumeration value="PlayerGroupLookup"/>
+									<xs:enumeration value="PlayerHost"/>
+									<xs:enumeration value="PlayerIDByCreditID"/>
+									<xs:enumeration value="PlayerImage"/>
+									<xs:enumeration value="PlayerInterests"/>
+									<xs:enumeration value="PlayerPIN"/>
+									<xs:enumeration value="PlayerProfile"/>
+									<xs:enumeration value="PlayerPromoEvent"/>
+									<xs:enumeration value="PromoEventTicketIssuance"/>
+									<xs:enumeration value="PlayerPromos"/>
+									<xs:enumeration value="PlayerPromotions"/>
+									<xs:enumeration value="PlayerRanking"/>
+									<xs:enumeration value="PlayerReservation"/>
+									<xs:enumeration value="PlayerReservations"/>
+									<xs:enumeration value="PlayerRestrictions"/>
+									<xs:enumeration value="PlayerStatus"/>
+									<xs:enumeration value="PointsConversionRate"/>
+									<xs:enumeration value="Promo"/>
+									<xs:enumeration value="PromoWithFilter"/>
+									<xs:enumeration value="PromotionAwardsIssuance"/>
+									<xs:enumeration value="PromotionAwardsList"/>
+									<xs:enumeration value="PromotionAwardsListPlayer"/>
+									<xs:enumeration value="PromoAwardPlayerBalance"/>
+									<xs:enumeration value="PromotionPlayerStatusUpdate"/>
+									<xs:enumeration value="PromotionListSystem"/>
+									<xs:enumeration value="PromotionListPlayer"/>
+									<xs:enumeration value="PromoEvent"/>
+									<xs:enumeration value="PromoEventsWithFilter"/>
+									<xs:enumeration value="PromoEventBlock"/>
+									<xs:enumeration value="PromoEventBlocksWithFilter"/>
+									<xs:enumeration value="PromoMaster"/>
+									<xs:enumeration value="PromoStatus"/>
+									<xs:enumeration value="PromoType"/>
+									<xs:enumeration value="RateRestriction"/>
+									<xs:enumeration value="RateType"/>
+									<xs:enumeration value="Rating"/>
+									<xs:enumeration value="Reason"/>
+									<xs:enumeration value="ReservationType"/>
+									<xs:enumeration value="Restrictions"/>
+									<xs:enumeration value="RoomRestriction"/>
+									<xs:enumeration value="RoomType"/>
+									<xs:enumeration value="SiteInfo"/>
+									<xs:enumeration value="StopCodes"/>
+									<xs:enumeration value="TripComment"/>
+									<xs:enumeration value="TripInformation"/>
+									<xs:enumeration value="TripSummary"/>
+									<xs:enumeration value="UnMerge"/>
+									<xs:enumeration value="UpdatePlayer"/>
+									<xs:enumeration value="ZipCode"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="Command" type="xs:string"/>
+						<xs:attribute name="WhereClause" type="xs:string"/>
+						<xs:attribute name="MaxRecords" type="SQLInt"/>
+						<xs:attribute name="TotalRecords" type="SQLInt"/>
+						<xs:attribute name="Success">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Yes"/>
+									<xs:enumeration value="No"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attribute name="PageNumber" type="xs:string"/>
+						<xs:attribute name="MaxPages" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Information" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="ImmediateResponseRequired" type="xs:boolean"/>
+			<xs:attribute name="OriginalBodyRequested" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PlayerID" type="xs:string" nillable="true"/>
+	<xs:element name="CreditID" type="xs:string" nillable="true"/>
+	<xs:element name="Site" type="SiteType" nillable="true"/>
+	<xs:element name="Body">
+		<xs:complexType>
+			<xs:choice minOccurs="0">
+				<xs:element name="Error">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ErrorCode">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="16"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ErrorDescription" type="xs:string" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="PlayerBalances">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RewardBalance" type="SQLInt" minOccurs="0"/>
+							<xs:element name="CompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="SecondCompBalance" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="GiftPoints" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="18"/>
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="XtraCreditBalanceLocal" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="XtraCreditBalanceGlobal" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="PointBalance" type="SQLBigInt" minOccurs="0"/>
+							<xs:element name="CompBalanceLinked" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="SecondCompBalanceLinked" type="SQLMoney" minOccurs="0"/>
+							<xs:element name="GiftPointsLinked" minOccurs="0">
+								<xs:simpleType>
+									<xs:restriction base="xs:decimal">
+										<xs:totalDigits value="18"/>
+										<xs:fractionDigits value="4"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PointBalanceLinked" type="SQLBigInt" minOccurs="0"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="SiteType">
+		<xs:sequence>
+			<xs:element name="SiteID" type="SQLSmallInt" minOccurs="0"/>
+			<xs:element name="SiteDescription" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="32"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="SQLInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="-2147483648"/>
+			<xs:maxInclusive value="2147483647"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SQLSmallInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="-32768"/>
+			<xs:maxInclusive value="32767"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SQLBigInt">
+		<xs:restriction base="xs:long"/>
+	</xs:simpleType>
+	<xs:simpleType name="SQLTinyInt">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SQLMoney">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="-922337203685477.5808"/>
+			<xs:maxInclusive value="922337203685477.5807"/>
+			<xs:fractionDigits value="4"/>
+			<xs:totalDigits value="19"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

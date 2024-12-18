@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="customer.balance.gift.program.id">88</entry>
+	<entry key="source.sevenrooms.client.secret@secure">dummy-placeholder</entry>
+
+	<entry key="livesite.disabled.global">false</entry>
+	<entry key="livesite_event_hub_policy@secure">p-livesite-event-hub-connection</entry>
+	<entry key="cache.disabled.global">false</entry>
+	<!-- Reduce Cache Time for Player Promo to 5 secs -->
+	<entry key="cache.expiry.customer-promo">5</entry>
+
+	<entry key="keyVault.client.id">edf756cd-733d-4034-88d5-1f3c85f65c99</entry>
+	<entry key="keyVault.base.url">https://cigloyaltyprv-uw-kv-p.vault.azure.net</entry>
+
+	<entry key="database.lme.connection.url">jdbc:sqlserver://P01WDLME01P.mgmmirage.org:1433;databaseName=LMEDB</entry>
+	<entry key="database.lme.connection.user">prodmlifewebapp</entry>
+	<entry key="database.lme.connection.password@secure">p-database-lme-connection-password</entry>
+
+	<entry key="database.pcis.connection.url">jdbc:sqlserver://PLAYDB01P.mgmmirage.org;databaseName=PCIS</entry>
+	<entry key="database.pcis.connection.user">serviceuserpcis</entry>
+	<entry key="database.pcis.connection.password@secure">p-database-pcis-connection-password</entry>
+
+	<entry key="database.mlife.connection.url">jdbc:sqlserver://PLAYDB01P.mgmmirage.org;databaseName=MGMResortsMlife</entry>
+	<entry key="database.mlife.connection.user">ngl_Mlife</entry>
+	<entry key="database.mlife.connection.password@secure">p-database-mlife-connection-password</entry>
+
+	<entry key="database.work.connection.url">jdbc:sqlserver://PLAYDB01P.mgmmirage.org;databaseName=TEMPWORK</entry>
+	<entry key="database.work.connection.user">ngl_Mlife</entry>
+	<entry key="database.work.connection.password@secure">p-database-work-connection-password</entry>
+
+	<entry key="database.player.connection.url">jdbc:sqlserver://PLAYDB01P.mgmmirage.org;databaseName=playermanagement</entry>
+	<entry key="database.player.connection.user">ngl_Mlife</entry>
+	<entry key="database.player.connection.password@secure">p-database-player-connection-password</entry>
+
+	<entry key="database.reporting.connection.url">jdbc:sqlserver://S1PLAYRPT03P.mgmmirage.org;databaseName=Tempwork</entry>
+	<entry key="database.reporting.connection.user">SSRSMlifeReports</entry>
+	<entry key="database.reporting.connection.password@secure">p-database-reporting-SSRSMlifeReports-connection-password</entry>
+
+	<entry key="patron.http.url">http://10.214.75.154:1106</entry>
+	<entry key="http.connection.pool.config.info">https,azdeapi.mgmresorts.com,443,10</entry>
+	<entry key="http.connection.pool.config.size">http,10.214.75.154,1106,10</entry>
+	
+	<!-- identity -->
+	<entry key="apim.oauth.endpoint">https://api.apigee.mgmresorts.com/identity/authorization/v1/mgmsvc/token</entry>
+
+	<!-- RcxService config values -->
+	<entry key="rcx.platform.base.url">https://api.apigee.mgmresorts.com/rcxapi2</entry>
+
+	<!-- RCX Pending Balance  -->
+	<entry key="rcx.thread.pool.size">40</entry>
+	<entry key="rcx.pending.balance.url">https://api.apigee.mgmresorts.com/rcxapi2/members/%d/profile?select=purses.balance,purses.name</entry>
+
+	<!--url of the jkws. -->
+	<entry key="auth.url.jkws">https://api.apigee.mgmresorts.com/identity/authorization/v1/mgmsvc/.well-known/jwks</entry>
+	<entry key="apim.auth.url">https://api.apigee.mgmresorts.com/identity/authorization/v1/mgmsvc/.well-known/oauth-authorization-server</entry>
+
+	<!-- RCX Platform settings -->
+	<entry key="rcx.platform.phase2.startTimeUtc">2022-08-01T23:59:59Z</entry>
+	<entry key="rcx.platform.phase3.startTimeUtc">2022-11-08T09:30:00Z</entry>
+	<entry key="rcx.platform.phase4.startTimeUtc">2022-12-06T09:30:00Z</entry>
+	<entry key="rcx.platform.phase5.startTimeUtc">2022-12-08T09:30:00Z</entry>
+
+</properties>

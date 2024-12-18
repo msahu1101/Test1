@@ -1,0 +1,12 @@
+<CRMAcresMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://localhost/CRMAcres.xsd">
+	<Header>
+		<TimeStamp>2020-04-08T12:21:59.597</TimeStamp>
+		<Operation Data="Error" Operand="Error"/>
+	</Header>
+	<Body>
+		<Error>
+			<ErrorCode>INVALIDPLAYERID</ErrorCode>
+			<ErrorDescription>Proc_XML_CRM_CommentsRequest: PlayerID is not valid.</ErrorDescription>
+		</Error>
+	</Body>
+</CRMAcresMessage>

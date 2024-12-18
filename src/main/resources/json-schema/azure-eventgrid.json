@@ -1,0 +1,69 @@
+{
+    "$ref": "#/definitions/event",
+    "type": "object",
+    "definitions": {
+        "data": {
+            "type": "object",
+            "additionalProperties": false,
+            "javaType": "com.mgmresorts.event.dto.EventData",
+            "properties": {
+                "payloadUrl": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "payload": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "validationCode": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "event": {
+            "type": "object",
+            "javaType": "com.mgmresorts.event.dto.Event",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "topic": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "subject": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "data": {
+                    "$ref": "#/definitions/data"
+                },
+                "eventType": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "eventTime": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "metadataVersion": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "dataVersion": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            },
+            "required": [
+                "specversion",
+                "id",
+                "type",
+                "source"
+            ]
+        }
+    }
+}

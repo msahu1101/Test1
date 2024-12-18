@@ -1,0 +1,8 @@
+<ResultSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Header>
+		<TimeStamp>2019-09-19T13:57:18.007</TimeStamp>
+	</Header>
+	<Body>
+		<ErrorMessage>PlayerID does not exists in Patron</ErrorMessage>
+	</Body>
+</ResultSet>

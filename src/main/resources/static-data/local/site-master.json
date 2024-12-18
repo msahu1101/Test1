@@ -1,0 +1,106 @@
+[
+	{
+		"siteId": "1",
+		"name": "Mirage"
+	},
+	{
+		"siteId": "2",
+		"name": "Treasure Island"
+	},
+	{
+		"siteId": "3",
+		"name": "MGM Grand"
+	},
+	{
+		"siteId": "4",
+		"name": "New York New York"
+	},
+	{
+		"siteId": "5",
+		"name": "MGM Detroit"
+	},
+	{
+		"siteId": "6",
+		"name": "Bellagio"
+	},
+	{
+		"siteId": "7",
+		"name": "Golden Nugget Las Vegas"
+	},
+	{
+		"siteId": "8",
+		"name": "Beau Rivage"
+	},
+	{
+		"siteId": "9",
+		"name": "Mandalay Bay"
+	},
+	{
+		"siteId": "10",
+		"name": "Park MGM"
+	},
+	{
+		"siteId": "11",
+		"name": "Luxor"
+	},
+	{
+		"siteId": "12",
+		"name": "Excalibur"
+	},
+	{
+		"siteId": "13",
+		"name": "Circus Circus Las Vegas"
+	},
+	{
+		"siteId": "14",
+		"name": "Gold Strike Tunica"
+	},
+	{
+		"siteId": "15",
+		"name": "BetMGM"
+	},
+	{
+		"siteId": "16",
+		"name": "Aria"
+	},
+	{
+		"siteId": "17",
+		"name": "Vdara"
+	},
+	{
+		"siteId": "18",
+		"name": "MGM National Harbor"
+	},
+	{
+		"siteId": "19",
+		"name": "Borgata"
+	},
+	{
+		"siteId": "20",
+		"name": "MGM Springfield"
+	},
+	{
+		"siteId": "21",
+		"name": "Partner Tier Credit"
+	},
+	{
+		"siteId": "22",
+		"name": "Partner Tier Credit"
+	},
+	{
+		"siteId": "23",
+		"name": "Signature MGM"
+	},
+	{
+		"siteId": "24",
+		"name": "MGM Northfield Park"
+	},
+	{
+		"siteId": "25",
+		"name": "Empire City"
+	},
+	{
+		"siteId": "26",
+		"name": "The Cosmopolitan of Las Vegas"
+	}
+]

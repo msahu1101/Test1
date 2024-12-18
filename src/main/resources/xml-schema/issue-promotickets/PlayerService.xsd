@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.mgmresorts.com/commonservices/playerservice"
+           targetNamespace="http://www.mgmresorts.com/commonservices/playerservice"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+    <!--SIMPLE ELEMENTS FOR REQUEST HEADER AND ERROR RESPONSE-->
+    <xs:element name="header" type="headerType"/>
+    <xs:element name="source" type="xs:string"/>
+    <xs:element name="transactionId" type="xs:string"/>
+    <xs:element name="origin" type="xs:string"/>
+    <xs:element name="correlationId" type="xs:string"/>
+    <xs:element name="result" type="resultType"/>
+    <xs:element name="statusDescription" type="xs:string"/>
+    <xs:element name="type" type="xs:string"/>
+    <xs:element name="code" type="xs:string"/>
+    <!--   COMMON REFERENCE ELEMENTS -->
+    <xs:complexType name="resultType">
+        <xs:sequence>
+            <xs:element ref="status"/>
+            <xs:element ref="statusDescription" minOccurs="0"/>
+            <xs:element name="errors" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="error" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element ref="type"/>
+                                    <xs:element ref="code"/>
+                                    <xs:element ref="description"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="headerType">
+        <xs:all>
+            <xs:element ref="source"/>
+            <xs:element ref="transactionId"/>
+            <xs:element ref="origin" minOccurs="0"/>
+            <xs:element ref="correlationId" minOccurs="0"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:element name="eventsRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="promoId"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eventsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="result" minOccurs="0"/>
+                <xs:element ref="promoEvents" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="promoEvents">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="eventId"/>
+                <xs:element ref="description"/>
+                <xs:element ref="date"/>
+                <xs:element ref="status"/>
+                <xs:element ref="siteId"/>
+                <xs:element ref="promoId"/>
+                <xs:element ref="numberOfBlocks"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="eventId" type="xs:int"/>
+    <xs:element name="description" type="xs:string"/>
+    <xs:element name="date" type="xs:dateTime"/>
+    <xs:element name="status" type="xs:string"/>
+    <xs:element name="siteId" type="xs:int"/>
+    <xs:element name="promoId" type="xs:int"/>
+    <xs:element name="numberOfBlocks" type="xs:int"/>
+
+</xs:schema>
