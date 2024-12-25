@@ -93,4 +93,5 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
         #queries: ./github/workflows/sqlinjection.ql
-        queries: ./github/workflows/input.ql
+        #queries: ./github/workflows/input.ql
+        queries: ./github/workflows/token.ql
